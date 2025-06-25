@@ -1,0 +1,36 @@
+# Ignore large data and database files
+*.csv
+*.db
+*.sqlite
+*.sqlite3
+*.zip
+*.tar.gz
+*.h5
+*.parquet
+*.pkl
+*.sav
+*.bak
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore VSCode settings
+.vscode/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore environment files
+.env
+.env.*
+
+# Ignore node_modules
+node_modules/
+
+# Ignore virtual environment
+.venv/

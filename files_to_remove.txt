@@ -1,0 +1,13 @@
+category_views.csv
+cleaned_merged_data.csv
+demo/dataset1_final.csv
+demo/dataset2_final.csv
+demo/backend/dataset1_final.csv
+demo/backend/dataset2_final.csv
+demo/backend/preprocessed_sessions.csv
+demo/backend/sessions.db
+demo_features.csv
+transactions.csv
+user_activity_logs.csv
+user_revenue.csv
+user_sessions.csv
