@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chinodress - Product Details | StyleZone</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.tailwindcss.com?plugins=forms,container-queries" rel="stylesheet">
+  <style>
+    .size-btn.selected { border-color: #0c7ff2; background: #e6f0fd; color: #0c7ff2; }
+    .gallery-thumb.selected { border-color: #0c7ff2; }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+  <div class="max-w-7xl mx-auto py-8 px-4">
+    <nav class="text-sm text-[#49739c] mb-4">
+      <a href="index.html" class="hover:underline">Home</a> /
+      <a href="#" class="hover:underline">Clothing</a> /
+      <a href="#" class="hover:underline">Women Clothing</a> /
+      <a href="#" class="hover:underline">Kurta Sets</a> /
+      <span class="text-[#0d141c] font-semibold">Chinodress</span>
+    </nav>
+    <div class="flex flex-col lg:flex-row gap-10">
+      <!-- Product Image -->
+      <div class="flex-1">
+        <div class="aspect-square bg-cover bg-center rounded-lg mb-4" style="background-image: url('https://u-mercari-images.mercdn.net/photos/m54242634325_2.jpg')">
+        </div>
+      </div>
+      <!-- Product Details -->
+      <div class="flex-1 max-w-lg">
+        <h1 class="text-3xl font-bold text-[#0d141c] mb-2">Chinodress</h1>
+        <div class="flex items-center gap-3 mb-2">
+          <span class="text-2xl font-semibold text-[#0c7ff2]">$79.99</span>
+          <span class="text-base text-gray-400 line-through">$105.00</span>
+          <span class="text-xs text-red-500 font-bold bg-red-50 px-2 py-1 rounded">25% OFF</span>
+        </div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">In Stock</span>
+          <span class="text-yellow-500">★★★★☆</span>
+          <span class="text-xs text-[#49739c]">36 Ratings</span>
+        </div>
+        <div class="mb-4">
+          <div class="flex items-center justify-between">
+            <span class="font-semibold">Select Size:</span>
+            <a href="#" class="text-xs text-[#0c7ff2] hover:underline">Size Chart</a>
+          </div>
+          <div class="flex gap-2 mt-2">
+            <button class="size-btn w-10 h-10 rounded border border-gray-300 hover:border-[#0c7ff2] font-semibold">S</button>
+            <button class="size-btn w-10 h-10 rounded border border-gray-300 hover:border-[#0c7ff2] font-semibold">M</button>
+            <button class="size-btn w-10 h-10 rounded border border-gray-300 hover:border-[#0c7ff2] font-semibold">L</button>
+            <button class="size-btn w-10 h-10 rounded border border-gray-300 hover:border-[#0c7ff2] font-semibold">XL</button>
+            <button class="size-btn w-10 h-10 rounded border border-gray-300 hover:border-[#0c7ff2] font-semibold">XXL</button>
+          </div>
+        </div>
+        <div class="flex gap-2 mb-4">
+          <button id="add-to-cart-btn" class="flex-1 py-3 bg-[#0c7ff2] text-white rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors">Add to Bag</button>
+          <button id="wishlist-btn" class="flex-1 py-3 border border-[#0c7ff2] text-[#0c7ff2] rounded-lg font-bold text-lg hover:bg-blue-50 transition-colors">Wishlist</button>
+        </div>
+        <div class="mb-4 p-4 bg-white rounded-lg shadow-sm">
+          <h2 class="font-semibold mb-1">Delivery Options</h2>
+          <div class="flex items-center gap-2 mb-2">
+            <input id="pincode-input" type="text" maxlength="6" placeholder="Enter pincode" class="border border-gray-300 rounded px-2 py-1 text-sm w-32">
+            <button id="check-pincode-btn" class="text-[#0c7ff2] text-sm font-semibold">Check</button>
+            <span id="pincode-status" class="text-xs ml-2"></span>
+          </div>
+          <div class="text-xs text-gray-500">100% Original Products &bull; Pay on delivery might be available &bull; Easy 7 days returns and exchanges</div>
+        </div>
+        <div class="mb-4 p-4 bg-white rounded-lg shadow-sm">
+          <h2 class="font-semibold mb-1">Best Offers</h2>
+          <ul class="text-xs text-gray-700 list-disc ml-5 space-y-1">
+            <li>Best Price: <span class="font-semibold text-[#0c7ff2]">$79.99</span> (inclusive of all taxes)</li>
+            <li>10% Discount on HDFC Credit Cards</li>
+            <li>10% Discount on ICICI Credit & Debit Cards EMI</li>
+            <li>7.5% Discount on Myntra Kotak Credit Card</li>
+          </ul>
+        </div>
+        <div class="mb-4 p-4 bg-white rounded-lg shadow-sm">
+          <h2 class="font-semibold mb-1">Product Details</h2>
+          <ul class="text-xs text-gray-700 list-disc ml-5 space-y-1">
+            <li>Solid Kurta with Trousers</li>
+            <li>Solid Red Kurta</li>
+            <li>Mandarin Collar</li>
+            <li>Three-quarter sleeves</li>
+            <li>Flared fit</li>
+          </ul>
+        </div>
+        <div class="mb-4 p-4 bg-white rounded-lg shadow-sm">
+          <h2 class="font-semibold mb-1">Material & Care</h2>
+          <ul class="text-xs text-gray-700 list-disc ml-5 space-y-1">
+            <li>Top Fabric: Viscose Rayon</li>
+            <li>Bottom Fabric: Viscose Rayon</li>
+            <li>Dry Clean</li>
+          </ul>
+        </div>
+        <div class="mb-4 p-4 bg-white rounded-lg shadow-sm">
+          <h2 class="font-semibold mb-1">Specifications</h2>
+          <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-gray-700">
+            <div>Type</div><div>Kurta Set</div>
+            <div>Sleeve Length</div><div>Three-Quarter Sleeves</div>
+            <div>Top Shape</div><div>Flared</div>
+            <div>Neck</div><div>Mandarin Collar</div>
+            <div>Print or Pattern</div><div>Solid</div>
+            <div>Bottom Type</div><div>Trousers</div>
+            <div>Occasion</div><div>Festive</div>
+            <div>Wash Care</div><div>Dry Clean</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Image gallery logic
+    const galleryThumbs = document.querySelectorAll('.gallery-thumb');
+    const mainImage = document.getElementById('main-image');
+    galleryThumbs.forEach(thumb => {
+      thumb.addEventListener('click', function() {
+        galleryThumbs.forEach(t => t.classList.remove('selected'));
+        this.classList.add('selected');
+        mainImage.src = this.src;
+      });
+    });
+
+    // Size selection logic
+    const sizeBtns = document.querySelectorAll('.size-btn');
+    sizeBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        sizeBtns.forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+      });
+    });
+
+    // Add to cart
+    document.getElementById('add-to-cart-btn').onclick = function() {
+      const selectedSize = document.querySelector('.size-btn.selected');
+      if (!selectedSize) {
+        alert('Please select a size before adding to bag.');
+        return;
+      }
+      alert('Chinodress (' + selectedSize.textContent + ') added to cart!');
+    };
+    // Wishlist
+    document.getElementById('wishlist-btn').onclick = function() {
+      alert('Chinodress added to your wishlist!');
+    };
+    // Pincode check
+    document.getElementById('check-pincode-btn').onclick = function() {
+      const pincode = document.getElementById('pincode-input').value.trim();
+      const status = document.getElementById('pincode-status');
+      if (/^\d{6}$/.test(pincode)) {
+        status.textContent = 'Delivery available!';
+        status.className = 'text-xs text-green-600 ml-2';
+      } else {
+        status.textContent = 'Invalid pincode.';
+        status.className = 'text-xs text-red-600 ml-2';
+      }
+    };
+  </script>
+</body>
+</html>

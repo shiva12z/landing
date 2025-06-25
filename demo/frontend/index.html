@@ -65,16 +65,24 @@
                 </svg>
               </div>
             </button>
-            <button
-              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
-              aria-label="Account"
-            >
-              <div class="text-[#0d141c]" data-icon="User" data-size="20px" data-weight="regular">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                  <path d="M128,128a48,48,0,1,0-48-48A48,48,0,0,0,128,128Zm0,16c-39.7,0-72,32.3-72,72a8,8,0,0,0,8,8H192a8,8,0,0,0,8-8C200,176.3,167.7,144,128,144Z"></path>
-                </svg>
+            <div class="flex gap-2 relative">
+              <button
+                class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
+                aria-label="Account"
+                id="profile-btn"
+                type="button"
+              >
+                <div class="text-[#0d141c]" data-icon="User" data-size="20px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M128,128a48,48,0,1,0-48-48A48,48,0,0,0,128,128Zm0,16c-39.7,0-72,32.3-72,72a8,8,0,0,0,8,8H192a8,8,0,0,0,8-8C200,176.3,167.7,144,128,144Z"></path>
+                  </svg>
+                </div>
+              </button>
+              <div id="profile-dropdown" class="hidden absolute right-0 top-12 z-50 w-44 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                <a href="#" id="account-settings-link" class="block px-4 py-2 text-sm text-[#0d141c] hover:bg-gray-100">Account Settings</a>
+                <a href="#" id="logout-link" class="block px-4 py-2 text-sm text-[#0d141c] hover:bg-gray-100">Logout</a>
               </div>
-            </button>
+            </div>
           </div>
         </header>
         <div class="px-40 flex flex-1 justify-center py-5">
@@ -83,7 +91,7 @@
               <div class="@[480px]:p-4">
                 <div
                   class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-lg items-start justify-end px-4 pb-10 @[480px]:px-10"
-                  style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDXg5sd7tzahPyaWvtyhI5tgGgeIc9acxZBMmxbSBjGCAQXcFF7Eq-FydeX7KeDZSGLf0wMM0JcomiE24IF4WfCcj1e_Sg67vTf9g_x75Yvmf2sEMG-OV0FVOTwTSqSECnSf0HxNRA16pieIF4JjUq94gX2pvlV7NKMfcwxsRe2tnHLo4c5HEYenPXdm-HfJ_97IGGGUjVDZzKL51yVn_oxxrwAlq7qtcaF5wfFc_KAWDWbjosLJHY8tg7V_iN57yNt9KSBTPPjQx6j");'
+                  style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("images/CottonandlinenhalfEnglishribchinécardiga.png");'
                 >
                   <div class="flex flex-col gap-2 text-left">
                     <h1
@@ -104,23 +112,30 @@
               </div>
             </div>
             <h2 class="text-[#0d141c] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Trending Now</h2>
-            <div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+            <div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               <div class="flex items-stretch p-4 gap-3">
                 <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
                   <div
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCsfLMOPF8Ie6yJ4kfJMz_3ayJA8BewWPG0MRxyPQuOWnMDOA4ebydtkxGtvhFi_fXMYlbxWYXntcF96Nsp4DFj-LYoftoogX64uuOw8mkalNK4jluE9e0VAlCYgjcIwxokOPhJWc1n2VrHs-x8CK1ssfWhyUUnhGoQ_euaoLjovbyG4KZiT4aPEA9l9wbjL5uXIGSaMwmIyPOqk70OkpG8ISbSrE75rOmBFKcyvAZJE9HNbysHo6kjnH_zPdcjGBnVhxq_yTJlUApd");'
-                  ></div>
+                    id="chinodress-img"
+                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col cursor-pointer product-card relative group"
+                    data-product='{"name":"Chinodress","price":"$79.99","img":"https://u-mercari-images.mercdn.net/photos/m54242634325_2.jpg","desc":"This elegant Chinodress features a timeless silhouette with modern details, perfect for special occasions or making a statement. Crafted from premium materials for comfort and style."}'
+                    style='background-image: url("https://u-mercari-images.mercdn.net/photos/m54242634325_2.jpg");'
+                  >
+                    <!-- Removed hover overlay with description and Add to Cart button -->
+                  </div>
                   <div>
-                    <p class="text-[#0d141c] text-base font-medium leading-normal">Elegant Dress</p>
+                    <p class="text-[#0d141c] text-base font-medium leading-normal">Chinodress</p>
                     <p class="text-[#49739c] text-sm font-normal leading-normal">$79.99</p>
                   </div>
                 </div>
                 <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
                   <div
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDLLRt8atJcVtmayPVFgeRItbQIUpFsmhfa04B45bWPllrwXWcYkhnh__DDgXSZ-w9CU-RmhP6O1p88lY1g_u0wxlYFGbSa2VKufxfPUHwkya9WwfdsbC2Y3N5veYJlh_KJWsxM4Fy2wdvOy_5mI9Mpmt8MJPgtcL-kXOKd9TaMafAoq_PcttjzoB2l9GuaxhfCK25qi9Fb1qANnweYBKS_h2hXf2CyNaqKFc1UrkNNme9v_2Wkt4mGkAUw8rWIL3xcTTD-2jv6A28q");'
-                  ></div>
+                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col cursor-pointer product-card relative group"
+                    data-product='{"name":"Casual Wear","price":"$49.99","img":"images/casual.png","desc":"Effortless style for everyday comfort. Soft, breathable fabric and a relaxed fit make this casual wear a wardrobe staple."}'
+                    style='background-image: url("images/casual.png");'
+                  >
+                    <!-- Removed hover overlay with description and Add to Cart button -->
+                  </div>
                   <div>
                     <p class="text-[#0d141c] text-base font-medium leading-normal">Casual Wear</p>
                     <p class="text-[#49739c] text-sm font-normal leading-normal">$49.99</p>
@@ -128,9 +143,12 @@
                 </div>
                 <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
                   <div
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCHjGz-CFqm_yZ1_XYsmmWuVWl4KPTmD9Zc0Z-5JzGgkboAAxgFD9i0fHneg--1__64rl5AmfF9yPBYHO1SJFJVmRtK5rIWP5dOaZhwCJJN4QXPJNwAMPcYaeYGUWhIbVJeUVBFUKadT2ktA7113YyLtCfinrHUVwOBAGsFLCfOJeAkUSvvqAZzh-Yn-vF-ISwlkLIs1KepJ-dgjZGHiyMVU4kU857_Ydxm2xJpv3bILK2DmyKy6ri6gAaN8W4knoe7U4phF6hoLV_j");'
-                  ></div>
+                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col cursor-pointer product-card relative group"
+                    data-product='{"name":"Chic Accessories","price":"$29.99","img":"images/Avenue.png","desc":"Complete your look with these chic accessories. Modern, versatile, and perfect for any outfit."}'
+                    style='background-image: url("images/Avenue.png");'
+                  >
+                    <!-- Removed hover overlay with description and Add to Cart button -->
+                  </div>
                   <div>
                     <p class="text-[#0d141c] text-base font-medium leading-normal">Chic Accessories</p>
                     <p class="text-[#49739c] text-sm font-normal leading-normal">$29.99</p>
@@ -138,12 +156,28 @@
                 </div>
                 <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
                   <div
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col"
+                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col cursor-pointer product-card relative group"
+                    data-product='{"name":"Street Style","price":"$59.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuC2tWpSj_WC_AwktIKE_wnQmK_Pfjm_RqsEbJlZCuKXPBrWrCGc8pX2E85SX20ai0ZOJhaJ8SQXSobRc1KBQGHUCYLTdebHwT3vYLt9L0xSCOfSm1TA6ZH2RZH_61ef6hNsXVsQtoLyMv05Q_TS4QwN9S_A2dDoCBmeMG2AuhqGa83Bqk7JphMR-NqCA6Lc8l4QveEnfmltJvSGZ7LckPdjZ9sJLRug-Y7PRKvqhFJl0_I7FQFW5fzW9V3mggwBZV0405-1oIZk2tnB","desc":"Urban-inspired street style for a bold, confident look. Stand out wherever you go."}'
                     style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2tWpSj_WC_AwktIKE_wnQmK_Pfjm_RqsEbJlZCuKXPBrWrCGc8pX2E85SX20ai0ZOJhaJ8SQXSobRc1KBQGHUCYLTdebHwT3vYLt9L0xSCOfSm1TA6ZH2RZH_61ef6hNsXVsQtoLyMv05Q_TS4QwN9S_A2dDoCBmeMG2AuhqGa83Bqk7JphMR-NqCA6Lc8l4QveEnfmltJvSGZ7LckPdjZ9sJLRug-Y7PRKvqhFJl0_I7FQFW5fzW9V3mggwBZV0405-1oIZk2tnB");'
-                  ></div>
+                  >
+                    <!-- Removed hover overlay with description and Add to Cart button -->
+                  </div>
                   <div>
                     <p class="text-[#0d141c] text-base font-medium leading-normal">Street Style</p>
                     <p class="text-[#49739c] text-sm font-normal leading-normal">$59.99</p>
+                  </div>
+                </div>
+                <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
+                  <div
+                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col cursor-pointer product-card relative group"
+                    data-product='{"name":"Denim Soul Wide Fit Milk Punch Trousers","price":"$129.99","img":"images/Denim Soul Wide Fit Milk Punch Trousers.png","desc":"Modern wide-fit trousers with a milk punch finish. Perfect for a casual yet stylish look."}'
+                    style='background-image: url("images/Denim Soul Wide Fit Milk Punch Trousers.png");'
+                  >
+                    <!-- Removed hover overlay with description and Add to Cart button -->
+                  </div>
+                  <div>
+                    <p class="text-[#0d141c] text-base font-medium leading-normal">Denim Soul Wide Fit Milk Punch Trousers</p>
+                    <p class="text-[#49739c] text-sm font-normal leading-normal">$129.99</p>
                   </div>
                 </div>
               </div>
@@ -152,7 +186,8 @@
             <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Summer Dress","price":"$69.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuBnWKUg8IBvbDdgS3g0Lt_ADiZuyaFVs4Z4iNbaGFEoOJCnYaF5MPnvqPmlmRxug1e-A0_P8ETIxhuXknxnAhgTruR5ILAGe9Jd1Hp4R7Lb_zPKoTAeu7Ku2XrHBEAfuDzpm4m3o5ecyB76ew5Ye_IQq0JS45qkg7gXwjVGzSSNXpfOS3leqhU3ntF5y91hGWpDP9XDBpCXexpJ7XeA0bSJM70OmUwP9giHrZJhPHCT_dao3R32wLfVj2EkQ7F8kv1hRR3GrVnn869b","desc":"Light and breezy summer dress, perfect for warm days and casual outings."}'
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBnWKUg8IBvbDdgS3g0Lt_ADiZuyaFVs4Z4iNbaGFEoOJCnYaF5MPnvqPmlmRxug1e-A0_P8ETIxhuXknxnAhgTruR5ILAGe9Jd1Hp4R7Lb_zPKoTAeu7Ku2XrHBEAfuDzpm4m3o5ecyB76ew5Ye_IQq0JS45qkg7gXwjVGzSSNXpfOS3leqhU3ntF5y91hGWpDP9XDBpCXexpJ7XeA0bSJM70OmUwP9giHrZJhPHCT_dao3R32wLfVj2EkQ7F8kv1hRR3GrVnn869b");'
                 ></div>
                 <div>
@@ -162,7 +197,8 @@
               </div>
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Leather Handbag","price":"$129.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuCPq2ZffkcXgr9lgFiCqplxTnjXZ5Z1F51_hSAYreEzFbRjcFWkaA-vw7WpcSzoZyhOdi06JcxuNgNfvjenLTWTqh6Nq3CeT6g4ovuV9N-182_EcQxoAPr21jWXPJi7UI4aqyN30rTN6drW02gXN71WJenZNnVnEQbqE7qv7pHMPRG-1or8xwWcnHPrattIq6pOPWRZ4wHN0KmZYm-nPOzWqu8GeRa2HqxqfOwp2G63GwOAbp9zUT89pKmiZgvbwGrTG84WIHItcCC-","desc":"Premium leather handbag with modern design and spacious interior."}'
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPq2ZffkcXgr9lgFiCqplxTnjXZ5Z1F51_hSAYreEzFbRjcFWkaA-vw7WpcSzoZyhOdi06JcxuNgNfvjenLTWTqh6Nq3CeT6g4ovuV9N-182_EcQxoAPr21jWXPJi7UI4aqyN30rTN6drW02gXN71WJenZNnVnEQbqE7qv7pHMPRG-1or8xwWcnHPrattIq6pOPWRZ4wHN0KmZYm-nPOzWqu8GeRa2HqxqfOwp2G63GwOAbp9zUT89pKmiZgvbwGrTG84WIHItcCC-");'
                 ></div>
                 <div>
@@ -172,7 +208,8 @@
               </div>
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Running Shoes","price":"$89.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuBtXpaZgWS2dq_ohAtJzI_ed4g9hzgqihrJgqnlThDYnI1BHGN3beI4ruiEyv1ej9jjzOjtiKmHMAA_0I0lIVGnzNK9XzwxTEBaG2vT1rQZx2lWGNWMcuzji3_3xvIJNNKt0tbDqV736Ep2n74Dv2vHLaTC6X-If5QfYG93c1YNQ-R7shg9A-EDs96HYZe5JCkWHTzszGha5PrmOC_kE4Pf9eLe1lie_6_RWMZ2LEsDmMOWuLFKYpDbHJ7UfifLRhti3voaLQm7nhch","desc":"High-performance running shoes for comfort and durability."}'
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBtXpaZgWS2dq_ohAtJzI_ed4g9hzgqihrJgqnlThDYnI1BHGN3beI4ruiEyv1ej9jjzOjtiKmHMAA_0I0lIVGnzNK9XzwxTEBaG2vT1rQZx2lWGNWMcuzji3_3xvIJNNKt0tbDqV736Ep2n74Dv2vHLaTC6X-If5QfYG93c1YNQ-R7shg9A-EDs96HYZe5JCkWHTzszGha5PrmOC_kE4Pf9eLe1lie_6_RWMZ2LEsDmMOWuLFKYpDbHJ7UfifLRhti3voaLQm7nhch");'
                 ></div>
                 <div>
@@ -182,7 +219,8 @@
               </div>
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Stylish Watch","price":"$149.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuBvX9C4HEGJ2sYzqeMaer2OZkVgc7Nhk2dYY6Eb718OsrCAD7RHz8A5kbYT7WmP0pQ-ftkt3cHF79jTJUdCrCsPkHHeBCtHtlk89myp8xDO06wKZ3R3MMyN1p7gPotEaiL5gz-HRQyVpZacOJwTPL3IRbcz-TIKqIl_K9B2smP-71nmWAi-BIzFdKydnTJL0uCiabbzAbI1eyhi3bM1JFjvZ7q568vqIOVAqnSja27hTvblu8J55cfxMRWthVP3BIYO7psQP4L08qb5","desc":"Elegant and modern watch to complement any outfit."}'
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBvX9C4HEGJ2sYzqeMaer2OZkVgc7Nhk2dYY6Eb718OsrCAD7RHz8A5kbYT7WmP0pQ-ftkt3cHF79jTJUdCrCsPkHHeBCtHtlk89myp8xDO06wKZ3R3MMyN1p7gPotEaiL5gz-HRQyVpZacOJwTPL3IRbcz-TIKqIl_K9B2smP-71nmWAi-BIzFdKydnTJL0uCiabbzAbI1eyhi3bM1JFjvZ7q568vqIOVAqnSja27hTvblu8J55cfxMRWthVP3BIYO7psQP4L08qb5");'
                 ></div>
                 <div>
@@ -192,7 +230,8 @@
               </div>
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Denim Jacket","price":"$79.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuA77M_UBQlCGsG9R8jTqTMPribotMgqpjOFeL-uIeSm9BKd3XROMtesKnNj6rhgKsI34gjlUcdJtZWwcGVpubkbrqZh80vgOnn5oBS5qa9QKVRlIbkKiKt_LKEt1CtC8PdjAmhx4OhxHvyHFy8F7Gi63eAd71GxKOzbpYHO3iQkpKnU_ieAfV-Ix8mfC6iLR--7BQwArRtg1gU7HNnvbQIjXs8uw3CzRAvxU1AOpHHBF-OVmm5Xb7bH__RE5pFf4qAtuwailLeCi4SX","desc":"Classic denim jacket with a modern fit and durable fabric."}'
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA77M_UBQlCGsG9R8jTqTMPribotMgqpjOFeL-uIeSm9BKd3XROMtesKnNj6rhgKsI34gjlUcdJtZWwcGVpubkbrqZh80vgOnn5oBS5qa9QKVRlIbkKiKt_LKEt1CtC8PdjAmhx4OhxHvyHFy8F7Gi63eAd71GxKOzbpYHO3iQkpKnU_ieAfV-Ix8mfC6iLR--7BQwArRtg1gU7HNnvbQIjXs8uw3CzRAvxU1AOpHHBF-OVmm5Xb7bH__RE5pFf4qAtuwailLeCi4SX");'
                 ></div>
                 <div>
@@ -202,7 +241,8 @@
               </div>
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Sunglasses","price":"$39.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuCSZkis3306tdfwQ8vv6aNhUyzb5KcHGVZPkjN0aPmD5ZVjZCbQso_tlohx-riT0ZSeJl9hgyoGPXkhb25Lo-C4CHTc1ymEk3djOlQTxUvcxYA9yzV-uSS62HjigJl14cUuhrBiw7T35xA2uU6opBorb74Dc8_emX3dTcc7dcoNYruN8Skx79GYJWdiEp6w4T_VYdNaDfbxgFORsw0uZBkFCCy0F9CRuxeBodS359vmEYVOJb-QT6BcIS3PtyuQs5D8vMHVLdIP8w08","desc":"Trendy sunglasses with UV protection for sunny days."}'
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCSZkis3306tdfwQ8vv6aNhUyzb5KcHGVZPkjN0aPmD5ZVjZCbQso_tlohx-riT0ZSeJl9hgyoGPXkhb25Lo-C4CHTc1ymEk3djOlQTxUvcxYA9yzV-uSS62HjigJl14cUuhrBiw7T35xA2uU6opBorb74Dc8_emX3dTcc7dcoNYruN8Skx79GYJWdiEp6w4T_VYdNaDfbxgFORsw0uZBkFCCy0F9CRuxeBodS359vmEYVOJb-QT6BcIS3PtyuQs5D8vMHVLdIP8w08");'
                 ></div>
                 <div>
@@ -265,6 +305,20 @@
             </div>
           </div>
         </div>
+        <div id="account-settings-section" class="hidden px-40 py-5">
+          <button id="back-to-main" class="mb-4 px-4 py-2 bg-[#0c7ff2] text-white rounded hover:bg-blue-700">&larr; Back</button>
+          <div id="account-settings-content"></div>
+        </div>
+        <div id="chinodress-details-section" class="hidden px-40 py-5">
+          <button id="back-to-main-chinodress" class="mb-4 px-4 py-2 bg-[#0c7ff2] text-white rounded hover:bg-blue-700">&larr; Back</button>
+          <div class="flex flex-col items-center">
+            <div class="w-48 h-48 bg-center bg-cover rounded-lg mb-4" style="background-image: url('https://u-mercari-images.mercdn.net/photos/m54242634325_2.jpg');"></div>
+            <h2 class="text-xl font-bold mb-2">Chinodress</h2>
+            <p class="text-[#49739c] text-base font-semibold mb-2">$79.99</p>
+            <p class="text-gray-700 text-center mb-4">This elegant Chinodress features a timeless silhouette with modern details, perfect for special occasions or making a statement. Crafted from premium materials for comfort and style.</p>
+            <button id="add-to-cart-btn-section" class="px-6 py-2 bg-[#0c7ff2] text-white rounded hover:bg-blue-700 font-semibold">Add to Cart</button>
+          </div>
+        </div>
         <footer class="flex justify-center">
           <div class="flex max-w-[960px] flex-1 flex-col">
             <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
@@ -288,7 +342,7 @@
                   <div class="text-[#49739c]" data-icon="InstagramLogo" data-size="24px" data-weight="regular">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
                       <path
-                        d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"
+                        d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80a40,40,0,0,1,40-40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"
                       ></path>
                     </svg>
                   </div>
@@ -309,6 +363,25 @@
         </footer>
       </div>
     </div>
+    <div id="account-settings-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden">
+      <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full relative">
+        <button id="close-account-settings" class="absolute top-2 right-2 text-gray-400 hover:text-gray-700 text-2xl">&times;</button>
+        <div id="account-settings-content" class="p-6"></div>
+      </div>
+    </div>
+    <!-- Product Modal (single instance, outside main content) -->
+    <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden">
+      <div class="bg-white rounded-lg shadow-lg max-w-md w-full relative p-6">
+        <button id="close-product-modal" class="absolute top-2 right-2 text-gray-400 hover:text-gray-700 text-2xl">&times;</button>
+        <div class="flex flex-col items-center">
+          <div id="modal-product-img" class="w-48 h-48 bg-center bg-cover rounded-lg mb-4"></div>
+          <h2 id="modal-product-name" class="text-xl font-bold mb-2"></h2>
+          <p id="modal-product-price" class="text-[#49739c] text-base font-semibold mb-2"></p>
+          <p id="modal-product-desc" class="text-gray-700 text-center mb-4"></p>
+          <button id="modal-add-to-cart-btn" class="px-6 py-2 bg-[#0c7ff2] text-white rounded hover:bg-blue-700 font-semibold">Add to Cart</button>
+        </div>
+      </div>
+    </div>
     <script>
       document.getElementById('shop-link').onclick = function(e) {
         e.preventDefault();
@@ -318,6 +391,183 @@
         e.preventDefault();
         window.location.href = 'categories.html';
       };
+      const profileBtn = document.getElementById('profile-btn');
+      const profileDropdown = document.getElementById('profile-dropdown');
+      let dropdownOpen = false;
+      profileBtn.onclick = function(e) {
+        e.stopPropagation();
+        dropdownOpen = !dropdownOpen;
+        profileDropdown.classList.toggle('hidden', !dropdownOpen);
+      };
+      document.addEventListener('click', function(e) {
+        if (dropdownOpen && !profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+          profileDropdown.classList.add('hidden');
+          dropdownOpen = false;
+        }
+      });
+      document.getElementById('account-settings-link').onclick = function(e) {
+        e.preventDefault();
+        // Hide main content, show account settings section, and load content
+        document.getElementById('main-content').classList.add('hidden');
+        const section = document.getElementById('account-settings-section');
+        const content = document.getElementById('account-settings-content');
+        section.classList.remove('hidden');
+        fetch('account-settings.html')
+          .then(res => res.text())
+          .then(html => { content.innerHTML = html; })
+          .catch(() => { content.innerHTML = '<div class="text-red-500">Failed to load account settings.</div>'; });
+      };
+      document.getElementById('back-to-main').onclick = function() {
+        document.getElementById('account-settings-section').classList.add('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+        document.getElementById('account-settings-content').innerHTML = '';
+      };
+      document.getElementById('close-account-settings').onclick = function() {
+        document.getElementById('account-settings-modal').classList.add('hidden');
+        document.getElementById('account-settings-content').innerHTML = '';
+      };
+      document.getElementById('logout-link').onclick = function(e) {
+        e.preventDefault();
+        // Clear user session (customize as needed)
+        localStorage.clear();
+        sessionStorage.clear();
+        window.location.href = 'index.html';
+      };
+      // Chinodress image from localStorage logic
+      (function() {
+        // Try to get the image from localStorage (assume key is 'chinodressImage')
+        var chinodressImg = localStorage.getItem('chinodressImage');
+        if (chinodressImg) {
+          // If it's a base64 string, set as data URL
+          var el = document.getElementById('chinodress-img');
+          if (el) {
+            el.style.backgroundImage = 'url("' + chinodressImg + '")';
+          }
+        }
+      })();
+      // Dynamic Chinodress image loading from localStorage
+      document.addEventListener('DOMContentLoaded', function() {
+        // Use the id for direct targeting
+        const chinodressCard = document.getElementById('chinodress-img');
+        if (chinodressCard) {
+          const chinodressImage = localStorage.getItem('chinodressImage');
+          if (chinodressImage) {
+            chinodressCard.style.backgroundImage = `url('${chinodressImage}')`;
+          } else {
+            chinodressCard.style.backgroundImage = 'url("https://u-mercari-images.mercdn.net/photos/m54242634325_2.jpg")';
+          }
+        }
+      });
+      // Chinodress SPA-style details logic
+      document.getElementById('chinodress-img').onclick = function() {
+        window.location.href = 'chinodress.html?img=' + encodeURIComponent(document.getElementById('chinodress-img').style.backgroundImage.replace(/^url\(["']?|["']?\)$/g, '').replace('url(', '').replace(')', '').replace(/"/g, ''));
+      };
+      document.getElementById('back-to-main-chinodress').onclick = function() {
+        document.getElementById('chinodress-details-section').classList.add('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+      };
+      document.getElementById('add-to-cart-btn-section').onclick = function() {
+        alert('Chinodress added to cart!');
+      };
+      // Product modal logic for all product cards
+      document.querySelectorAll('.product-card').forEach(function(card) {
+        card.onclick = function(e) {
+          e.stopPropagation();
+          var data = JSON.parse(this.getAttribute('data-product'));
+          // Chinodress dynamic image
+          if (data.name === 'Chinodress') {
+            var chinodressImg = localStorage.getItem('chinodressImage');
+            if (chinodressImg) data.img = chinodressImg;
+          }
+          document.getElementById('modal-product-img').style.backgroundImage = 'url("' + data.img + '")';
+          document.getElementById('modal-product-name').textContent = data.name;
+          document.getElementById('modal-product-price').textContent = data.price;
+          document.getElementById('modal-product-desc').textContent = data.desc;
+          document.getElementById('product-modal').classList.remove('hidden');
+        };
+      });
+      document.getElementById('close-product-modal').onclick = function() {
+        document.getElementById('product-modal').classList.add('hidden');
+      };
+      document.getElementById('modal-add-to-cart-btn').onclick = function() {
+        var name = document.getElementById('modal-product-name').textContent;
+        alert(name + ' added to cart!');
+      };
     </script>
-  </body>
+      <!-- Sneakers Modal -->
+    <div id="sneakersModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="fixed inset-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-[#0d141c]">Sneakers Collection</h2>
+                        <button onclick="closeSneakersModal()" class="text-gray-500 hover:text-gray-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Products Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Product 1 -->
+                        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                            <img src="images/Louise Junior Spikes Sneakers - Gaagal coated canvas - Leche - Women.png" alt="Louise Junior Spikes Sneakers" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-[#0d141c] mb-2">Louise Junior Spikes Sneakers</h3>
+                                <p class="text-gray-600 mb-2">Gaagal coated canvas - Leche</p>
+                                <p class="text-[#0c7ff2] font-bold mb-4">$199.99</p>
+                                <button onclick="addToCart('Louise Junior Spikes Sneakers')" class="w-full bg-[#0c7ff2] text-white py-2 px-4 rounded hover:bg-[#0056b3] transition-colors">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                            <img src="images/Retero Sneakers - Grained calf leather - Cuoio - Men.png" alt="Retero Sneakers Cuoio" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-[#0d141c] mb-2">Retero Sneakers</h3>
+                                <p class="text-gray-600 mb-2">Grained calf leather - Cuoio</p>
+                                <p class="text-[#0c7ff2] font-bold mb-4">$249.99</p>
+                                <button onclick="addToCart('Retero Sneakers - Cuoio')" class="w-full bg-[#0c7ff2] text-white py-2 px-4 rounded hover:bg-[#0056b3] transition-colors">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                            <img src="images/Retero Sneakers - Grained calf leather - Marine - Men.png" alt="Retero Sneakers Marine" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-[#0d141c] mb-2">Retero Sneakers</h3>
+                                <p class="text-gray-600 mb-2">Grained calf leather - Marine</p>
+                                <p class="text-[#0c7ff2] font-bold mb-4">$249.99</p>
+                                <button onclick="addToCart('Retero Sneakers - Marine')" class="w-full bg-[#0c7ff2] text-white py-2 px-4 rounded hover:bg-[#0056b3] transition-colors">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add JavaScript for modal functionality -->
+    <script>
+        function showSneakersModal() {
+            document.getElementById('sneakersModal').classList.remove('hidden');
+        }
+
+        function closeSneakersModal() {
+            document.getElementById('sneakersModal').classList.add('hidden');
+        }
+
+        function addToCart(productName) {
+            alert(`${productName} has been added to your cart!`);
+            // You can add more cart functionality here
+        }
+    </script>
+</body>
 </html>
