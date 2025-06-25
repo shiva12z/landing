@@ -62,9 +62,63 @@ The frontend will be available at the URL shown in your terminal (usually `http:
 ### 5. Project Structure
 
 ```
-demo/
-  backend/      # FastAPI backend (API, models, database)
-  frontend/     # React + Vite + Tailwind frontend
+landing/
+  category_views.csv
+  clean.py
+  cleaned_merged_data.csv
+  demo_features.csv
+  transactions.csv
+  user_activity_logs.csv
+  user_revenue.csv
+  user_sessions.csv
+  user.py
+  demo/
+    dataset1_final.csv
+    dataset2_final.csv
+    Drive Doc - Hyper-Personalized Landing Page Generator Agent.pdf
+    backend/
+      dataset1_final.csv
+      dataset2_final.csv
+      preprocess.py
+      preprocessed_sessions.csv
+      README.md
+      requirements.txt
+      sessions.db
+      app/
+        __init__.py
+        db.py
+        main.py
+        models/
+          __init__.py
+          session_db.py
+          session.py
+        routes/
+          __init__.py
+          data.py
+        services/
+          __init__.py
+          ml.py
+      config/
+        __init__.py
+      tests/
+        __init__.py
+        test_api.py
+    frontend/
+      eslint.config.js
+      index.html
+      login.html
+      package.json
+      README.md
+      vite.config.js
+      public/
+        vite.svg
+      src/
+        App.css
+        App.jsx
+        index.css
+        main.jsx
+        assets/
+          react.svg
 ```
 
 ### 6. Notes
