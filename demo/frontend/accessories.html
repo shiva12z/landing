@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessories - StyleZone</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      .rotate-arrow { transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
+      .rotate-arrow.rotated { transform: rotate(180deg); }
+      .shatter-x .x-line1 { transform-origin: 25% 25%; animation: shatter-x-line1 0.5s forwards; }
+      .shatter-x .x-line2 { transform-origin: 75% 75%; animation: shatter-x-line2 0.5s forwards; }
+      @keyframes shatter-x-line1 { 0% { transform: rotate(45deg) scale(1); opacity: 1; } 80% { transform: rotate(45deg) scale(1.2) translate(-8px, -8px); opacity: 1; } 100% { transform: rotate(45deg) scale(1.2) translate(-24px, -24px); opacity: 0; } }
+      @keyframes shatter-x-line2 { 0% { transform: rotate(-45deg) scale(1); opacity: 1; } 80% { transform: rotate(-45deg) scale(1.2) translate(8px, 8px); opacity: 1; } 100% { transform: rotate(-45deg) scale(1.2) translate(24px, 24px); opacity: 0; } }
+      .dropdown-option.selected, .dropdown-option.selected:hover { background-color: #d1e3fa !important; color: #0c7ff2 !important; font-weight: bold; }
+      .active-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; margin-left: 1rem; }
+      .filter-tag { background: #e7edf4; color: #0d151c; border-radius: 9999px; padding: 0.25rem 0.75rem; font-size: 0.875rem; display: flex; align-items: center; gap: 0.25rem; }
+      .filter-tag .remove-tag { cursor: pointer; margin-left: 0.25rem; font-weight: bold; }
+      .dropdown-anim { transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1); opacity: 0; transform: translateY(-8px) scale(0.98); pointer-events: none; }
+      .dropdown-anim.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+    </style>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-slate-50 group/design-root overflow-x-hidden" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <!-- Header -->
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf4] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#0d141c]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <h2 class="text-[#0d141c] text-lg font-bold leading-tight tracking-[-0.015em]">StyleZone</h2>
+            <div class="flex items-center gap-9 ml-8">
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="index.html">Home</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="shop.html">Shop</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="categories.html">Categories</a>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button id="header-search-btn" class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+              <div class="text-[#0d141c]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+                </svg>
+              </div>
+            </button>
+            <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+              <div class="text-[#0d141c]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path>
+                </svg>
+              </div>
+            </button>
+            <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5" aria-label="Account">
+              <div class="text-[#0d141c]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M128,128a48,48,0,1,0-48-48A48,48,0,0,0,128,128Zm0,16c-39.7,0-72,32.3-72,72a8,8,0,0,0,8,8H192a8,8,0,0,0,8-8C200,176.3,167.7,144,128,144Z"></path>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </header>
+        <!-- Main Content -->
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+              <div class="flex min-w-72 flex-col gap-3">
+                <p class="text-[#0d151c] tracking-light text-[32px] font-bold leading-tight">Accessories</p>
+                <p class="text-[#49749c] text-sm font-normal leading-normal">Complete your look with our range of accessories.</p>
+              </div>
+            </div>
+            <!-- Filter and Search -->
+            <div class="flex gap-4 p-3 flex-wrap pr-4 -ml-3 mb-2">
+              <div id="active-filters" class="active-filters"></div>
+              <div class="relative">
+                <button id="sort-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2 focus:outline-none">
+                  <p id="sort-label" class="text-[#0d151c] text-sm font-medium leading-normal">Sort</p>
+                  <span class="arrow-wrapper flex items-center">
+                    <svg id="sort-arrow" class="rotate-arrow transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                    </svg>
+                  </span>
+                </button>
+                <div id="sort-dropdown" class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-10 hidden dropdown-anim">
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="default">Default</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="price-asc">Price: Low to High</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="price-desc">Price: High to Low</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="name-asc">Name: A-Z</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="name-desc">Name: Z-A</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="color-asc">Color: A-Z</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="color-desc">Color: Z-A</a>
+                </div>
+              </div>
+              <div class="relative">
+                <button id="category-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2 focus:outline-none">
+                <p class="text-[#0d151c] text-sm font-medium leading-normal">Category</p>
+                  <span class="arrow-wrapper flex items-center">
+                    <svg id="category-arrow" class="rotate-arrow transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </svg>
+                  </span>
+                </button>
+                <div id="category-dropdown" class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded shadow-lg z-10 hidden dropdown-anim">
+                  <a href="shoes.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/shoes.png" alt="Shoes" class="w-5 h-5"/>
+                    <span>Shoes</span>
+                  </a>
+                  <a href="men.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/businessman.png" alt="Men" class="w-5 h-5"/>
+                    <span>Men</span>
+                  </a>
+                  <a href="women.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/businesswoman.png" alt="Women" class="w-5 h-5"/>
+                    <span>Women</span>
+                  </a>
+                  <a href="watches.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/apple-watch-apps.png" alt="Watches" class="w-5 h-5"/>
+                    <span>Watches</span>
+                  </a>
+                  <a href="bags.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/shopping-bag.png" alt="Bags" class="w-5 h-5"/>
+                    <span>Bags</span>
+                  </a>
+                  <a href="clothing.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/t-shirt.png" alt="Clothing" class="w-5 h-5"/>
+                    <span>Clothing</span>
+                  </a>
+                  <a href="accessories.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <svg class="w-5 h-5" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <ellipse cx="22" cy="50" rx="13" ry="10" fill="#0c7ff2"/>
+                      <ellipse cx="58" cy="50" rx="13" ry="10" fill="#0c7ff2"/>
+                      <rect x="22" y="48" width="36" height="5" fill="#0c7ff2"/>
+                      <rect x="8" y="49" width="5" height="3" fill="#0c7ff2"/>
+                      <rect x="67" y="49" width="5" height="3" fill="#0c7ff2"/>
+                      <rect x="37" y="45" width="6" height="5" fill="#0c7ff2"/>
+                    </svg>
+                    <span>Accessories</span>
+                  </a>
+                  <a href="jewelry.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/necklace.png" alt="Jewelry" class="w-5 h-5"/>
+                    <span>Jewelry</span>
+                  </a>
+                </div>
+              </div>
+              <div class="relative">
+                <button id="size-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2 focus:outline-none">
+                <p class="text-[#0d151c] text-sm font-medium leading-normal">Size</p>
+                  <span class="arrow-wrapper flex items-center">
+                    <svg id="size-arrow" class="rotate-arrow transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </svg>
+                  </span>
+                </button>
+                <div id="size-dropdown" class="absolute left-0 mt-2 w-32 bg-white border border-gray-200 rounded shadow-lg z-10 hidden dropdown-anim">
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">S</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">M</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">L</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">XL</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">XXL</a>
+                </div>
+              </div>
+              <div class="relative">
+                <button id="color-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2 focus:outline-none">
+                <p class="text-[#0d151c] text-sm font-medium leading-normal">Color</p>
+                  <span class="arrow-wrapper flex items-center">
+                    <svg id="color-arrow" class="rotate-arrow transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </svg>
+                  </span>
+                </button>
+                <div id="color-dropdown" class="absolute left-0 mt-2 w-40 bg-white border border-gray-200 rounded shadow-lg z-10 hidden dropdown-anim">
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:#222"></span>Black</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full border border-gray-300 bg-white"></span>White</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:#8B5C2A"></span>Brown</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:#2563eb"></span>Blue</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:#e11d48"></span>Red</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:gold"></span>Gold</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:silver"></span>Silver</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:#6b7280"></span>Grey</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:#ec4899"></span>Pink</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:beige"></span>Beige</a>
+                </div>
+              </div>
+              <div class="relative">
+                <button id="price-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2 focus:outline-none">
+                <p class="text-[#0d151c] text-sm font-medium leading-normal">Price</p>
+                  <span class="arrow-wrapper flex items-center">
+                    <svg id="price-arrow" class="rotate-arrow transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </span>
+                </button>
+                <div id="price-dropdown" class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-10 hidden dropdown-anim">
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Under ₹4,000</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">₹4,000–₹6,000</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">₹6,000–₹8,000</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Over ₹8,000</a>
+                </div>
+              </div>
+              <button id="clear-filters-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] px-4 text-[#0d151c] text-sm font-medium leading-normal ml-2 hover:bg-[#d1e3fa] transition-colors">
+                <svg id="clear-x-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24">
+                  <line class="x-line1" x1="6" y1="6" x2="18" y2="18" stroke="#0d151c" stroke-width="2" stroke-linecap="round" />
+                  <line class="x-line2" x1="18" y1="6" x2="6" y2="18" stroke="#0d151c" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                Clear Filters
+              </button>
+            </div>
+            <!-- Search Bar -->
+            <div class="bg-[#e7edf4] rounded-xl transition-all duration-300 ease-in-out opacity-0 -translate-y-4 pointer-events-none mt-0 mb-2" id="search-bar-container">
+              <label class="flex flex-col min-w-40 h-12 w-full">
+                <div class="flex w-full flex-1 items-center rounded-xl h-12">
+                  <div class="text-[#49749c] flex border-none bg-[#e7edf4] items-center justify-center pl-4 rounded-l-xl border-r-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+                    </svg>
+                  </div>
+                  <input
+                    id="product-search"
+                    placeholder="Search for products"
+                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0d151c] focus:outline-0 focus:ring-0 border-none bg-[#e7edf4] focus:border-none h-12 placeholder:text-[#49749c] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+                    value=""
+                  />
+                </div>
+              </label>
+            </div>
+            <!-- Product Grid -->
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 pt-0 transition-all duration-300 ease-in-out" id="product-grid">
+              <!-- Product cards will be generated by JS -->
+            </div>
+            <!-- Pagination Controls -->
+            <div class="flex justify-center items-center gap-2 py-4" id="pagination-controls"></div>
+          </div>
+        </div>
+        <!-- Product Popup Modal -->
+        <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden opacity-0 transition-all duration-300 ease-in-out">
+          <div class="bg-white rounded-xl shadow-xl flex flex-col items-center px-8 py-8 w-full max-w-md transform scale-95 transition-all duration-300 ease-in-out">
+            <img id="modal-img" src="" alt="" class="rounded-lg w-48 h-48 object-cover mb-4" />
+            <div class="text-black font-bold text-lg mb-2 text-center" id="modal-name"></div>
+            <div class="text-[#49749c] text-base mb-2" id="modal-price"></div>
+            <div class="text-gray-600 text-center mb-4" id="modal-desc"></div>
+            <button id="add-to-cart-btn" class="mt-2 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 font-bold">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+// --- Product Data (from Accessories folder) ---
+const accessoriesProducts = [
+  { name: "1.1 Evidence Sunglasses", img: "Accessories/1.1 Evidence Sunglasses.png", price: "₹7,499", desc: "Bold and iconic, these 1.1 Evidence Sunglasses feature a striking frame and premium UV-protective lenses. Perfect for making a statement on sunny days or at exclusive events.", color: "black", category: "Sunglasses" },
+  { name: "1.1 Millionaires Sunglasses", img: "Accessories/1.1 Millionaires Sunglasses.png", price: "₹8,299", desc: "Inspired by the golden age of hip-hop, these Millionaires Sunglasses boast a chunky acetate frame, gold-tone accents, and gradient lenses for a luxurious, standout look.", color: "black", category: "Sunglasses" },
+  { name: "Cotton baseball cap", img: "Accessories/Cotton baseball cap.png", price: "₹1,299", desc: "Classic cotton baseball cap with a curved brim and adjustable strap. Lightweight, breathable, and perfect for everyday casual wear.", color: "white", category: "Hats" },
+  { name: "Cotton bucket hat", img: "Accessories/Cotton bucket hat.png", price: "₹1,499", desc: "Soft cotton bucket hat with a relaxed fit and stitched brim. Ideal for sun protection and adding a trendy touch to your summer outfits.", color: "white", category: "Hats" },
+  { name: "Cotton canvas bucket hat", img: "Accessories/Cotton canvas bucket hat.png", price: "₹1,799", desc: "Durable canvas bucket hat in a neutral tone, featuring reinforced stitching and a comfortable fit. Great for travel, festivals, or outdoor adventures.", color: "beige", category: "Hats" },
+  { name: "Crochet bucket hat", img: "Accessories/Crochet bucket hat.png", price: "₹2,299", desc: "Handmade crochet bucket hat with a unique textured pattern. Lightweight and breathable, perfect for beach days and boho-inspired looks.", color: "beige", category: "Hats" },
+  { name: "Crochet hat", img: "Accessories/Crochet hat.png", price: "₹2,199", desc: "Chic crochet hat crafted from soft yarn, offering a blend of comfort and style. Adds a playful, artisanal touch to any outfit.", color: "beige", category: "Hats" },
+  { name: "Cyclone Sunglasses", img: "Accessories/Cyclone Sunglasses.png", price: "₹6,999", desc: "Sporty and modern, Cyclone Sunglasses feature wraparound frames and polarized lenses for maximum sun protection and a dynamic look.", color: "black", category: "Sunglasses" },
+  { name: "Embroidered cotton baseball hat", img: "Accessories/Embroidered cotton baseball hat.png", price: "₹1,799", desc: "Premium cotton baseball hat with intricate embroidery on the front. Adjustable fit and moisture-wicking band for all-day comfort.", color: "white", category: "Hats" },
+  { name: "GG canvas bucket hat", img: "Accessories/GG canvas bucket hat.png", price: "₹7,499", desc: "Designer GG canvas bucket hat with signature monogram pattern and leather trim. A luxury accessory for fashion-forward individuals.", color: "beige", category: "Hats" },
+  { name: "GG cotton baseball hat with Web", img: "Accessories/GG cotton baseball hat with Web.png", price: "₹6,999", desc: "Iconic GG cotton baseball hat featuring the classic Web stripe and adjustable back. A timeless piece for any designer collection.", color: "white", category: "Hats" },
+  { name: "GG nylon baseball hat", img: "Accessories/GG nylon baseball hat.png", price: "₹5,499", desc: "Lightweight nylon baseball hat with GG branding and a sporty silhouette. Water-resistant and perfect for active lifestyles.", color: "black", category: "Hats" },
+  { name: "GG ripstop baseball hat", img: "Accessories/GG ripstop baseball hat.png", price: "₹5,799", desc: "Durable ripstop fabric baseball hat with subtle GG details. Designed for both style and resilience in any weather.", color: "grey", category: "Hats" },
+  { name: "LV Clash Low Square Sunglasses", img: "Accessories/LV Clash Low Square Sunglasses.png", price: "₹9,499", desc: "Luxury LV Clash Low Square Sunglasses with bold geometric frames and gradient lenses. A must-have for high-fashion enthusiasts.", color: "black", category: "Sunglasses" },
+  { name: "LV Clash Pilot Sunglasses", img: "Accessories/LV Clash Pilot Sunglasses.png", price: "₹9,799", desc: "Aviator-inspired LV Clash Pilot Sunglasses with metal frames and signature branding. Offers a blend of classic and contemporary style.", color: "black", category: "Sunglasses" },
+  { name: "LV Clash Round Square Sunglasses", img: "Accessories/LV Clash Round Square Sunglasses.png", price: "₹9,299", desc: "Unique round-square hybrid sunglasses from LV Clash collection. Features premium lenses and a comfortable fit for all-day wear.", color: "black", category: "Sunglasses" },
+  { name: "LV Dimension 30mm Reversible Belt", img: "Accessories/LV Dimension 30mm Reversible Belt.png", price: "₹12,499", desc: "Elegant LV Dimension 30mm reversible belt crafted from fine leather. Features a signature buckle and two versatile color options.", color: "brown", category: "Belts" },
+  { name: "LV Hit Sunglasses", img: "Accessories/LV Hit Sunglasses.png", price: "₹8,999", desc: "Trendy LV Hit Sunglasses with oversized frames and tinted lenses. Designed for those who love to stand out in a crowd.", color: "black", category: "Sunglasses" },
+  { name: "LV Pure Low Square Sunglasses", img: "Accessories/LV Pure Low Square Sunglasses.png", price: "₹8,499", desc: "Minimalist LV Pure Low Square Sunglasses with clean lines and high-quality UV protection. Perfect for everyday luxury.", color: "black", category: "Sunglasses" },
+  { name: "LV Slide Square Round Sunglasses", img: "Accessories/LV Slide Square Round Sunglasses.png", price: "₹8,799", desc: "Modern LV Slide Square Round Sunglasses with a unique frame shape and comfortable nose pads. A bold accessory for any look.", color: "black", category: "Sunglasses" },
+  { name: "LV Slim Bracelet", img: "Accessories/LV Slim Bracelet.png", price: "₹5,999", desc: "Sleek LV Slim Bracelet crafted from premium leather and metal hardware. A subtle yet sophisticated addition to your wristwear.", color: "brown", category: "Bracelets" },
+  { name: "LV Super Vision Light Large Square Sunglasses", img: "Accessories/LV Super Vision Light Large Square Sunglasses.png", price: "₹10,499", desc: "Oversized LV Super Vision Light Large Square Sunglasses with lightweight frames and advanced lens technology for superior clarity.", color: "black", category: "Sunglasses" },
+  { name: "LV Super Vision Metal Round Sunglasses", img: "Accessories/LV Super Vision Metal Round Sunglasses.png", price: "₹10,299", desc: "Metal-framed LV Super Vision Round Sunglasses with a retro vibe and premium UV protection. A stylish nod to vintage fashion.", color: "black", category: "Sunglasses" },
+  { name: "LV Super Vision Metal Square Sunglasses", img: "Accessories/LV Super Vision Metal Square Sunglasses.png", price: "₹10,199", desc: "Square metal sunglasses from LV Super Vision series. Features anti-glare lenses and a comfortable, adjustable fit.", color: "black", category: "Sunglasses" },
+  { name: "LV Vers Mesh Cap", img: "Accessories/LV Vers Mesh Cap.png", price: "₹4,499", desc: "Breathable LV Vers Mesh Cap with a sporty design and adjustable closure. Ideal for workouts, travel, or casual outings.", color: "black", category: "Hats" },
+  { name: "LV Waimea L Sunglasses", img: "Accessories/LV Waimea L Sunglasses.png", price: "₹8,799", desc: "Chic LV Waimea L Sunglasses with a bold frame and gradient lenses. Offers both style and sun protection for any occasion.", color: "black", category: "Sunglasses" },
+  { name: "LV Waimea Mask Round Sunglasses", img: "Accessories/LV Waimea Mask Round Sunglasses.png", price: "₹8,999", desc: "Futuristic LV Waimea Mask Round Sunglasses with wraparound design and mirrored lenses. Perfect for trendsetters and festival-goers.", color: "black", category: "Sunglasses" },
+  { name: "LV Waimea Round Sunglasses", img: "Accessories/LV Waimea Round Sunglasses.png", price: "₹8,499", desc: "Classic round sunglasses from the LV Waimea collection. Lightweight, comfortable, and versatile for any look.", color: "black", category: "Sunglasses" },
+  { name: "Métiers d'art Bow Barrette", img: "Accessories/Métiers d'art Bow Barrette.png", price: "₹3,499", desc: "Elegant Métiers d'art Bow Barrette with intricate detailing and a secure clasp. Adds a touch of Parisian chic to any hairstyle.", color: "gold", category: "Hair Accessories" },
+  { name: "Métiers d'art Hair Accessory", img: "Accessories/Métiers d'art Hair Accessory.png", price: "₹3,799", desc: "Luxurious Métiers d'art Hair Accessory featuring hand-finished embellishments and a comfortable fit. Perfect for special occasions or elevating everyday looks.", color: "gold", category: "Hair Accessories" },
+  { name: "Métiers d'art Hat", img: "Accessories/Métiers d'art Hat.png", price: "₹6,499", desc: "Sophisticated Métiers d'art Hat crafted from premium materials with a unique artistic flair. Ideal for making a statement at high-profile events.", color: "gold", category: "Hats" },
+  { name: "Only LV Cap", img: "Accessories/Only LV Cap.png", price: "₹5,299", desc: "Exclusive Only LV Cap with signature branding and a modern silhouette. Adjustable fit and moisture-wicking band for comfort.", color: "yellow", category: "Hats" },
+  { name: "Original GG canvas baseball hat with Web", img: "Accessories/Original GG canvas baseball hat with Web.png", price: "₹7,299", desc: "Original GG canvas baseball hat featuring the iconic Web stripe and monogram. A luxury staple for designer collections.", color: "beige", category: "Hats" },
+  { name: "Original GG canvas visor with Web", img: "Accessories/Original GG canvas visor with Web.png", price: "₹6,499", desc: "GG canvas visor with Web stripe, offering sun protection and high-fashion appeal. Lightweight and comfortable for all-day wear.", color: "beige", category: "Hats" },
+  { name: "Pont Neuf Slim 30mm Belt", img: "Accessories/Pont Neuf Slim 30mm Belt.png", price: "₹8,999", desc: "Pont Neuf Slim 30mm Belt crafted from supple leather with a sleek buckle. A refined accessory for both formal and casual outfits.", color: "brown", category: "Belts" },
+  { name: "Printed Re-Nylon bucket hat", img: "Accessories/Printed Re-Nylon bucket hat.png", price: "₹2,499", desc: "Eco-friendly Printed Re-Nylon bucket hat with a bold graphic print. Water-resistant and packable for travel or outdoor adventures.", color: "white", category: "Hats" },
+  { name: "Rectangular frame sunglasses", img: "Accessories/Rectangular frame sunglasses.png", price: "₹4,999", desc: "Modern rectangular frame sunglasses with UV-protective lenses and a lightweight build. A versatile choice for any season.", color: "black", category: "Sunglasses" },
+  { name: "Reversible crochet hat", img: "Accessories/Reversible crochet hat.png", price: "₹2,799", desc: "Handcrafted reversible crochet hat with two unique colorways. Soft, breathable, and perfect for creative styling.", color: "beige", category: "Hats" },
+  { name: "Round frame sunglasses", img: "Accessories/Round frame sunglasses.png", price: "₹4,799", desc: "Timeless round frame sunglasses with tinted lenses and a comfortable fit. Ideal for vintage-inspired looks and sunny days.", color: "black", category: "Sunglasses" },
+  { name: "Signature Cap", img: "Accessories/Signature Cap.png", price: "₹3,999", desc: "Signature Cap with embroidered logo and a structured crown. Adjustable strap ensures a perfect fit for all-day comfort.", color: "beige", category: "Hats" },
+  { name: "Splash Damier Cap", img: "Accessories/Splash Damier Cap.png", price: "₹4,799", desc: "Splash Damier Cap featuring a bold checkerboard pattern and premium materials. A standout accessory for streetwear fans.", color: "orange", category: "Hats" },
+  { name: "Spring-Summer 2025 Bow Barrette", img: "Accessories/Spring-Summer 2025 Bow Barrette.png", price: "₹2,999", desc: "Spring-Summer 2025 Bow Barrette with seasonal colors and lightweight construction. Adds a playful touch to any hairstyle.", color: "gold", category: "Hair Accessories" },
+  { name: "Spring-Summer 2025 Bucket Hat", img: "Accessories/Spring-Summer 2025 Bucket Hat.png", price: "₹2,499", desc: "Trendy Spring-Summer 2025 Bucket Hat with breathable fabric and a relaxed fit. Perfect for sunny days and festival looks.", color: "white", category: "Hats" },
+  { name: "Spring-Summer 2025 Cap", img: "Accessories/Spring-Summer 2025 Cap.png", price: "₹2,799", desc: "Spring-Summer 2025 Cap with a modern design and adjustable closure. Lightweight and stylish for everyday wear.", color: "blue", category: "Hats" },
+  { name: "Spring-Summer 2025 Hair Accessory", img: "Accessories/Spring-Summer 2025 Hair Accessory.png", price: "₹2,899", desc: "Delicate Spring-Summer 2025 Hair Accessory with floral accents and a secure grip. Ideal for weddings, parties, or special occasions.", color: "gold", category: "Hair Accessories" },
+  { name: "Spring-Summer 2025 Pre-collection Bow Barrette", img: "Accessories/Spring-Summer 2025 Pre-collection Bow Barrette.png", price: "₹3,199", desc: "Pre-collection Bow Barrette with exclusive design and premium materials. A limited-edition piece for collectors.", color: "gold", category: "Hair Accessories" },
+  { name: "Spring-Summer 2025 Pre-collection Cap", img: "Accessories/Spring-Summer 2025 Pre-collection Cap.png", price: "₹2,999", desc: "Pre-collection Cap with unique colorways and a comfortable fit. A stylish preview of the upcoming season.", color: "blue", category: "Hats" },
+  { name: "Spring-Summer 2025 Pre-collection headband", img: "Accessories/Spring-Summer 2025 Pre-collection headband.png", price: "₹2,499", desc: "Pre-collection headband with soft fabric and elegant detailing. Perfect for adding a chic touch to any look.", color: "gold", category: "Hair Accessories" },
+  { name: "Spring-Summer 2025 Pre-collection Set of 2 Bow Barrettes", img: "Accessories/Spring-Summer 2025 Pre-collection Set of 2 Bow Barrettes.png", price: "₹3,499", desc: "Set of 2 Bow Barrettes from the Spring-Summer 2025 Pre-collection. Features coordinated designs for versatile styling.", color: "gold", category: "Hair Accessories" },
+  { name: "Square frame sunglasses", img: "Accessories/Square frame sunglasses.png", price: "₹5,499", desc: "Bold square frame sunglasses with high-contrast lenses and a modern edge. Designed for those who love to make a statement.", color: "black", category: "Sunglasses" }
+];
+// --- END Product Data ---
+
+// Fisher-Yates shuffle
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+shuffleArray(accessoriesProducts);
+
+// --- PRODUCT CARD CREATION ---
+function createProductCard(product) {
+  const card = document.createElement('div');
+  card.className = 'flex flex-col gap-3 pb-3 product-card cursor-pointer';
+  card.setAttribute('data-name', product.name);
+  card.setAttribute('data-price', product.price);
+  card.setAttribute('data-img', encodeURI(product.img));
+  card.setAttribute('data-desc', product.desc || '');
+  card.setAttribute('data-color', product.color || '');
+  card.setAttribute('data-category', product.category || '');
+  card.innerHTML = `
+    <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img" style='background-image: url("${encodeURI(product.img)}");'></div>
+    <div>
+      <p class="text-[#0d151c] text-base font-medium leading-normal product-name">${product.name}</p>
+      <p class="text-[#49749c] text-sm font-normal leading-normal product-price">${product.price}</p>
+    </div>
+  `;
+  return card;
+}
+
+const allProductCards = accessoriesProducts.map(createProductCard);
+
+// --- FILTER/SORT/SEARCH/PAGINATION LOGIC (from shoes.html, adapted) ---
+document.addEventListener('DOMContentLoaded', function () {
+  const productGrid = document.getElementById('product-grid');
+  const paginationControls = document.getElementById('pagination-controls');
+  const searchInput = document.getElementById('product-search');
+  let currentPage = 1;
+  const PRODUCTS_PER_PAGE = 12;
+  let selectedSize = null;
+  let selectedColor = null;
+  let selectedPrice = null;
+  let selectedCategory = null;
+  let currentSort = 'default';
+  const sortLabel = document.getElementById('sort-label');
+  const sortDropdown = document.getElementById('sort-dropdown');
+  const sortArrow = document.getElementById('sort-arrow');
+  const sortLabels = {
+    'default': 'Sort',
+    'price-asc': 'Price: Low to High',
+    'price-desc': 'Price: High to Low',
+    'name-asc': 'Name: A-Z',
+    'name-desc': 'Name: Z-A',
+    'color-asc': 'Color: A-Z',
+    'color-desc': 'Color: Z-A'
+  };
+
+  // Dropdown logic (category, size, color, price)
+  const dropdowns = [
+    { btn: 'category-btn', dd: 'category-dropdown', arrow: 'category-arrow' },
+    { btn: 'size-btn', dd: 'size-dropdown', arrow: 'size-arrow' },
+    { btn: 'color-btn', dd: 'color-dropdown', arrow: 'color-arrow' },
+    { btn: 'price-btn', dd: 'price-dropdown', arrow: 'price-arrow' }
+  ];
+  function closeAllDropdowns() {
+    dropdowns.forEach(({ dd, arrow }) => {
+      const ddEl = document.getElementById(dd);
+      if (ddEl.classList.contains('open')) {
+        ddEl.classList.remove('open');
+        setTimeout(() => ddEl.classList.add('hidden'), 300);
+      } else {
+        ddEl.classList.add('hidden');
+      }
+      document.getElementById(arrow).classList.remove('rotated');
+    });
+    if (sortDropdown.classList.contains('open')) {
+      sortDropdown.classList.remove('open');
+      setTimeout(() => sortDropdown.classList.add('hidden'), 300);
+    } else {
+      sortDropdown.classList.add('hidden');
+    }
+    sortArrow.classList.remove('rotated');
+  }
+  dropdowns.forEach(({ btn, dd, arrow }) => {
+    const btnEl = document.getElementById(btn);
+    const ddEl = document.getElementById(dd);
+    const arrowEl = document.getElementById(arrow);
+    btnEl.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (ddEl.classList.contains('open')) {
+        closeAllDropdowns();
+      } else {
+        closeAllDropdowns();
+        ddEl.classList.remove('hidden');
+        setTimeout(() => ddEl.classList.add('open'), 10);
+        arrowEl.classList.add('rotated');
+      }
+    });
+    ddEl.addEventListener('click', function (e) { e.stopPropagation(); });
+  });
+  document.addEventListener('click', function () { closeAllDropdowns(); });
+
+  // --- FILTER LOGIC ---
+  function getFilteredProductCards() {
+    const query = searchInput.value.trim().toLowerCase();
+    let filtered = allProductCards.filter(card => {
+      const name = card.getAttribute('data-name').toLowerCase();
+      const priceStr = card.getAttribute('data-price').replace(/[^\d.]/g, '').replace(/\.(?=.*\.)/g, '');
+      const price = parseFloat(priceStr.replace(/,/g, ''));
+      const desc = (card.getAttribute('data-desc') || '').toLowerCase();
+      const color = (card.getAttribute('data-color') || '').trim().toLowerCase();
+      const category = (card.getAttribute('data-category') || '').toLowerCase();
+      let show = true;
+      if (query && !(name.includes(query) || card.getAttribute('data-price').toLowerCase().includes(query) || desc.includes(query))) {
+        show = false;
+      }
+      if (selectedSize && show) {
+        show = true; // Accessories may not have size, so always true
+      }
+      if (selectedColor && show) {
+        // Support multiple colors per product, separated by comma
+        const cardColors = color.split(',').map(c => c.trim().toLowerCase());
+        if (!cardColors.includes(selectedColor)) {
+          show = false;
+        }
+      }
+      if (selectedPrice && show) {
+        if (selectedPrice === 'under4000' && !(price < 4000)) show = false;
+        if (selectedPrice === '4000-6000' && !(price >= 4000 && price <= 6000)) show = false;
+        if (selectedPrice === '6000-8000' && !(price > 6000 && price <= 8000)) show = false;
+        if (selectedPrice === 'over8000' && !(price > 8000)) show = false;
+      }
+      if (selectedCategory && show && selectedCategory !== 'all') {
+        if (category !== selectedCategory.toLowerCase()) show = false;
+      }
+      return show;
+    });
+    // Sorting
+    if (currentSort === 'price-asc') {
+      filtered.sort((a, b) => {
+        const pa = parseFloat(a.getAttribute('data-price').replace(/[^\d.]/g, '').replace(/\.(?=.*\.)/g, '').replace(/,/g, ''));
+        const pb = parseFloat(b.getAttribute('data-price').replace(/[^\d.]/g, '').replace(/\.(?=.*\.)/g, '').replace(/,/g, ''));
+        return pa - pb;
+      });
+    } else if (currentSort === 'price-desc') {
+      filtered.sort((a, b) => {
+        const pa = parseFloat(a.getAttribute('data-price').replace(/[^\d.]/g, '').replace(/\.(?=.*\.)/g, '').replace(/,/g, ''));
+        const pb = parseFloat(b.getAttribute('data-price').replace(/[^\d.]/g, '').replace(/\.(?=.*\.)/g, '').replace(/,/g, ''));
+        return pb - pa;
+      });
+    } else if (currentSort === 'name-asc') {
+      filtered.sort((a, b) => a.getAttribute('data-name').localeCompare(b.getAttribute('data-name')));
+    } else if (currentSort === 'name-desc') {
+      filtered.sort((a, b) => b.getAttribute('data-name').localeCompare(a.getAttribute('data-name')));
+    } else if (currentSort === 'color-asc') {
+      filtered.sort((a, b) => a.getAttribute('data-color').localeCompare(b.getAttribute('data-color')));
+    } else if (currentSort === 'color-desc') {
+      filtered.sort((a, b) => b.getAttribute('data-color').localeCompare(a.getAttribute('data-color')));
+    }
+    return filtered;
+  }
+
+  function renderProducts() {
+    const filtered = getFilteredProductCards();
+    const totalPages = Math.ceil(filtered.length / PRODUCTS_PER_PAGE) || 1;
+    if (currentPage > totalPages) currentPage = totalPages;
+    productGrid.innerHTML = '';
+    const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
+    const end = start + PRODUCTS_PER_PAGE;
+    filtered.slice(start, end).forEach(card => {
+      productGrid.appendChild(card);
+      card.style.display = '';
+    });
+    allProductCards.forEach(card => {
+      if (!filtered.slice(start, end).includes(card)) {
+        card.style.display = 'none';
+      }
+    });
+    renderPaginationControls(totalPages);
+    updateActiveFilters();
+    updateDropdownHighlights();
+  }
+  function renderPaginationControls(totalPages) {
+    paginationControls.innerHTML = '';
+    if (totalPages <= 1) return;
+    const prevBtn = document.createElement('button');
+    prevBtn.textContent = 'Prev';
+    prevBtn.className = 'px-3 py-1 rounded bg-[#e7edf4] text-[#0d151c] font-medium disabled:opacity-50';
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.onclick = function() {
+      if (currentPage > 1) {
+        currentPage--;
+        renderProducts();
+      }
+    };
+    paginationControls.appendChild(prevBtn);
+    for (let i = 1; i <= totalPages; i++) {
+      const pageBtn = document.createElement('button');
+      pageBtn.textContent = i;
+      pageBtn.className = 'px-2 py-1 rounded ' + (i === currentPage ? 'bg-blue-600 text-white font-bold' : 'bg-[#e7edf4] text-[#0d151c] font-medium');
+      pageBtn.disabled = i === currentPage;
+      pageBtn.onclick = function() {
+        currentPage = i;
+        renderProducts();
+      };
+      paginationControls.appendChild(pageBtn);
+    }
+    const nextBtn = document.createElement('button');
+    nextBtn.textContent = 'Next';
+    nextBtn.className = 'px-3 py-1 rounded bg-[#e7edf4] text-[#0d151c] font-medium disabled:opacity-50';
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.onclick = function() {
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderProducts();
+      }
+    };
+    paginationControls.appendChild(nextBtn);
+  }
+
+  // --- FILTER DROPDOWN LOGIC ---
+  // Category
+  document.querySelectorAll('#category-dropdown .dropdown-option').forEach(option => {
+    option.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectedCategory = this.getAttribute('data-value');
+      document.getElementById('category-dropdown').classList.add('hidden');
+      document.getElementById('category-arrow').classList.remove('rotated');
+      renderProducts();
+      updateDropdownHighlights();
+    });
+  });
+  // Size
+  document.querySelectorAll('#size-dropdown .dropdown-option').forEach(option => {
+    option.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectedSize = this.textContent.trim();
+      document.getElementById('size-dropdown').classList.add('hidden');
+      document.getElementById('size-arrow').classList.remove('rotated');
+      renderProducts();
+      updateDropdownHighlights();
+    });
+  });
+  // Color
+  document.querySelectorAll('#color-dropdown .dropdown-option').forEach(option => {
+    option.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectedColor = this.textContent.trim().toLowerCase();
+      document.getElementById('color-dropdown').classList.add('hidden');
+      document.getElementById('color-arrow').classList.remove('rotated');
+      renderProducts();
+      updateDropdownHighlights();
+    });
+  });
+  // Price
+  document.querySelectorAll('#price-dropdown .dropdown-option').forEach(option => {
+    option.addEventListener('click', function(e) {
+      e.preventDefault();
+      const val = this.textContent.trim();
+      if (val.startsWith('Under')) selectedPrice = 'under4000';
+      else if (val.startsWith('₹4,000–₹6,000')) selectedPrice = '4000-6000';
+      else if (val.startsWith('₹6,000–₹8,000')) selectedPrice = '6000-8000';
+      else if (val.startsWith('Over')) selectedPrice = 'over8000';
+      document.getElementById('price-dropdown').classList.add('hidden');
+      document.getElementById('price-arrow').classList.remove('rotated');
+      renderProducts();
+      updateDropdownHighlights();
+    });
+  });
+
+  // --- SEARCH ---
+  searchInput.addEventListener('input', function() {
+    currentPage = 1;
+    renderProducts();
+  });
+
+  // --- CLEAR FILTERS ---
+  const clearBtn = document.getElementById('clear-filters-btn');
+  const clearX = document.getElementById('clear-x-icon');
+  clearBtn.addEventListener('click', function() {
+    if (selectedSize || selectedColor || selectedPrice || searchInput.value.trim() || currentSort !== 'default' || selectedCategory) {
+      clearX.classList.add('shatter-x');
+      setTimeout(() => {
+        clearX.classList.remove('shatter-x');
+      }, 600);
+    }
+    selectedSize = null;
+    selectedColor = null;
+    selectedPrice = null;
+    selectedCategory = null;
+    searchInput.value = '';
+    currentSort = 'default';
+    sortLabel.textContent = sortLabels[currentSort];
+    sortDropdown.querySelectorAll('.dropdown-option').forEach(opt => opt.classList.remove('selected'));
+    sortDropdown.querySelector('.dropdown-option[data-value="default"]').classList.add('selected');
+    renderProducts();
+    updateDropdownHighlights();
+  });
+
+  // --- SORT LOGIC ---
+  sortLabel.textContent = sortLabels[currentSort];
+  sortDropdown.querySelector('.dropdown-option[data-value="default"]').classList.add('selected');
+  document.getElementById('sort-btn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (sortDropdown.classList.contains('open')) {
+      closeAllDropdowns();
+    } else {
+      closeAllDropdowns();
+      sortDropdown.classList.remove('hidden');
+      setTimeout(() => sortDropdown.classList.add('open'), 10);
+      sortArrow.classList.add('rotated');
+    }
+  });
+  sortDropdown.addEventListener('click', function(e) { e.stopPropagation(); });
+  document.addEventListener('click', function () {
+    sortDropdown.classList.add('hidden');
+    sortArrow.classList.remove('rotated');
+  });
+  sortDropdown.querySelectorAll('.dropdown-option').forEach(option => {
+    option.addEventListener('click', function(e) {
+      e.preventDefault();
+      currentSort = this.getAttribute('data-value');
+      sortLabel.textContent = sortLabels[currentSort];
+      sortDropdown.classList.add('hidden');
+      sortArrow.classList.remove('rotated');
+      currentPage = 1;
+      renderProducts();
+      sortDropdown.querySelectorAll('.dropdown-option').forEach(opt => opt.classList.remove('selected'));
+      this.classList.add('selected');
+    });
+  });
+
+  // --- FILTER TAGS & HIGHLIGHTS ---
+  function updateActiveFilters() {
+    const activeFilters = document.getElementById('active-filters');
+    activeFilters.innerHTML = '';
+    if (selectedSize) {
+      const tag = document.createElement('span');
+      tag.className = 'filter-tag';
+      tag.innerHTML = `Size: ${selectedSize} <span class="remove-tag" data-type="size">×</span>`;
+      activeFilters.appendChild(tag);
+    }
+    if (selectedColor) {
+      const tag = document.createElement('span');
+      tag.className = 'filter-tag';
+      tag.innerHTML = `Color: ${selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1)} <span class="remove-tag" data-type="color">×</span>`;
+      activeFilters.appendChild(tag);
+    }
+    if (selectedPrice) {
+      let priceLabel = '';
+      if (selectedPrice === 'under4000') priceLabel = 'Under ₹4,000';
+      else if (selectedPrice === '4000-6000') priceLabel = '₹4,000–₹6,000';
+      else if (selectedPrice === '6000-8000') priceLabel = '₹6,000–₹8,000';
+      else if (selectedPrice === 'over8000') priceLabel = 'Over ₹8,000';
+      const tag = document.createElement('span');
+      tag.className = 'filter-tag';
+      tag.innerHTML = `Price: ${priceLabel} <span class="remove-tag" data-type="price">×</span>`;
+      activeFilters.appendChild(tag);
+    }
+    if (selectedCategory && selectedCategory !== 'all') {
+      const tag = document.createElement('span');
+      tag.className = 'filter-tag';
+      tag.innerHTML = `Category: ${selectedCategory} <span class="remove-tag" data-type="category">×</span>`;
+      activeFilters.appendChild(tag);
+    }
+    activeFilters.querySelectorAll('.remove-tag').forEach(el => {
+      el.addEventListener('click', function() {
+        const type = this.getAttribute('data-type');
+        if (type === 'size') selectedSize = null;
+        if (type === 'color') selectedColor = null;
+        if (type === 'price') selectedPrice = null;
+        if (type === 'category') selectedCategory = null;
+        renderProducts();
+        updateActiveFilters();
+        updateDropdownHighlights();
+      });
+    });
+  }
+  function updateDropdownHighlights() {
+    // Size
+    document.querySelectorAll('#size-dropdown .dropdown-option').forEach(option => {
+      if (selectedSize && option.textContent.trim() === selectedSize) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+    // Color
+    document.querySelectorAll('#color-dropdown .dropdown-option').forEach(option => {
+      if (selectedColor && option.textContent.trim().toLowerCase() === selectedColor) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+    // Price
+    document.querySelectorAll('#price-dropdown .dropdown-option').forEach(option => {
+      const val = option.textContent.trim();
+      let match = false;
+      if (selectedPrice === 'under4000' && val.startsWith('Under')) match = true;
+      else if (selectedPrice === '4000-6000' && val.startsWith('₹4,000–₹6,000')) match = true;
+      else if (selectedPrice === '6000-8000' && val.startsWith('₹6,000–₹8,000')) match = true;
+      else if (selectedPrice === 'over8000' && val.startsWith('Over')) match = true;
+      if (match) option.classList.add('selected');
+      else option.classList.remove('selected');
+    });
+    // Category
+    document.querySelectorAll('#category-dropdown .dropdown-option').forEach(option => {
+      if (selectedCategory && option.getAttribute('data-value') === selectedCategory) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+  }
+
+  // Initial render
+  renderProducts();
+  updateActiveFilters();
+  updateDropdownHighlights();
+
+  // --- SEARCH BAR TOGGLE LOGIC ---
+  const searchBarContainer = document.getElementById('search-bar-container');
+  let searchBarVisible = false;
+  const headerSearchBtn = document.getElementById('header-search-btn');
+  if (headerSearchBtn) {
+    headerSearchBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      searchBarVisible = !searchBarVisible;
+      if (searchBarVisible) {
+        searchBarContainer.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
+        searchBarContainer.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        productGrid.style.marginTop = '64px';
+        setTimeout(() => { searchInput.focus(); }, 200);
+      } else {
+        searchBarContainer.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        searchBarContainer.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
+        productGrid.style.marginTop = '0';
+      }
+    });
+  }
+
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', function () {
+      const img = card.getAttribute('data-img');
+      const name = card.getAttribute('data-name');
+      const price = card.getAttribute('data-price');
+      const desc = card.getAttribute('data-desc') || "";
+      const modalImg = document.getElementById('modal-img');
+      const addToCartBtn = document.getElementById('add-to-cart-btn');
+      modalImg.src = img;
+      modalImg.alt = name;
+      // Reset error state
+      modalImg.classList.remove('hidden');
+      let errorMsg = document.getElementById('modal-img-error');
+      if (errorMsg) errorMsg.remove();
+      addToCartBtn.disabled = false;
+      modalImg.onerror = function() {
+        this.onerror = null;
+        this.src = '/public/vite.svg'; // fallback placeholder
+        // Show error message
+        if (!document.getElementById('modal-img-error')) {
+          const err = document.createElement('div');
+          err.id = 'modal-img-error';
+          err.textContent = 'Image failed to load.';
+          err.style.color = '#e53e3e';
+          err.style.fontWeight = 'bold';
+          err.style.margin = '8px 0';
+          modalImg.classList.add('hidden');
+          modalImg.parentNode.insertBefore(err, modalImg.nextSibling);
+          addToCartBtn.disabled = true;
+        }
+      };
+      document.getElementById('modal-name').textContent = name;
+      document.getElementById('modal-price').textContent = price;
+      document.getElementById('modal-desc').textContent = desc;
+      const modal = document.getElementById('product-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modal.querySelector('.bg-white').classList.remove('scale-95');
+      }, 10);
+    });
+  });
+  document.getElementById('product-modal').addEventListener('click', function (e) {
+    if (e.target === this) {
+      this.classList.add('opacity-0');
+      this.querySelector('.bg-white').classList.add('scale-95');
+      setTimeout(() => {
+        this.classList.add('hidden');
+      }, 300);
+    }
+  });
+});
+    </script>
+  </body>
+</html>

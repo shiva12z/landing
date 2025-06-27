@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jewelry - StyleZone</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      .rotate-arrow { transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
+      .rotate-arrow.rotated { transform: rotate(180deg); }
+      .dropdown-option.selected, .dropdown-option.selected:hover { background-color: #d1e3fa !important; color: #0c7ff2 !important; font-weight: bold; }
+      .active-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; margin-left: 1rem; }
+      .filter-tag { background: #e7edf4; color: #0d151c; border-radius: 9999px; padding: 0.25rem 0.75rem; font-size: 0.875rem; display: flex; align-items: center; gap: 0.25rem; }
+      .filter-tag .remove-tag { cursor: pointer; margin-left: 0.25rem; font-weight: bold; }
+      .dropdown-anim { transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1); opacity: 0; transform: translateY(-8px) scale(0.98); pointer-events: none; }
+      .dropdown-anim.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+      /* Shatter animation for the X icon */
+      .shatter-x .x-line1 {
+        transform-origin: 25% 25%;
+        animation: shatter-x-line1 0.5s forwards;
+      }
+      .shatter-x .x-line2 {
+        transform-origin: 75% 75%;
+        animation: shatter-x-line2 0.5s forwards;
+      }
+      @keyframes shatter-x-line1 {
+        0% { transform: rotate(45deg) scale(1); opacity: 1; }
+        80% { transform: rotate(45deg) scale(1.2) translate(-8px, -8px); opacity: 1; }
+        100% { transform: rotate(45deg) scale(1.2) translate(-24px, -24px); opacity: 0; }
+      }
+      @keyframes shatter-x-line2 {
+        0% { transform: rotate(-45deg) scale(1); opacity: 1; }
+        80% { transform: rotate(-45deg) scale(1.2) translate(8px, 8px); opacity: 1; }
+        100% { transform: rotate(-45deg) scale(1.2) translate(24px, 24px); opacity: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-slate-50 group/design-root overflow-x-hidden" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <!-- Header -->
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf4] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#0d141c]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <h2 class="text-[#0d141c] text-lg font-bold leading-tight tracking-[-0.015em]">StyleZone</h2>
+            <div class="flex items-center gap-9 ml-8">
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="index.html">Home</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="shop.html">Shop</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="categories.html">Categories</a>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button id="header-search-btn" class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+              <div class="text-[#0d141c]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+                </svg>
+              </div>
+            </button>
+            <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+              <div class="text-[#0d141c]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path>
+                </svg>
+              </div>
+            </button>
+            <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5" aria-label="Account">
+              <div class="text-[#0d141c]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M128,128a48,48,0,1,0-48-48A48,48,0,0,0,128,128Zm0,16c-39.7,0-72,32.3-72,72a8,8,0,0,0,8,8H192a8,8,0,0,0,8-8C200,176.3,167.7,144,128,144Z"></path>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </header>
+        <!-- Main Content -->
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+              <div class="flex min-w-72 flex-col gap-3">
+                <p class="text-[#0d151c] tracking-light text-[32px] font-bold leading-tight">Jewelry</p>
+                <p class="text-[#49749c] text-sm font-normal leading-normal">Discover our latest collection of jewelry for every occasion.</p>
+              </div>
+            </div>
+            <!-- Filter and Search -->
+            <div class="flex gap-4 p-3 flex-wrap pr-4 -ml-3 mb-2">
+              <!-- Active filter tags -->
+              <div id="active-filters" class="active-filters"></div>
+              <!-- Sort Button Dropdown -->
+              <div class="relative">
+                <button id="sort-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2 focus:outline-none">
+                  <p id="sort-label" class="text-[#0d151c] text-sm font-medium leading-normal">Sort</p>
+                  <span class="arrow-wrapper flex items-center">
+                    <svg id="sort-arrow" class="rotate-arrow transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                    </svg>
+                  </span>
+                </button>
+                <div id="sort-dropdown" class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-10 hidden dropdown-anim">
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="default">Default</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="price-asc">Price: Low to High</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="price-desc">Price: High to Low</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="name-asc">Name: A-Z</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="name-desc">Name: Z-A</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="material-asc">Material: A-Z</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="material-desc">Material: Z-A</a>
+                </div>
+              </div>
+              <div class="relative">
+                <button id="category-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2 focus:outline-none">
+                <p class="text-[#0d151c] text-sm font-medium leading-normal">Category</p>
+                  <span class="arrow-wrapper flex items-center">
+                    <svg id="category-arrow" class="rotate-arrow transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </svg>
+                  </span>
+                </button>
+                <div id="category-dropdown" class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded shadow-lg z-10 hidden dropdown-anim">
+                  <a href="shoes.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/shoes.png" alt="Shoes" class="w-5 h-5"/>
+                    <span>Shoes</span>
+                  </a>
+                  <a href="men.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/businessman.png" alt="Men" class="w-5 h-5"/>
+                    <span>Men</span>
+                  </a>
+                  <a href="women.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/businesswoman.png" alt="Women" class="w-5 h-5"/>
+                    <span>Women</span>
+                  </a>
+                  <a href="watches.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/apple-watch-apps.png" alt="Watches" class="w-5 h-5"/>
+                    <span>Watches</span>
+                  </a>
+                  <a href="bags.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/shopping-bag.png" alt="Bags" class="w-5 h-5"/>
+                    <span>Bags</span>
+                  </a>
+                  <a href="clothing.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/t-shirt.png" alt="Clothing" class="w-5 h-5"/>
+                    <span>Clothing</span>
+                  </a>
+                  <a href="accessories.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <svg class="w-5 h-5" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <ellipse cx="22" cy="50" rx="13" ry="10" fill="#0c7ff2"/>
+                      <ellipse cx="58" cy="50" rx="13" ry="10" fill="#0c7ff2"/>
+                      <rect x="22" y="48" width="36" height="5" fill="#0c7ff2"/>
+                      <rect x="8" y="49" width="5" height="3" fill="#0c7ff2"/>
+                      <rect x="67" y="49" width="5" height="3" fill="#0c7ff2"/>
+                      <rect x="37" y="45" width="6" height="5" fill="#0c7ff2"/>
+                    </svg>
+                    <span>Accessories</span>
+                  </a>
+                  <a href="jewelry.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/necklace.png" alt="Jewelry" class="w-5 h-5"/>
+                    <span>Jewelry</span>
+                  </a>
+                </div>
+              </div>
+              <div class="relative">
+                <button id="color-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2 focus:outline-none">
+                <p class="text-[#0d151c] text-sm font-medium leading-normal">Material</p>
+                  <span class="arrow-wrapper flex items-center">
+                    <svg id="color-arrow" class="rotate-arrow transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </svg>
+                  </span>
+                </button>
+                <div id="color-dropdown" class="absolute left-0 mt-2 w-40 bg-white border border-gray-200 rounded shadow-lg z-10 hidden dropdown-anim">
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Gold</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">White Gold</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Silver</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Metal</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Diamond</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Pearl</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Multicolor</a>
+                </div>
+              </div>
+              <div class="relative">
+                <button id="price-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2 focus:outline-none">
+                <p class="text-[#0d151c] text-sm font-medium leading-normal">Price</p>
+                  <span class="arrow-wrapper flex items-center">
+                    <svg id="price-arrow" class="rotate-arrow transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </svg>
+                  </span>
+                </button>
+                <div id="price-dropdown" class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-10 hidden dropdown-anim">
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Under ₹50,000</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">₹50,000–₹1,00,000</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">₹1,00,000–₹1,50,000</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Over ₹1,50,000</a>
+                </div>
+              </div>
+              <button id="clear-filters-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] px-4 text-[#0d151c] text-sm font-medium leading-normal ml-2 hover:bg-[#d1e3fa] transition-colors">
+                <svg id="clear-x-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24">
+                  <line class="x-line1" x1="6" y1="6" x2="18" y2="18" stroke="#0d151c" stroke-width="2" stroke-linecap="round" />
+                  <line class="x-line2" x1="18" y1="6" x2="6" y2="18" stroke="#0d151c" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                Clear Filters
+              </button>
+            </div>
+            <!-- Search Bar -->
+            <div class="bg-[#e7edf4] rounded-xl transition-all duration-300 ease-in-out opacity-0 -translate-y-4 pointer-events-none mt-0 mb-2" id="search-bar-container">
+              <label class="flex flex-col min-w-40 h-12 w-full">
+                <div class="flex w-full flex-1 items-center rounded-xl h-12">
+                  <div class="text-[#49749c] flex border-none bg-[#e7edf4] items-center justify-center pl-4 rounded-l-xl border-r-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+                    </svg>
+                  </div>
+                  <input
+                    id="product-search"
+                    placeholder="Search for jewelry"
+                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0d151c] focus:outline-0 focus:ring-0 border-none bg-[#e7edf4] focus:border-none h-12 placeholder:text-[#49749c] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+                    value=""
+                  />
+                </div>
+              </label>
+            </div>
+            <!-- Product Grid -->
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 pt-0 transition-all duration-300 ease-in-out" id="product-grid">
+              <!-- Jewelry products will be injected here by JS -->
+            </div>
+            <!-- Pagination Controls -->
+            <div class="flex justify-center items-center gap-2 py-4" id="pagination-controls"></div>
+          </div>
+        </div>
+        <!-- Product Popup Modal -->
+        <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden opacity-0 transition-all duration-300 ease-in-out">
+          <div class="bg-white rounded-xl shadow-xl flex flex-col items-center px-8 py-8 w-full max-w-md transform scale-95 transition-all duration-300 ease-in-out">
+            <img id="modal-img" src="" alt="" class="rounded-lg w-48 h-48 object-cover mb-4" />
+            <div class="text-black font-bold text-lg mb-2 text-center" id="modal-name"></div>
+            <div class="text-[#49749c] text-base mb-2 text-center" id="modal-price"></div>
+            <div class="text-gray-600 text-center mb-4" id="modal-desc"></div>
+            <button id="add-to-cart-btn" class="mt-2 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 font-bold">Add to Cart</button>
+          </div>
+        </div>
+        <script>
+          // Jewelry product list (auto-generated from Jewelry folder)
+          const jewelryProducts = [
+            { name: "LOVE earrings, multiwear, half-paved.png", price: 89000, material: "gold" },
+            { name: "Trinity bracelet, cushion-shaped.png", price: 120000, material: "gold" },
+            { name: "LOVE pendant, paved.png", price: 95000, material: "gold" },
+            { name: "LOVE bracelet, on chain, paved.png", price: 110000, material: "gold" },
+            { name: "LOVE bracelet, medium model.png", price: 105000, material: "gold" },
+            { name: "Metal bracelet.png", price: 35000, material: "metal" },
+            { name: "Metal chain ring.png", price: 28000, material: "metal" },
+            { name: "Metal ring.png", price: 25000, material: "metal" },
+            { name: "Ruban ring.png", price: 42000, material: "gold" },
+            { name: "Comète Ring.png", price: 60000, material: "gold" },
+            { name: "Comète Couture Ring.png", price: 95000, material: "gold" },
+            { name: "Soleil de CHANEL transformable ring.png", price: 150000, material: "gold" },
+            { name: "Comète Spinel Ring.png", price: 80000, material: "gold" },
+            { name: "Comète Perlée ring.png", price: 70000, material: "gold" },
+            { name: "Lune de CHANEL ring.png", price: 65000, material: "gold" },
+            { name: "Comète Géode ring.png", price: 85000, material: "gold" },
+            { name: "Comète 1932 ring.png", price: 90000, material: "gold" },
+            { name: "Comète Chevron ring.png", price: 55000, material: "gold" },
+            { name: "Étoile Filante ring.png", price: 75000, material: "gold" },
+            { name: "Ultra ring.png", price: 50000, material: "gold" },
+            { name: "Extrait de Camélia transformable ring.png", price: 120000, material: "gold" },
+            { name: "Bouton de Camélia ring.png", price: 60000, material: "gold" },
+            { name: "Extrait de Camélia ring.png", price: 58000, material: "gold" },
+            { name: "Fil de Camélia ring.png", price: 52000, material: "gold" },
+            { name: "N°5 Drop White Gold Ring.png", price: 130000, material: "white gold" },
+            { name: "Eternal N°5 ring.png", price: 110000, material: "gold" },
+            { name: "Extrait de N°5 ring.png", price: 95000, material: "gold" },
+            { name: "Coco Crush Toi et Moi ring.png", price: 85000, material: "gold" },
+            { name: "Coco Crush ring.png", price: 70000, material: "gold" },
+            { name: "Ruban bracelet.png", price: 60000, material: "gold" },
+            { name: "Comète bracelet.png", price: 120000, material: "gold" },
+            { name: "Comète Géode bracelet.png", price: 135000, material: "gold" },
+            { name: "Comète Chevron bracelet.png", price: 80000, material: "gold" },
+            { name: "Bouton de Camélia bracelet.png", price: 75000, material: "gold" },
+            { name: "Extrait de Camélia bracelet.png", price: 110000, material: "gold" },
+            { name: "Diamant Evanescent Bracelet.png", price: 140000, material: "diamond" },
+            { name: "Eternal NO.5 diamond line bracelet.png", price: 160000, material: "diamond" },
+            { name: "Coco Crush bracelet.png", price: 90000, material: "gold" },
+            { name: "Historic Mini Monogram Bracelet.png", price: 100000, material: "gold" },
+            { name: "LV Confidential bracelet.png", price: 110000, material: "gold" },
+            { name: "LV Iconic Necklace.png", price: 180000, material: "gold" },
+            { name: "LOVE earrings, multiwear, half-paved.png", price: 89000 },
+            { name: "Trinity bracelet, cushion-shaped.png", price: 120000 },
+            { name: "LOVE pendant, paved.png", price: 95000 },
+            { name: "LOVE bracelet, on chain, paved.png", price: 110000 },
+            { name: "LOVE bracelet, medium model.png", price: 105000 },
+            { name: "Metal bracelet.png", price: 35000 },
+            { name: "Metal chain ring.png", price: 28000 },
+            { name: "Metal ring.png", price: 25000 },
+            { name: "Ruban ring.png", price: 42000 },
+            { name: "Comète Ring.png", price: 60000 },
+            { name: "Comète Couture Ring.png", price: 95000 },
+            { name: "Soleil de CHANEL transformable ring.png", price: 150000 },
+            { name: "Comète Spinel Ring.png", price: 80000 },
+            { name: "Comète Perlée ring.png", price: 70000 },
+            { name: "Lune de CHANEL ring.png", price: 65000 },
+            { name: "Comète Géode ring.png", price: 85000 },
+            { name: "Comète 1932 ring.png", price: 90000 },
+            { name: "Comète Chevron ring.png", price: 55000 },
+            { name: "Étoile Filante ring.png", price: 75000 },
+            { name: "Ultra ring.png", price: 50000 },
+            { name: "Extrait de Camélia transformable ring.png", price: 120000 },
+            { name: "Bouton de Camélia ring.png", price: 60000 },
+            { name: "Extrait de Camélia ring.png", price: 58000 },
+            { name: "Fil de Camélia ring.png", price: 52000 },
+            { name: "N°5 Drop White Gold Ring.png", price: 130000 },
+            { name: "Eternal N°5 ring.png", price: 110000 },
+            { name: "Extrait de N°5 ring.png", price: 95000 },
+            { name: "Coco Crush Toi et Moi ring.png", price: 85000 },
+            { name: "Coco Crush ring.png", price: 70000 },
+            { name: "Ruban bracelet.png", price: 60000 },
+            { name: "Comète bracelet.png", price: 120000 },
+            { name: "Comète Géode bracelet.png", price: 135000 },
+            { name: "Comète Chevron bracelet.png", price: 80000 },
+            { name: "Bouton de Camélia bracelet.png", price: 75000 },
+            { name: "Extrait de Camélia bracelet.png", price: 110000 },
+            { name: "Diamant Evanescent Bracelet.png", price: 140000 },
+            { name: "Eternal NO.5 diamond line bracelet.png", price: 160000 },
+            { name: "Coco Crush bracelet.png", price: 90000 },
+            { name: "Historic Mini Monogram Bracelet.png", price: 100000 },
+            { name: "LV Confidential bracelet.png", price: 110000 },
+            { name: "LV Iconic Necklace.png", price: 180000 },
+            { name: "LV Sparks Ring.png", price: 95000 },
+            { name: "LV Sparks Bangle.png", price: 120000 },
+            { name: "Pearl River Nocklace.png", price: 200000 },
+            { name: "Pearl River Earrings.png", price: 85000 },
+            { name: "Pearl River Bracelet.png", price: 120000 },
+            { name: "Papillon Pendant.png", price: 150000 },
+            { name: "Papillon Ring.png", price: 130000 },
+            { name: "Lucky You Bracelet.png", price: 95000 },
+            { name: "Lucky You Necklace.png", price: 140000 }
+          ];
+
+          const productGrid = document.getElementById('product-grid');
+          const allProductCards = jewelryProducts.map(product => {
+            const name = product.name.replace(/\.png$/, '');
+            const price = product.price;
+            const card = document.createElement('div');
+            card.className = 'flex flex-col gap-3 pb-3 product-card cursor-pointer';
+            card.setAttribute('data-name', name);
+            card.setAttribute('data-img', `Jewelry/${product.name}`);
+            card.setAttribute('data-price', price);
+            card.innerHTML = `
+              <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img" style='background-image: url("Jewelry/${product.name}");'></div>
+              <div>
+                <p class="text-[#0d151c] text-base font-medium leading-normal product-name">${name}</p>
+                <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹${price.toLocaleString()}</p>
+              </div>
+            `;
+            return card;
+          });
+
+          // Pagination and search logic (adapted from shoes.html)
+          let currentPage = 1;
+          const PRODUCTS_PER_PAGE = 12;
+          const searchInput = document.getElementById('product-search');
+          const paginationControls = document.getElementById('pagination-controls');
+
+          // Add a function to extract material from product name
+          function extractMaterial(name) {
+            const n = name.toLowerCase();
+            if (n.includes('white gold')) return 'white gold';
+            if (n.includes('gold')) return 'gold';
+            if (n.includes('silver')) return 'silver';
+            if (n.includes('diamond')) return 'diamond';
+            if (n.includes('pearl')) return 'pearl';
+            if (n.includes('metal')) return 'metal';
+            if (n.includes('multicolor')) return 'multicolor';
+            return 'other';
+          }
+
+          function getFilteredProductCards() {
+            const query = searchInput.value.trim().toLowerCase();
+            let filtered = allProductCards.filter(card => {
+              const name = card.getAttribute('data-name').toLowerCase();
+              const price = Number(card.getAttribute('data-price'));
+              let show = !query || name.includes(query);
+              if (selectedPrice && show) {
+                if (selectedPrice === 'under50000' && !(price < 50000)) show = false;
+                if (selectedPrice === '50000-100000' && !(price >= 50000 && price <= 100000)) show = false;
+                if (selectedPrice === '100000-150000' && !(price > 100000 && price <= 150000)) show = false;
+                if (selectedPrice === 'over150000' && !(price > 150000)) show = false;
+              }
+              if (selectedMaterial && show) {
+                show = extractMaterial(name) === selectedMaterial;
+              }
+              return show;
+            });
+            // Sorting
+            if (currentSort === 'price-asc') {
+              filtered.sort((a, b) => {
+                const pa = Number(a.getAttribute('data-price'));
+                const pb = Number(b.getAttribute('data-price'));
+                return pa - pb;
+              });
+            } else if (currentSort === 'price-desc') {
+              filtered.sort((a, b) => {
+                const pa = Number(a.getAttribute('data-price'));
+                const pb = Number(b.getAttribute('data-price'));
+                return pb - pa;
+              });
+            } else if (currentSort === 'name-asc') {
+              filtered.sort((a, b) => a.getAttribute('data-name').localeCompare(b.getAttribute('data-name')));
+            } else if (currentSort === 'name-desc') {
+              filtered.sort((a, b) => b.getAttribute('data-name').localeCompare(a.getAttribute('data-name')));
+            } else if (currentSort === 'material-asc') {
+              filtered.sort((a, b) => extractMaterial(a.getAttribute('data-name')).localeCompare(extractMaterial(b.getAttribute('data-name'))));
+            } else if (currentSort === 'material-desc') {
+              filtered.sort((a, b) => extractMaterial(b.getAttribute('data-name')).localeCompare(extractMaterial(a.getAttribute('data-name'))));
+            }
+            return filtered;
+          }
+
+          function renderProducts() {
+            const filtered = getFilteredProductCards();
+            const totalPages = Math.ceil(filtered.length / PRODUCTS_PER_PAGE) || 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+            productGrid.innerHTML = '';
+            const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
+            const end = start + PRODUCTS_PER_PAGE;
+            filtered.slice(start, end).forEach(card => {
+              productGrid.appendChild(card);
+              card.style.display = '';
+            });
+            allProductCards.forEach(card => {
+              if (!filtered.slice(start, end).includes(card)) {
+                card.style.display = 'none';
+              }
+            });
+            renderPaginationControls(totalPages);
+          }
+
+          function renderPaginationControls(totalPages) {
+            paginationControls.innerHTML = '';
+            if (totalPages <= 1) return;
+            const prevBtn = document.createElement('button');
+            prevBtn.textContent = 'Prev';
+            prevBtn.className = 'px-3 py-1 rounded bg-[#e7edf4] text-[#0d151c] font-medium disabled:opacity-50';
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.onclick = function() {
+              if (currentPage > 1) {
+                currentPage--;
+                renderProducts();
+              }
+            };
+            paginationControls.appendChild(prevBtn);
+            for (let i = 1; i <= totalPages; i++) {
+              const pageBtn = document.createElement('button');
+              pageBtn.textContent = i;
+              pageBtn.className = 'px-2 py-1 rounded ' + (i === currentPage ? 'bg-blue-600 text-white font-bold' : 'bg-[#e7edf4] text-[#0d151c] font-medium');
+              pageBtn.disabled = i === currentPage;
+              pageBtn.onclick = function() {
+                currentPage = i;
+                renderProducts();
+              };
+              paginationControls.appendChild(pageBtn);
+            }
+            const nextBtn = document.createElement('button');
+            nextBtn.textContent = 'Next';
+            nextBtn.className = 'px-3 py-1 rounded bg-[#e7edf4] text-[#0d151c] font-medium disabled:opacity-50';
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.onclick = function() {
+              if (currentPage < totalPages) {
+                currentPage++;
+                renderProducts();
+              }
+            };
+            paginationControls.appendChild(nextBtn);
+          }
+
+          searchInput.addEventListener('input', function() {
+            currentPage = 1;
+            renderProducts();
+          });
+
+          // Modal logic
+          productGrid.addEventListener('click', function(e) {
+            const card = e.target.closest('.product-card');
+            if (!card) return;
+            const img = card.getAttribute('data-img');
+            const name = card.getAttribute('data-name');
+            const price = card.getAttribute('data-price');
+            // Generate a detailed description based on the product name
+            function generateDescription(name) {
+              if (name.toLowerCase().includes('ring')) return 'A luxurious designer ring, perfect for special occasions. Expertly crafted with meticulous attention to detail, this ring exudes sophistication and timeless elegance. Make a statement and elevate your style with this exclusive piece from our premium collection.';
+              if (name.toLowerCase().includes('bracelet')) return 'An elegant bracelet crafted for timeless style. This piece features exquisite materials and a refined design, making it a versatile accessory for both everyday wear and special events. Experience the perfect blend of luxury and comfort on your wrist.';
+              if (name.toLowerCase().includes('necklace') || name.toLowerCase().includes('nocklace')) return 'A stunning necklace to elevate any look. Designed to capture the light and attention, this necklace is a symbol of grace and sophistication. Wear it solo or layer with other pieces for a truly unique statement.';
+              if (name.toLowerCase().includes('earrings')) return 'Beautiful earrings to add sparkle to your ensemble. Each pair is crafted to perfection, offering a harmonious balance of elegance and modern flair. Let these earrings be the finishing touch that completes your signature style.';
+              if (name.toLowerCase().includes('pendant')) return 'A chic pendant for a touch of sophistication. This pendant is designed to be both eye-catching and versatile, making it ideal for any occasion. Its refined craftsmanship ensures it will be a cherished addition to your jewelry box.';
+              return 'A premium jewelry piece from our exclusive collection. Designed for those who appreciate the finer things in life, this item combines exceptional artistry with luxurious materials. Indulge yourself or surprise a loved one with a gift that will be treasured for years to come.';
+            }
+            const desc = generateDescription(name);
+            const modalImg = document.getElementById('modal-img');
+            const addToCartBtn = document.getElementById('add-to-cart-btn');
+            modalImg.src = img;
+            modalImg.alt = name;
+            modalImg.classList.remove('hidden');
+            let errorMsg = document.getElementById('modal-img-error');
+            if (errorMsg) errorMsg.remove();
+            addToCartBtn.disabled = false;
+            modalImg.onerror = function() {
+              this.onerror = null;
+              this.src = '/public/vite.svg';
+              if (!document.getElementById('modal-img-error')) {
+                const err = document.createElement('div');
+                err.id = 'modal-img-error';
+                err.textContent = 'Image failed to load.';
+                err.style.color = '#e53e3e';
+                err.style.fontWeight = 'bold';
+                err.style.margin = '8px 0';
+                modalImg.classList.add('hidden');
+                modalImg.parentNode.insertBefore(err, modalImg.nextSibling);
+                addToCartBtn.disabled = true;
+              }
+            };
+            document.getElementById('modal-name').textContent = name;
+            document.getElementById('modal-price').textContent = `₹${Number(price).toLocaleString()}`;
+            document.getElementById('modal-desc').textContent = desc;
+            const modal = document.getElementById('product-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+              modal.classList.remove('opacity-0');
+              modal.querySelector('.bg-white').classList.remove('scale-95');
+            }, 10);
+          });
+          document.getElementById('product-modal').addEventListener('click', function (e) {
+            if (e.target === this) {
+              this.classList.add('opacity-0');
+              this.querySelector('.bg-white').classList.add('scale-95');
+              setTimeout(() => {
+                this.classList.add('hidden');
+              }, 300);
+            }
+          });
+
+          // Dropdown logic for filters (copied from shoes.html)
+          const categoryBtn = document.getElementById('category-btn');
+          const categoryDropdown = document.getElementById('category-dropdown');
+          const categoryArrow = document.getElementById('category-arrow');
+          const colorBtn = document.getElementById('color-btn');
+          const colorDropdown = document.getElementById('color-dropdown');
+          const colorArrow = document.getElementById('color-arrow');
+          const priceBtn = document.getElementById('price-btn');
+          const priceDropdown = document.getElementById('price-dropdown');
+          const priceArrow = document.getElementById('price-arrow');
+          const sortBtn = document.getElementById('sort-btn');
+          const sortDropdown = document.getElementById('sort-dropdown');
+          const sortArrow = document.getElementById('sort-arrow');
+          const sortLabel = document.getElementById('sort-label');
+          let currentSort = 'default';
+          const sortLabels = {
+            'default': 'Sort',
+            'price-asc': 'Price: Low to High',
+            'price-desc': 'Price: High to Low',
+            'name-asc': 'Name: A-Z',
+            'name-desc': 'Name: Z-A',
+            'material-asc': 'Material: A-Z',
+            'material-desc': 'Material: Z-A'
+          };
+
+          const dropdowns = [
+            { btn: 'category-btn', dd: 'category-dropdown', arrow: 'category-arrow' },
+            { btn: 'color-btn', dd: 'color-dropdown', arrow: 'color-arrow' },
+            { btn: 'price-btn', dd: 'price-dropdown', arrow: 'price-arrow' }
+          ];
+
+          function closeAllDropdowns() {
+            dropdowns.forEach(({ dd, arrow }) => {
+              const ddEl = document.getElementById(dd);
+              if (ddEl.classList.contains('open')) {
+                ddEl.classList.remove('open');
+                setTimeout(() => ddEl.classList.add('hidden'), 300);
+              } else {
+                ddEl.classList.add('hidden');
+              }
+              document.getElementById(arrow).classList.remove('rotated');
+            });
+            if (sortDropdown.classList.contains('open')) {
+              sortDropdown.classList.remove('open');
+              setTimeout(() => sortDropdown.classList.add('hidden'), 300);
+            } else {
+              sortDropdown.classList.add('hidden');
+            }
+            sortArrow.classList.remove('rotated');
+          }
+
+          dropdowns.forEach(({ btn, dd, arrow }) => {
+            const btnEl = document.getElementById(btn);
+            const ddEl = document.getElementById(dd);
+            const arrowEl = document.getElementById(arrow);
+
+            btnEl.addEventListener('click', function (e) {
+              e.stopPropagation();
+              if (ddEl.classList.contains('open')) {
+                closeAllDropdowns();
+              } else {
+                closeAllDropdowns();
+                ddEl.classList.remove('hidden');
+                setTimeout(() => ddEl.classList.add('open'), 10);
+                arrowEl.classList.add('rotated');
+              }
+            });
+
+            ddEl.addEventListener('click', function (e) {
+              e.stopPropagation();
+            });
+          });
+
+          document.addEventListener('click', function () {
+            closeAllDropdowns();
+          });
+
+          // Sort dropdown logic
+          sortBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (sortDropdown.classList.contains('open')) {
+              closeAllDropdowns();
+            } else {
+              closeAllDropdowns();
+              sortDropdown.classList.remove('hidden');
+              setTimeout(() => sortDropdown.classList.add('open'), 10);
+              sortArrow.classList.add('rotated');
+            }
+          });
+          sortDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+          });
+          document.addEventListener('click', function () {
+            sortDropdown.classList.add('hidden');
+            sortArrow.classList.remove('rotated');
+          });
+          // Sort option selection
+          sortDropdown.querySelectorAll('.dropdown-option').forEach(option => {
+            option.addEventListener('click', function(e) {
+              e.preventDefault();
+              currentSort = this.getAttribute('data-value');
+              sortLabel.textContent = sortLabels[currentSort];
+              sortDropdown.classList.add('hidden');
+              sortArrow.classList.remove('rotated');
+              currentPage = 1;
+              renderProducts();
+              // Highlight selected
+              sortDropdown.querySelectorAll('.dropdown-option').forEach(opt => opt.classList.remove('selected'));
+              this.classList.add('selected');
+            });
+          });
+          // Set initial label
+          sortLabel.textContent = sortLabels[currentSort];
+          // Highlight initial
+          sortDropdown.querySelector('.dropdown-option[data-value="default"]').classList.add('selected');
+
+          // Search bar toggle
+          const searchBarContainer = document.getElementById('search-bar-container');
+          let searchBarVisible = false;
+          const headerSearchBtn = document.getElementById('header-search-btn');
+          if (headerSearchBtn) {
+            headerSearchBtn.addEventListener('click', function(e) {
+              e.preventDefault();
+              searchBarVisible = !searchBarVisible;
+              if (searchBarVisible) {
+                searchBarContainer.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
+                searchBarContainer.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                productGrid.style.marginTop = '64px';
+                setTimeout(() => { searchInput.focus(); }, 200);
+              } else {
+                searchBarContainer.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                searchBarContainer.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
+                productGrid.style.marginTop = '0';
+              }
+            });
+          }
+
+          // --- FILTER LOGIC ---
+          let selectedMaterial = null;
+          let selectedPrice = null;
+
+          // Helper to update active filter tags
+          function updateActiveFilters() {
+            const activeFilters = document.getElementById('active-filters');
+            activeFilters.innerHTML = '';
+            if (selectedMaterial) {
+              const tag = document.createElement('span');
+              tag.className = 'filter-tag';
+              tag.innerHTML = `Material: ${selectedMaterial.charAt(0).toUpperCase() + selectedMaterial.slice(1)} <span class="remove-tag" data-type="material">×</span>`;
+              activeFilters.appendChild(tag);
+            }
+            if (selectedPrice) {
+              let priceLabel = '';
+              if (selectedPrice === 'under50000') priceLabel = 'Under ₹50,000';
+              else if (selectedPrice === '50000-100000') priceLabel = '₹50,000–₹1,00,000';
+              else if (selectedPrice === '100000-150000') priceLabel = '₹1,00,000–₹1,50,000';
+              else if (selectedPrice === 'over150000') priceLabel = 'Over ₹1,50,000';
+              const tag = document.createElement('span');
+              tag.className = 'filter-tag';
+              tag.innerHTML = `Price: ${priceLabel} <span class="remove-tag" data-type="price">×</span>`;
+              activeFilters.appendChild(tag);
+            }
+            // Remove tag logic
+            activeFilters.querySelectorAll('.remove-tag').forEach(el => {
+              el.addEventListener('click', function() {
+                const type = this.getAttribute('data-type');
+                if (type === 'material') selectedMaterial = null;
+                if (type === 'price') selectedPrice = null;
+                currentPage = 1;
+                filterProducts();
+                updateActiveFilters();
+                updateDropdownHighlights();
+              });
+            });
+          }
+
+          // Helper to highlight selected dropdown option
+          function updateDropdownHighlights() {
+            // Material
+            colorDropdown.querySelectorAll('.dropdown-option').forEach(option => {
+              if (selectedMaterial && option.textContent.trim().toLowerCase() === selectedMaterial) {
+                option.classList.add('selected');
+              } else {
+                option.classList.remove('selected');
+              }
+            });
+            // Price
+            priceDropdown.querySelectorAll('.dropdown-option').forEach(option => {
+              const val = option.textContent.trim();
+              let match = false;
+              if (selectedPrice === 'under50000' && val.startsWith('Under')) match = true;
+              else if (selectedPrice === '50000-100000' && val.startsWith('₹50,000–₹1,00,000')) match = true;
+              else if (selectedPrice === '100000-150000' && val.startsWith('₹1,00,000–₹1,50,000')) match = true;
+              else if (selectedPrice === 'over150000' && val.startsWith('Over')) match = true;
+              if (match) option.classList.add('selected');
+              else option.classList.remove('selected');
+            });
+          }
+
+          function filterProducts() {
+            currentPage = 1;
+            renderProducts();
+            updateActiveFilters();
+            updateDropdownHighlights();
+          }
+
+          // Update search filter to use filterProducts
+          searchInput.addEventListener('input', filterProducts);
+          // Material dropdown
+          colorDropdown.querySelectorAll('.dropdown-option').forEach(option => {
+            option.addEventListener('click', function(e) {
+              e.preventDefault();
+              selectedMaterial = this.textContent.trim().toLowerCase();
+              colorDropdown.classList.add('hidden');
+              colorArrow.classList.remove('rotated');
+              filterProducts();
+              updateDropdownHighlights();
+            });
+          });
+          // Price dropdown
+          priceDropdown.querySelectorAll('.dropdown-option').forEach(option => {
+            option.addEventListener('click', function(e) {
+              e.preventDefault();
+              const val = this.textContent.trim();
+              if (val.startsWith('Under')) selectedPrice = 'under50000';
+              else if (val.startsWith('₹50,000–₹1,00,000')) selectedPrice = '50000-100000';
+              else if (val.startsWith('₹1,00,000–₹1,50,000')) selectedPrice = '100000-150000';
+              else if (val.startsWith('Over')) selectedPrice = 'over150000';
+              priceDropdown.classList.add('hidden');
+              priceArrow.classList.remove('rotated');
+              filterProducts();
+              updateDropdownHighlights();
+            });
+          });
+
+          // Clear Filters button logic
+          const clearBtn = document.getElementById('clear-filters-btn');
+          const clearX = document.getElementById('clear-x-icon');
+          clearBtn.addEventListener('click', function() {
+            // Animate if any filter is active OR sort is not default
+            if (selectedMaterial || selectedPrice || searchInput.value.trim() || currentSort !== 'default') {
+              clearX.classList.add('shatter-x');
+              setTimeout(() => {
+                clearX.classList.remove('shatter-x');
+              }, 600);
+            }
+            selectedMaterial = null;
+            selectedPrice = null;
+            searchInput.value = '';
+            // Reset sort to default
+            currentSort = 'default';
+            sortLabel.textContent = sortLabels[currentSort];
+            sortDropdown.querySelectorAll('.dropdown-option').forEach(opt => opt.classList.remove('selected'));
+            sortDropdown.querySelector('.dropdown-option[data-value="default"]').classList.add('selected');
+            // Shuffle products on clear filter
+            shuffleArray(allProductCards);
+            filterProducts();
+          });
+          // Initial highlight and tags
+          updateActiveFilters();
+          updateDropdownHighlights();
+
+          // Fisher-Yates shuffle function
+          function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+            }
+          }
+          // Shuffle on page load BEFORE first render
+          shuffleArray(allProductCards);
+          // Initial render
+          renderProducts();
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

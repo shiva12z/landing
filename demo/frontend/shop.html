@@ -36,7 +36,7 @@
             </div>
             <h2 class="text-[#0d141c] text-lg font-bold leading-tight tracking-[-0.015em]">StyleZone</h2>
             <div class="flex items-center gap-9 ml-8">
-              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#">Home</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="index.html">Home</a>
               <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#" id="shop-link">Shop</a>
               <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#">Categories</a>
               <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#">Sale</a>
@@ -85,40 +85,6 @@
                 <p class="text-[#49749c] text-sm font-normal leading-normal">Explore our curated collections of fashion, accessories, and more.</p>
               </div>
             </div>
-            <div class="flex gap-3 p-3 flex-wrap pr-4">
-              <button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2">
-                <p class="text-[#0d151c] text-sm font-medium leading-normal">Category</p>
-                <div class="text-[#0d151c]" data-icon="CaretDown" data-size="20px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
-                  </svg>
-                </div>
-              </button>
-              <button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2">
-                <p class="text-[#0d151c] text-sm font-medium leading-normal">Size</p>
-                <div class="text-[#0d151c]" data-icon="CaretDown" data-size="20px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
-                  </svg>
-                </div>
-              </button>
-              <button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2">
-                <p class="text-[#0d151c] text-sm font-medium leading-normal">Color</p>
-                <div class="text-[#0d151c]" data-icon="CaretDown" data-size="20px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
-                  </svg>
-                </div>
-              </button>
-              <button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2">
-                <p class="text-[#0d151c] text-sm font-medium leading-normal">Price</p>
-                <div class="text-[#0d151c]" data-icon="CaretDown" data-size="20px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
-                  </svg>
-                </div>
-              </button>
-            </div>
             <div class="px-4 py-3">
               <label class="flex flex-col min-w-40 h-12 w-full">
                 <div class="flex w-full flex-1 items-stretch rounded-xl h-full">
@@ -143,9 +109,11 @@
               </label>
             </div>
             <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+              <!-- Product Card Example -->
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Summer Dress","price":"$69.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuBnWKUg8IBvbDdgS3g0Lt_ADiZuyaFVs4Z4iNbaGFEoOJCnYaF5MPnvqPmlmRxug1e-A0_P8ETIxhuXknxnAhgTruR5ILAGe9Jd1Hp4R7Lb_zPKoTAeu7Ku2XrHBEAfuDzpm4m3o5ecyB76ew5Ye_IQq0JS45qkg7gXwjVGzSSNXpfOS3leqhU3ntF5y91hGWpDP9XDBpCXexpJ7XeA0bSJM70OmUwP9giHrZJhPHCT_dao3R32wLfVj2EkQ7F8kv1hRR3GrVnn869b","desc":"Light and breezy summer dress, perfect for warm days and casual outings."}'
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBnWKUg8IBvbDdgS3g0Lt_ADiZuyaFVs4Z4iNbaGFEoOJCnYaF5MPnvqPmlmRxug1e-A0_P8ETIxhuXknxnAhgTruR5ILAGe9Jd1Hp4R7Lb_zPKoTAeu7Ku2XrHBEAfuDzpm4m3o5ecyB76ew5Ye_IQq0JS45qkg7gXwjVGzSSNXpfOS3leqhU3ntF5y91hGWpDP9XDBpCXexpJ7XeA0bSJM70OmUwP9giHrZJhPHCT_dao3R32wLfVj2EkQ7F8kv1hRR3GrVnn869b");'
                 ></div>
                 <div>
@@ -155,7 +123,8 @@
               </div>
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Leather Handbag","price":"$129.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuCPq2ZffkcXgr9lgFiCqplxTnjXZ5Z1F51_hSAYreEzFbRjcFWkaA-vw7WpcSzoZyhOdi06JcxuNgNfvjenLTWTqh6Nq3CeT6g4ovuV9N-182_EcQxoAPr21jWXPJi7UI4aqyN30rTN6drW02gXN71WJenZNnVnEQbqE7qv7pHMPRG-1or8xwWcnHPrattIq6pOPWRZ4wHN0KmZYm-nPOzWqu8GeRa2HqxqfOwp2G63GwOAbp9zUT89pKmiZgvbwGrTG84WIHItcCC-","desc":"Stylish leather handbag for the modern woman, spacious and elegant."}'
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPq2ZffkcXgr9lgFiCqplxTnjXZ5Z1F51_hSAYreEzFbRjcFWkaA-vw7WpcSzoZyhOdi06JcxuNgNfvjenLTWTqh6Nq3CeT6g4ovuV9N-182_EcQxoAPr21jWXPJi7UI4aqyN30rTN6drW02gXN71WJenZNnVnEQbqE7qv7pHMPRG-1or8xwWcnHPrattIq6pOPWRZ4wHN0KmZYm-nPOzWqu8GeRa2HqxqfOwp2G63GwOAbp9zUT89pKmiZgvbwGrTG84WIHItcCC-");'
                 ></div>
                 <div>
@@ -165,7 +134,8 @@
               </div>
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Running Shoes","price":"$89.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuBtXpaZgWS2dq_ohAtJzI_ed4g9hzgqihrJgqnlThDYnI1BHGN3beI4ruiEyv1ej9jjzOjtiKmHMAA_0I0lIVGnzNK9XzwxTEBaG2vT1rQZx2lWGNWMcuzji3_3xvIJNNKt0tbDqV736Ep2n74Dv2vHLaTC6X-If5QfYG93c1YNQ-R7shg9A-EDs96HYZe5JCkWHTzszGha5PrmOC_kE4Pf9eLe1lie_6_RWMZ2LEsDmMOWuLFKYpDbHJ7UfifLRhti3voaLQm7nhch","desc":"Comfortable running shoes with a sleek design, perfect for athletes."}'
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBtXpaZgWS2dq_ohAtJzI_ed4g9hzgqihrJgqnlThDYnI1BHGN3beI4ruiEyv1ej9jjzOjtiKmHMAA_0I0lIVGnzNK9XzwxTEBaG2vT1rQZx2lWGNWMcuzji3_3xvIJNNKt0tbDqV736Ep2n74Dv2vHLaTC6X-If5QfYG93c1YNQ-R7shg9A-EDs96HYZe5JCkWHTzszGha5PrmOC_kE4Pf9eLe1lie_6_RWMZ2LEsDmMOWuLFKYpDbHJ7UfifLRhti3voaLQm7nhch");'
                 ></div>
                 <div>
@@ -175,7 +145,8 @@
               </div>
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Stylish Watch","price":"$149.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuBvX9C4HEGJ2sYzqeMaer2OZkVgc7Nhk2dYY6Eb718OsrCAD7RHz8A5kbYT7WmP0pQ-ftkt3cHF79jTJUdCrCsPkHHeBCtHtlk89myp8xDO06wKZ3R3MMyN1p7gPotEaiL5gz-HRQyVpZacOJwTPL3IRbcz-TIKqIl_K9B2smP-71nmWAi-BIzFdKydnTJL0uCiabbzAbI1eyhi3bM1JFjvZ7q568vqIOVAqnSja27hTvblu8J55cfxMRWthVP3BIYO7psQP4L08qb5","desc":"Elegant and modern watch, a perfect accessory for any outfit."}'
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBvX9C4HEGJ2sYzqeMaer2OZkVgc7Nhk2dYY6Eb718OsrCAD7RHz8A5kbYT7WmP0pQ-ftkt3cHF79jTJUdCrCsPkHHeBCtHtlk89myp8xDO06wKZ3R3MMyN1p7gPotEaiL5gz-HRQyVpZacOJwTPL3IRbcz-TIKqIl_K9B2smP-71nmWAi-BIzFdKydnTJL0uCiabbzAbI1eyhi3bM1JFjvZ7q568vqIOVAqnSja27hTvblu8J55cfxMRWthVP3BIYO7psQP4L08qb5");'
                 ></div>
                 <div>
@@ -185,77 +156,63 @@
               </div>
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA77M_UBQlCGsG9R8jTqTMPribotMgqpjOFeL-uIeSm9BKd3XROMtesKnNj6rhgKsI34gjlUcdJtZWwcGVpubkbrqZh80vgOnn5oBS5qa9QKVRlIbkKiKt_LKEt1CtC8PdjAmhx4OhxHvyHFy8F7Gi63eAd71GxKOzbpYHO3iQkpKnU_ieAfV-Ix8mfC6iLR--7BQwArRtg1gU7HNnvbQIjXs8uw3CzRAvxU1AOpHHBF-OVmm5Xb7bH__RE5pFf4qAtuwailLeCi4SX");'
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Sunglasses","price":"$79.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuCSZkis3306tdfwQ8vv6aNhUyzb5KcHGVZPkjN0aPmD5ZVjZCbQso_tlohx-riT0ZSeJl9hgyoGPXkhb25Lo-C4CHTc1ymEk3djOlQTxUvcxYA9yzV-uSS62HjigJl14cUuhrBiw7T35xA2uU6opBorb74Dc8_emX3dTcc7dcoNYruN8Skx79GYJWdiEp6w4T_VYdNaDfbxgFORsw0uZBkFCCy0F9CRuxeBodS359vmEYVOJb-QT6BcIS3PtyuQs5D8vMHVLdIP8w08","desc":"Modern sunglasses with full UV protection and a stylish, versatile design for any occasion."}'
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCSZkis3306tdfwQ8vv6aNhUyzb5KcHGVZPkjN0aPmD5ZVjZCbQso_tlohx-riT0ZSeJl9hgyoGPXkhb25Lo-C4CHTc1ymEk3djOlQTxUvcxYA9yzV-uSS62HjigJl14cUuhrBiw7T35xA2uU6opBorb74Dc8_emX3dTcc7dcoNYruN8Skx79GYJWdiEp6w4T_VYdNaDfbxgFORsw0uZBkFCCy0F9CRuxeBodS359vmEYVOJb-QT6BcIS3PtyuQs5D8vMHVLdIP8w08");'
                 ></div>
                 <div>
-                  <p class="text-[#0d151c] text-base font-medium leading-normal">Denim Jacket</p>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal">Sunglasses</p>
                   <p class="text-[#49749c] text-sm font-normal leading-normal">$79.99</p>
                 </div>
               </div>
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCSZkis3306tdfwQ8vv6aNhUyzb5KcHGVZPkjN0aPmD5ZVjZCbQso_tlohx-riT0ZSeJl9hgyoGPXkhb25Lo-C4CHTc1ymEk3djOlQTxUvcxYA9yzV-uSS62HjigJl14cUuhrBiw7T35xA2uU6opBorb74Dc8_emX3dTcc7dcoNYruN8Skx79GYJWdiEp6w4T_VYdNaDfbxgFORsw0uZBkFCCy0F9CRuxeBodS359vmEYVOJb-QT6BcIS3PtyuQs5D8vMHVLdIP8w08");'
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Casual Shirt","price":"$39.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuC5BQCziWvOpOmqmn4SjJ3cqNLM7CC90fm0h9paFBc5SRVcDbTiVFFR3hYVUEomKWHn71fWWytygcTvLdfkJXGhWZpc7jvyRN6lEebehVsMBsd4YgAg8qSoUHPMjQOAuZGDbLwYL2Aj9EC__pBQydfHaUC04g-FgQPgP607SB2E6PwwdBHgrqBGeU0mARNi1zyBVdClNOXeWQoqfqahIkFnvH1Dum1hkT7Qmt7Rm1Q9Lnxs_-TGtny1KJRPWpDaWplbBAUbBlL4C4Bp","desc":"Comfortable and versatile casual shirt, ideal for everyday wear and easy to style."}'
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC5BQCziWvOpOmqmn4SjJ3cqNLM7CC90fm0h9paFBc5SRVcDbTiVFFR3hYVUEomKWHn71fWWytygcTvLdfkJXGhWZpc7jvyRN6lEebehVsMBsd4YgAg8qSoUHPMjQOAuZGDbLwYL2Aj9EC__pBQydfHaUC04g-FgQPgP607SB2E6PwwdBHgrqBGeU0mARNi1zyBVdClNOXeWQoqfqahIkFnvH1Dum1hkT7Qmt7Rm1Q9Lnxs_-TGtny1KJRPWpDaWplbBAUbBlL4C4Bp");'
                 ></div>
                 <div>
-                  <p class="text-[#0d151c] text-base font-medium leading-normal">Sunglasses</p>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal">Casual Shirt</p>
                   <p class="text-[#49749c] text-sm font-normal leading-normal">$39.99</p>
                 </div>
               </div>
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC5BQCziWvOpOmqmn4SjJ3cqNLM7CC90fm0h9paFBc5SRVcDbTiVFFR3hYVUEomKWHn71fWWytygcTvLdfkJXGhWZpc7jvyRN6lEebehVsMBsd4YgAg8qSoUHPMjQOAuZGDbLwYL2Aj9EC__pBQydfHaUC04g-FgQPgP607SB2E6PwwdBHgrqBGeU0mARNi1zyBVdClNOXeWQoqfqahIkFnvH1Dum1hkT7Qmt7Rm1Q9Lnxs_-TGtny1KJRPWpDaWplbBAUbBlL4C4Bp");'
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Formal trousers","price":"$49.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuDFkjVdYjx2aNoBW-3Da7er6jeHiOhpCHTi98FnDDcCAK2L5-JKZhgW9F70MpI2c5f_feAmCy0iU73OBYpQXlk_Ir9OzsMFZyScWP4JUV1H6kZUdIPKwfHDp-9pdAeqESC9UdDem2tAPFsxjZ__KwgVuqRjRueX8VITOFBgfsCFGURG2LYfbO89aE-Z20ZJ1fDYGoz8-jzCs8zaoxdE-5gGnE5UEVc7bvsT12zC0dO5VRsHigyJuNy6qT1_fjmagrMAQVBZPT1pmx3p","desc":"Elegant formal trousers, tailored to perfection for a sharp, professional look."}'
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDFkjVdYjx2aNoBW-3Da7er6jeHiOhpCHTi98FnDDcCAK2L5-JKZhgW9F70MpI2c5f_feAmCy0iU73OBYpQXlk_Ir9OzsMFZyScWP4JUV1H6kZUdIPKwfHDp-9pdAeqESC9UdDem2tAPFsxjZ__KwgVuqRjRueX8VITOFBgfsCFGURG2LYfbO89aE-Z20ZJ1fDYGoz8-jzCs8zaoxdE-5gGnE5UEVc7bvsT12zC0dO5VRsHigyJuNy6qT1_fjmagrMAQVBZPT1pmx3p");'
                 ></div>
                 <div>
-                  <p class="text-[#0d151c] text-base font-medium leading-normal">Casual Shirt</p>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal">Formal trousers</p>
                   <p class="text-[#49749c] text-sm font-normal leading-normal">$49.99</p>
                 </div>
               </div>
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDFkjVdYjx2aNoBW-3Da7er6jeHiOhpCHTi98FnDDcCAK2L5-JKZhgW9F70MpI2c5f_feAmCy0iU73OBYpQXlk_Ir9OzsMFZyScWP4JUV1H6kZUdIPKwfHDp-9pdAeqESC9UdDem2tAPFsxjZ__KwgVuqRjRueX8VITOFBgfsCFGURG2LYfbO89aE-Z20ZJ1fDYGoz8-jzCs8zaoxdE-5gGnE5UEVc7bvsT12zC0dO5VRsHigyJuNy6qT1_fjmagrMAQVBZPT1pmx3p");'
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Boots","price":"$89.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuC5G6ozIJmPfi1nkuvSy6vwwFaMdENqfsvHd2kzZyvLh6QO8_-YPSuTEgEJmYfpen-V42ICCfNQTHA1Z-Hdb4fVsgUnyCDcgHLgs62NFxYX9V64o6NBNarkbv-8yWUCe4JC6J9-6uwKMLOfQ5ZoDJHwmSk-IhVKRv0DfEMRxk-5hJZLzUXmzdmSBg4Ru0VV_je1tb4L3D7IIQwl0Xwb5KTVXY4K8BCga-SqpZUXAYZhhq-Ucv2XWcJbqRbgX70MT34ooy8IWfy8Xcgv","desc":"Sturdy and stylish boots, ideal for any terrain."}'
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC5G6ozIJmPfi1nkuvSy6vwwFaMdENqfsvHd2kzZyvLh6QO8_-YPSuTEgEJmYfpen-V42ICCfNQTHA1Z-Hdb4fVsgUnyCDcgHLgs62NFxYX9V64o6NBNarkbv-8yWUCe4JC6J9-6uwKMLOfQ5ZoDJHwmSk-IhVKRv0DfEMRxk-5hJZLzUXmzdmSBg4Ru0VV_je1tb4L3D7IIQwl0Xwb5KTVXY4K8BCga-SqpZUXAYZhhq-Ucv2XWcJbqRbgX70MT34ooy8IWfy8Xcgv");'
                 ></div>
                 <div>
-                  <p class="text-[#0d151c] text-base font-medium leading-normal">Formal Trousers</p>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal">Boots</p>
                   <p class="text-[#49749c] text-sm font-normal leading-normal">$89.99</p>
                 </div>
               </div>
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC5G6ozIJmPfi1nkuvSy6vwwFaMdENqfsvHd2kzZyvLh6QO8_-YPSuTEgEJmYfpen-V42ICCfNQTHA1Z-Hdb4fVsgUnyCDcgHLgs62NFxYX9V64o6NBNarkbv-8yWUCe4JC6J9-6uwKMLOfQ5ZoDJHwmSk-IhVKRv0DfEMRxk-5hJZLzUXmzdmSBg4Ru0VV_je1tb4L3D7IIQwl0Xwb5KTVXY4K8BCga-SqpZUXAYZhhq-Ucv2XWcJbqRbgX70MT34ooy8IWfy8Xcgv");'
-                ></div>
-                <div>
-                  <p class="text-[#0d151c] text-base font-medium leading-normal">Boots</p>
-                  <p class="text-[#49749c] text-sm font-normal leading-normal">$109.99</p>
-                </div>
-              </div>
-              <div class="flex flex-col gap-3 pb-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Scarf","price":"$12.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuBF5w80YbTR4TxCB1WEmR1mjV0d-QrAvIpt37O0EIcE85ouaOZORtQG4GSDCsRfXru6gJNAUuxRF70uXCkfrL_lnwAupnYs6dg-ONmYtfMEAI2ohOatYhBrUF0_MBctp1kTs6bZahVUgbdKueYQ5r8WeOnIniI0eCjME9jmqIjoQOLUAgrJITJ5tjFbYoiCvqlGMymLgD_LxwtZjTO__mE-WIXYwGMpwKbRH48wBXZ6-rpTQoHdXSsL68DjtTxxvpz1_HcVXuVmc8gV","desc":"Soft and cozy scarf, perfect for chilly days and a stylish accent to any outfit."}'
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBF5w80YbTR4TxCB1WEmR1mjV0d-QrAvIpt37O0EIcE85ouaOZORtQG4GSDCsRfXru6gJNAUuxRF70uXCkfrL_lnwAupnYs6dg-ONmYtfMEAI2ohOatYhBrUF0_MBctp1kTs6bZahVUgbdKueYQ5r8WeOnIniI0eCjME9jmqIjoQOLUAgrJITJ5tjFbYoiCvqlGMymLgD_LxwtZjTO__mE-WIXYwGMpwKbRH48wBXZ6-rpTQoHdXSsL68DjtTxxvpz1_HcVXuVmc8gV");'
                 ></div>
                 <div>
                   <p class="text-[#0d151c] text-base font-medium leading-normal">Scarf</p>
-                  <p class="text-[#49749c] text-sm font-normal leading-normal">$29.99</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal">$12.99</p>
                 </div>
               </div>
               <div class="flex flex-col gap-3 pb-3">
                 <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBbQEhK76jEmH6Goe7X4KekvJksRWzT2GUc--T-2aKb88csllZoH8ipz-jKrQS3xg1imA29s0mtJz7G_nDjmHy6vTzvhJm-EWm_nimJyHy0k9PuBYHJ3GwA4ppbuKTLLPnhlOBusKJ7NkbmIrRqmEDxNu0Jbjg-RmXWzyZdebqOSaXQUWWcyLK9Eglk2b5eB9C0Dz9De8m_JxMF7k5kfV7NTjpoh1DAn7VjH43N37anBqNQ1mAUAbRIqRPtZt_eLD5eFm10IhZB8gL2");'
-                ></div>
-                <div>
-                  <p class="text-[#0d151c] text-base font-medium leading-normal">Hat</p>
-                  <p class="text-[#49749c] text-sm font-normal leading-normal">$19.99</p>
-                </div>
-              </div>
-              <div class="flex flex-col gap-3 pb-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Belt","price":"$34.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuBPu5lZs_PEFeNaiLOn7GqogGVLBufpw3aKK5Nnzaz_UGEWiEwUhvFeLP9yCaK2zjs7MPBQ0NDfBHZvxBJfCEzH9fbGXZpKUGbCQvXKsBmfxy_epN7r_g1DbNvB8n7NfgPMlHJLFgZ-7Ap4p3xmcSy17iZyMHjlSmkCLBnsiQKOf8-lMF-FK-IjuSlJwpAbfHZDnRqATqp8B0nZP969V4xOq_2tmnp2hwneIEmnMXHP11M34sM8ELQ-080HH8o5zO5iYCTwbNJ2HyR-","desc":"Classic belt to hold your trousers up, and add a touch of style."}'
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPu5lZs_PEFeNaiLOn7GqogGVLBufpw3aKK5Nnzaz_UGEWiEwUhvFeLP9yCaK2zjs7MPBQ0NDfBHZvxBJfCEzH9fbGXZpKUGbCQvXKsBmfxy_epN7r_g1DbNvB8n7NfgPMlHJLFgZ-7Ap4p3xmcSy17iZyMHjlSmkCLBnsiQKOf8-lMF-FK-IjuSlJwpAbfHZDnRqATqp8B0nZP969V4xOq_2tmnp2hwneIEmnMXHP11M34sM8ELQ-080HH8o5zO5iYCTwbNJ2HyR-");'
                 ></div>
                 <div>
@@ -331,5 +288,39 @@
         </footer>
       </div>
     </div>
+    <!-- Product Modal (single instance, outside main content) -->
+    <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden">
+      <div class="bg-white rounded-lg shadow-lg max-w-md w-full relative p-6">
+        <button id="close-product-modal" class="absolute top-2 right-2 text-gray-400 hover:text-gray-700 text-2xl">&times;</button>
+        <div class="flex flex-col items-center">
+          <div id="modal-product-img" class="w-48 h-48 bg-center bg-cover rounded-lg mb-4"></div>
+          <h2 id="modal-product-name" class="text-xl font-bold mb-2"></h2>
+          <p id="modal-product-price" class="text-[#49739c] text-base font-semibold mb-2"></p>
+          <p id="modal-product-desc" class="text-gray-700 text-center mb-4"></p>
+          <button id="modal-add-to-cart-btn" class="px-6 py-2 bg-[#0c7ff2] text-white rounded hover:bg-blue-700 font-semibold">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Product modal logic for all product cards
+      document.querySelectorAll('.product-card').forEach(function(card) {
+        card.onclick = function(e) {
+          e.stopPropagation();
+          var data = JSON.parse(this.getAttribute('data-product'));
+          document.getElementById('modal-product-img').style.backgroundImage = 'url("' + data.img + '")';
+          document.getElementById('modal-product-name').textContent = data.name;
+          document.getElementById('modal-product-price').textContent = data.price;
+          document.getElementById('modal-product-desc').textContent = data.desc;
+          document.getElementById('product-modal').classList.remove('hidden');
+        };
+      });
+      document.getElementById('close-product-modal').onclick = function() {
+        document.getElementById('product-modal').classList.add('hidden');
+      };
+      document.getElementById('modal-add-to-cart-btn').onclick = function() {
+        var name = document.getElementById('modal-product-name').textContent;
+        alert(name + ' added to cart!');
+      };
+    </script>
   </body>
 </html>

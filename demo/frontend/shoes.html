@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shoes - StyleZone</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      .rotate-arrow {
+        transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      }
+      .rotate-arrow.rotated {
+        transform: rotate(180deg);
+      }
+      /* Shatter animation for the X icon */
+
+        /* This class triggers the animation */
+      
+      .shatter-x .x-line1 {
+        transform-origin: 25% 25%;
+        animation: shatter-x-line1 0.5s forwards;
+      }
+      .shatter-x .x-line2 {
+        transform-origin: 75% 75%;
+        animation: shatter-x-line2 0.5s forwards;
+      }
+      @keyframes shatter-x-line1 {
+        0% { transform: rotate(45deg) scale(1); opacity: 1; }
+        80% { transform: rotate(45deg) scale(1.2) translate(-8px, -8px); opacity: 1; }
+        100% { transform: rotate(45deg) scale(1.2) translate(-24px, -24px); opacity: 0; }
+      }
+      @keyframes shatter-x-line2 {
+        0% { transform: rotate(-45deg) scale(1); opacity: 1; }
+        80% { transform: rotate(-45deg) scale(1.2) translate(8px, 8px); opacity: 1; }
+        100% { transform: rotate(-45deg) scale(1.2) translate(24px, 24px); opacity: 0; }
+      }
+      /* Highlight selected filter option */
+      .dropdown-option.selected, .dropdown-option.selected:hover {
+        background-color: #d1e3fa !important;
+        color: #0c7ff2 !important;
+        font-weight: bold;
+      }
+      /* Active filter tags */
+      .active-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        margin-left: 1rem;
+      }
+      .filter-tag {
+        background: #e7edf4;
+        color: #0d151c;
+        border-radius: 9999px;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+      .filter-tag .remove-tag {
+        cursor: pointer;
+        margin-left: 0.25rem;
+        font-weight: bold;
+      }
+      /* Dropdown animation */
+      .dropdown-anim { transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1); opacity: 0; transform: translateY(-8px) scale(0.98); pointer-events: none; }
+      .dropdown-anim.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+    </style>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-slate-50 group/design-root overflow-x-hidden" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <!-- Header (copied from shop.html) -->
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf4] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#0d141c]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <h2 class="text-[#0d141c] text-lg font-bold leading-tight tracking-[-0.015em]">StyleZone</h2>
+            <div class="flex items-center gap-9 ml-8">
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="index.html">Home</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="shop.html">Shop</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="categories.html">Categories</a>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button id="header-search-btn" class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+              <div class="text-[#0d141c]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+                </svg>
+              </div>
+            </button>
+            <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+              <div class="text-[#0d141c]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path>
+                </svg>
+              </div>
+            </button>
+            <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5" aria-label="Account">
+              <div class="text-[#0d141c]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M128,128a48,48,0,1,0-48-48A48,48,0,0,0,128,128Zm0,16c-39.7,0-72,32.3-72,72a8,8,0,0,0,8,8H192a8,8,0,0,0,8-8C200,176.3,167.7,144,128,144Z"></path>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </header>
+        <!-- Main Content -->
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+              <div class="flex min-w-72 flex-col gap-3">
+                <p class="text-[#0d151c] tracking-light text-[32px] font-bold leading-tight">Shoes</p>
+                <p class="text-[#49749c] text-sm font-normal leading-normal">Discover our latest collection of shoes for every occasion.</p>
+              </div>
+            </div>
+            <!-- Filter and Search -->
+            <div class="flex gap-4 p-3 flex-wrap pr-4 -ml-3 mb-2">
+              <!-- Active filter tags -->
+              <div id="active-filters" class="active-filters"></div>
+              <!-- Sort Button Dropdown -->
+              <div class="relative">
+                <button id="sort-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2 focus:outline-none">
+                  <p id="sort-label" class="text-[#0d151c] text-sm font-medium leading-normal">Sort</p>
+                  <span class="arrow-wrapper flex items-center">
+                    <svg id="sort-arrow" class="rotate-arrow transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                    </svg>
+                  </span>
+                </button>
+                <div id="sort-dropdown" class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-10 hidden dropdown-anim">
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="default">Default</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="price-asc">Price: Low to High</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="price-desc">Price: High to Low</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="name-asc">Name: A-Z</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option" data-value="name-desc">Name: Z-A</a>
+                </div>
+              </div>
+              <div class="relative">
+                <button id="category-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2 focus:outline-none">
+                <p class="text-[#0d151c] text-sm font-medium leading-normal">Category</p>
+                  <span class="arrow-wrapper flex items-center">
+                    <svg id="category-arrow" class="rotate-arrow transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </svg>
+                  </span>
+                </button>
+                <div id="category-dropdown" class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded shadow-lg z-10 hidden dropdown-anim">
+                  <a href="shoes.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/shoes.png" alt="Shoes" class="w-5 h-5"/>
+                    <span>Shoes</span>
+                  </a>
+                  <a href="men.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/businessman.png" alt="Men" class="w-5 h-5"/>
+                    <span>Men</span>
+                  </a>
+                  <a href="women.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/businesswoman.png" alt="Women" class="w-5 h-5"/>
+                    <span>Women</span>
+                  </a>
+                  <a href="watches.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/apple-watch-apps.png" alt="Watches" class="w-5 h-5"/>
+                    <span>Watches</span>
+                  </a>
+                  <a href="bags.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/shopping-bag.png" alt="Bags" class="w-5 h-5"/>
+                    <span>Bags</span>
+                  </a>
+                  <a href="clothing.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/t-shirt.png" alt="Clothing" class="w-5 h-5"/>
+                    <span>Clothing</span>
+                  </a>
+                  <a href="accessories.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <svg class="w-5 h-5" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <ellipse cx="22" cy="50" rx="13" ry="10" fill="#0c7ff2"/>
+                      <ellipse cx="58" cy="50" rx="13" ry="10" fill="#0c7ff2"/>
+                      <rect x="22" y="48" width="36" height="5" fill="#0c7ff2"/>
+                      <rect x="8" y="49" width="5" height="3" fill="#0c7ff2"/>
+                      <rect x="67" y="49" width="5" height="3" fill="#0c7ff2"/>
+                      <rect x="37" y="45" width="6" height="5" fill="#0c7ff2"/>
+                    </svg>
+                    <span>Accessories</span>
+                  </a>
+                  <a href="jewelry.html" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4]">
+                    <img src="https://img.icons8.com/ios-filled/32/0c7ff2/necklace.png" alt="Jewelry" class="w-5 h-5"/>
+                    <span>Jewelry</span>
+                  </a>
+                </div>
+              </div>
+              <div class="relative">
+                <button id="size-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2 focus:outline-none">
+                <p class="text-[#0d151c] text-sm font-medium leading-normal">Size</p>
+                  <span class="arrow-wrapper flex items-center">
+                    <svg id="size-arrow" class="rotate-arrow transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </svg>
+                  </span>
+                </button>
+                <div id="size-dropdown" class="absolute left-0 mt-2 w-32 bg-white border border-gray-200 rounded shadow-lg z-10 hidden dropdown-anim">
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">5</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">6</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">7</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">8</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">9</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">10</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">11</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">12</a>
+                </div>
+              </div>
+              <div class="relative">
+                <button id="color-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2 focus:outline-none">
+                <p class="text-[#0d151c] text-sm font-medium leading-normal">Color</p>
+                  <span class="arrow-wrapper flex items-center">
+                    <svg id="color-arrow" class="rotate-arrow transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </svg>
+                  </span>
+                </button>
+                <div id="color-dropdown" class="absolute left-0 mt-2 w-40 bg-white border border-gray-200 rounded shadow-lg z-10 hidden dropdown-anim">
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:#222"></span>Black</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full border border-gray-300 bg-white"></span>White</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:#8B5C2A"></span>Brown</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:#2563eb"></span>Blue</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:#e11d48"></span>Red</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:#22c55e"></span>Green</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full bg-gradient-to-r from-pink-400 via-yellow-300 to-blue-400"></span>Multicolor</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:#6b7280"></span>Grey</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:gold"></span>Gold</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:silver"></span>Silver</a>
+                  <a href="#" class="flex items-center gap-2 px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option"><span class="inline-block w-4 h-4 rounded-full" style="background:#ec4899"></span>Pink</a>
+                </div>
+              </div>
+              <div class="relative">
+                <button id="price-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] pl-4 pr-2 focus:outline-none">
+                <p class="text-[#0d151c] text-sm font-medium leading-normal">Price</p>
+                  <span class="arrow-wrapper flex items-center">
+                    <svg id="price-arrow" class="rotate-arrow transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </svg>
+                  </span>
+                </button>
+                <div id="price-dropdown" class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-10 hidden dropdown-anim">
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Under ₹4,000</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">₹4,000–₹6,000</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">₹6,000–₹8,000</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Over ₹8,000</a>
+                </div>
+              </div>
+              <button id="clear-filters-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] px-4 text-[#0d151c] text-sm font-medium leading-normal ml-2 hover:bg-[#d1e3fa] transition-colors">
+                <svg id="clear-x-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24">
+                  <line class="x-line1" x1="6" y1="6" x2="18" y2="18" stroke="#0d151c" stroke-width="2" stroke-linecap="round" />
+                  <line class="x-line2" x1="18" y1="6" x2="6" y2="18" stroke="#0d151c" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                Clear Filters
+              </button>
+            </div>
+            <!-- Move search bar below filters, minimal gap -->
+            <div class="bg-[#e7edf4] rounded-xl transition-all duration-300 ease-in-out opacity-0 -translate-y-4 pointer-events-none mt-0 mb-2" id="search-bar-container">
+              <label class="flex flex-col min-w-40 h-12 w-full">
+                <div class="flex w-full flex-1 items-center rounded-xl h-12">
+                  <div class="text-[#49749c] flex border-none bg-[#e7edf4] items-center justify-center pl-4 rounded-l-xl border-r-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+                    </svg>
+                  </div>
+                  <input
+                    id="product-search"
+                    placeholder="Search for products"
+                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0d151c] focus:outline-0 focus:ring-0 border-none bg-[#e7edf4] focus:border-none h-12 placeholder:text-[#49749c] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+                    value=""
+                  />
+                </div>
+              </label>
+            </div>
+            <!-- Product Grid -->
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 pt-0 transition-all duration-300 ease-in-out" id="product-grid">
+              <!-- 1 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Alpinosol Boots - Claf leather - Black - Men"
+                data-price="₹7,499"
+                data-img="Shoes/Alpinosol Boots - Claf leather - Black - Men.png"
+                data-desc="Premium black calf leather boots for men. Rugged, stylish, and perfect for all terrains."
+                data-color="black">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Alpinosol Boots - Claf leather - Black - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Alpinosol Boots - Claf leather - Black - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹7,499</p>
+                </div>
+              </div>
+              <!-- 2 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Astrocool Sneakers - Lamb nappa leather - Zaffiro - Men"
+                data-price="₹5,299"
+                data-img="Shoes/Astrocool Sneakers - Lamb nappa leather - Zaffiro - Men.png"
+                data-desc="Zaffiro blue lamb nappa leather sneakers. Lightweight, flexible, and perfect for casual wear."
+                data-color="blue">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Astrocool Sneakers - Lamb nappa leather - Zaffiro - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Astrocool Sneakers - Lamb nappa leather - Zaffiro - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹5,299</p>
+                </div>
+              </div>
+              <!-- 3 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Astroflash Sneakers - Calf leather and fabric - Black - Men"
+                data-price="₹5,799"
+                data-img="Shoes/Astroflash Sneakers - Calf leather and fabric - Black - Men.png"
+                data-desc="Modern black sneakers crafted from calf leather and fabric. Great for sports and street style."
+                data-color="black">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Astroflash Sneakers - Calf leather and fabric - Black - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Astroflash Sneakers - Calf leather and fabric - Black - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹5,799</p>
+                </div>
+              </div>
+              <!-- 4 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Astroflash Sneakers - Calf leather and fabric - Tropical - Men"
+                data-price="₹6,199"
+                data-img="Shoes/Astroflash Sneakers - Calf leather and fabric - Tropical - Men.png"
+                data-desc="Tropical-themed sneakers made from calf leather and fabric. Stand out in every crowd."
+                data-color="white">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Astroflash Sneakers - Calf leather and fabric - Tropical - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Astroflash Sneakers - Calf leather and fabric - Tropical - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹6,199</p>
+                </div>
+              </div>
+              <!-- 5 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Calakala Mule 85 mm Mules - Lamb nappa leather - Couio - Women"
+                data-price="₹4,999"
+                data-img="Shoes/Calakala Mule 85 mm Mules - Lamb nappa leather - Couio - Women.png"
+                data-desc="Elegant 85mm mules for women in Couio lamb nappa leather. Perfect for formal and party wear."
+                data-color="brown">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Calakala Mule 85 mm Mules - Lamb nappa leather - Couio - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Calakala Mule 85 mm Mules - Lamb nappa leather - Couio - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹4,999</p>
+                </div>
+              </div>
+              <!-- 6 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Chambelimoc Loafers - Mubuck leather - Cuir - Men"
+                data-price="₹4,499"
+                data-img="Shoes/Chambelimoc Loafers - Mubuck leather - Cuir - Men.png"
+                data-desc="Classic mubuck leather loafers in Cuir for men. Comfortable and versatile for daily use."
+                data-color="brown">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Chambelimoc Loafers - Mubuck leather - Cuir - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Chambelimoc Loafers - Mubuck leather - Cuir - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹4,499</p>
+                </div>
+              </div>
+              <!-- 7 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Chambelimoc Loafers - Patinated calf leather - Tropical - Men"
+                data-price="₹5,299"
+                data-img="Shoes/Chambelimoc Loafers - Patinated calf leather - Tropical - Men.png"
+                data-desc="Patinated calf leather loafers in a tropical finish. Unique style for the modern man."
+                data-color="green">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Chambelimoc Loafers - Patinated calf leather - Tropical - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Chambelimoc Loafers - Patinated calf leather - Tropical - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹5,299</p>
+                </div>
+              </div>
+              <!-- 8 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Chambelimule Mules - Waxed calf leather - Terra - Women"
+                data-price="₹3,999"
+                data-img="Shoes/Chambelimule Mules - Waxed calf leather - Terra - Women.png"
+                data-desc="Women's mules in waxed calf leather, Terra color. Chic and comfortable for all-day wear."
+                data-color="brown">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Chambelimule Mules - Waxed calf leather - Terra - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Chambelimule Mules - Waxed calf leather - Terra - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹3,999</p>
+                </div>
+              </div>
+              <!-- 9 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Danny Flex - Calf leather - Black - Men"
+                data-price="₹7,499"
+                data-img="Shoes/Danny Flex - Calf leather - Black - Men.png"
+                data-desc="Premium black calf leather boots for men. Rugged, stylish, and perfect for all terrains."
+                data-color="black">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Danny Flex - Calf leather - Black - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Danny Flex - Calf leather - Black - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹7,499</p>
+                </div>
+              </div>
+              <!-- 10 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Greggory Oxfords - Calf leather - Black - Men"
+                data-price="₹7,499"
+                data-img="Shoes/Greggory Oxfords - Calf leather - Black - Men.png"
+                data-desc="Premium black calf leather boots for men. Rugged, stylish, and perfect for all terrains."
+                data-color="black">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Greggory Oxfords - Calf leather - Black - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Greggory Oxfords - Calf leather - Black - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹7,499</p>
+                </div>
+              </div>
+              <!-- 11 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Hot Chick 100 mm Pumps - Flower printed pearlescent patent calf leather - Multicolor  - Women"
+                data-price="₹7,499"
+                data-img="Shoes/Hot Chick 100 mm Pumps - Flower printed pearlescent patent calf leather - Multicolor  - Women.png"
+                data-desc="Premium black calf leather boots for men. Rugged, stylish, and perfect for all terrains."
+                data-color="multicolor">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Hot Chick 100 mm Pumps - Flower printed pearlescent patent calf leather - Multicolor  - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Hot Chick 100 mm Pumps - Flower printed pearlescent patent calf leather - Multicolor  - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹7,499</p>
+                </div>
+              </div>
+              <!-- 12 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Just Nothing Alta 150 mm Mules - TPU and patent calf leather - Black - Women"
+                data-price="₹6,499"
+                data-img="Shoes/Just Nothing Alta 150 mm Mules - TPU and patent calf leather - Black - Women.png"
+                data-desc="Striking 150mm mules for women, crafted from TPU and patent calf leather in classic black."
+                data-color="black">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Just Nothing Alta 150 mm Mules - TPU and patent calf leather - Black - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Just Nothing Alta 150 mm Mules - TPU and patent calf leather - Black - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹6,499</p>
+                </div>
+              </div>
+              <!-- 13 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Kate Max O Sling 100 mm Slingback pumps - Pearlescent patent calf leather - Zaffiro - Women"
+                data-price="₹6,299"
+                data-img="Shoes/Kate Max O Sling 100 mm Slingback pumps - Pearlescent patent calf leather - Zaffiro - Women.png"
+                data-desc="Elegant 100mm slingback pumps in pearlescent Zaffiro patent calf leather for women."
+                data-color="blue">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Kate Max O Sling 100 mm Slingback pumps - Pearlescent patent calf leather - Zaffiro - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Kate Max O Sling 100 mm Slingback pumps - Pearlescent patent calf leather - Zaffiro - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹6,299</p>
+                </div>
+              </div>
+              <!-- 14 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Light Soft Gold Shimmer Suede Sandal"
+                data-price="₹4,799"
+                data-img="Shoes/Light Soft Gold Shimmer Suede Sandal.png"
+                data-desc="Soft gold shimmer suede sandals for a touch of glamour and comfort."
+                data-color="gold">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Light Soft Gold Shimmer Suede Sandal.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Light Soft Gold Shimmer Suede Sandal</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹4,799</p>
+                </div>
+              </div>
+              <!-- 15 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Light Toffee Jelly Ballerina Flats with Crystal Embellishment"
+                data-price="₹3,299"
+                data-img="Shoes/Light Toffee Jelly Ballerina Flats with Crystal Embellishment.png"
+                data-desc="Chic jelly ballerina flats in light toffee, adorned with sparkling crystal embellishments."
+                data-color="brown">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Light Toffee Jelly Ballerina Flats with Crystal Embellishment.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Light Toffee Jelly Ballerina Flats with Crystal Embellishment</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹3,299</p>
+                </div>
+              </div>
+              <!-- 16 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Light Verde Leather Mule Sandal with Woven Satin Crystals"
+                data-price="₹5,199"
+                data-img="Shoes/Light Verde Leather Mule Sandal with Woven Satin Crystals.png"
+                data-desc="Light verde leather mule sandals featuring woven satin crystals for a unique look."
+                data-color="green">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Light Verde Leather Mule Sandal with Woven Satin Crystals.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Light Verde Leather Mule Sandal with Woven Satin Crystals</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹5,199</p>
+                </div>
+              </div>
+              <!-- 17 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Louis Junior P Pik Pik Strass Sneakers - Suede, jacquard and spikes - Black - Men"
+                data-price="₹8,499"
+                data-img="Shoes/Louis Junior P Pik Pik Strass Sneakers - Suede, jacquard and spikes - Black - Men.png"
+                data-desc="Bold black sneakers for men, crafted from suede and jacquard with signature spikes."
+                data-color="black">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Louis Junior P Pik Pik Strass Sneakers - Suede, jacquard and spikes - Black - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Louis Junior P Pik Pik Strass Sneakers - Suede, jacquard and spikes - Black - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹8,499</p>
+                </div>
+              </div>
+              <!-- 18 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Louis Junior Sneakers - Gaagal coated canvas - Tropical - Men"
+                data-price="₹7,299"
+                data-img="Shoes/Louis Junior Sneakers - Gaagal coated canvas - Tropical - Men.png"
+                data-desc="Tropical-themed Gaagal coated canvas sneakers for men, perfect for summer vibes."
+                data-color="multicolor">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Louis Junior Sneakers - Gaagal coated canvas - Tropical - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Louis Junior Sneakers - Gaagal coated canvas - Tropical - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹7,299</p>
+                </div>
+              </div>
+              <!-- 19 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Louis Junior Spikes Sneakers - Gaagal coated canvas - Leche - Men"
+                data-price="₹9,999"
+                data-img="Shoes/Louis Junior Spikes Sneakers - Gaagal coated canvas - Leche - Men.png"
+                data-desc="Iconic Louis Vuitton sneaker boots in Monogram canvas and leather. A statement of luxury."
+                data-color="white">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Louis Junior Spikes Sneakers - Gaagal coated canvas - Leche - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Louis Junior Spikes Sneakers - Gaagal coated canvas - Leche - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹9,999</p>
+                </div>
+              </div>
+              <!-- 20 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Louis No Limit Gaagal High-Top Sneakers - Suede abd Gaagal coated canvas - Leche - Men"
+                data-price="₹5,999"
+                data-img="Shoes/Louis No Limit Gaagal High-Top Sneakers - Suede abd Gaagal coated canvas - Leche - Men.png"
+                data-desc="Chic Mary Jane flats in black patent leather with a modern twist."
+                data-color="white">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Louis No Limit Gaagal High-Top Sneakers - Suede abd Gaagal coated canvas - Leche - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Louis No Limit Gaagal High-Top Sneakers - Suede abd Gaagal coated canvas - Leche - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹5,999</p>
+                </div>
+              </div>
+              <!-- 21 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Stone Textured Knit Trainers"
+                data-price="₹5,499"
+                data-img="Shoes/Stone Textured Knit Trainers.png"
+                data-desc="Modern trainers with a unique stone-textured knit. Lightweight, breathable, and perfect for everyday wear."
+                data-color="grey">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Stone Textured Knit Trainers.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Stone Textured Knit Trainers</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹5,499</p>
+                </div>
+              </div>
+              <!-- 22 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Natural Leopard Print Pony Leather Trainers"
+                data-price="₹6,299"
+                data-img="Shoes/Natural Leopard Print Pony Leather Trainers.png"
+                data-desc="Eye-catching trainers in natural leopard print pony leather. Stand out with bold style and comfort."
+                data-color="brown">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Natural Leopard Print Pony Leather Trainers.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Natural Leopard Print Pony Leather Trainers</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹6,299</p>
+                </div>
+              </div>
+              <!-- 23 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Tan Suede Wedge"
+                data-price="₹4,799"
+                data-img="Shoes/Tan Suede Wedge.png"
+                data-desc="Classic tan suede wedge sandals. Elegant, comfortable, and perfect for summer outings."
+                data-color="brown">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Tan Suede Wedge.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Tan Suede Wedge</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹4,799</p>
+                </div>
+              </div>
+              <!-- 24 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Tutti Rui Sneakers - Laminated calf leather - Silver - Women"
+                data-price="₹6,999"
+                data-img="Shoes/Tutti Rui Sneakers - Laminated calf leather - Silver - Women.png"
+                data-desc="Shiny silver sneakers for women, crafted from laminated calf leather. Trendy, durable, and perfect for a bold look."
+                data-color="silver">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Tutti Rui Sneakers - Laminated calf leather - Silver - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Tutti Rui Sneakers - Laminated calf leather - Silver - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹6,999</p>
+                </div>
+              </div>
+              <!-- 25 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Louise Junior Spikes Sneakers - Gaagal coated canvas - Leche - Women"
+                data-price="₹8,999"
+                data-img="Shoes/Louise Junior Spikes Sneakers - Gaagal coated canvas - Leche - Women.png"
+                data-desc="Premium sneakers for women in Leche Gaagal coated canvas, featuring signature spikes for a bold statement."
+                data-color="white">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Louise Junior Spikes Sneakers - Gaagal coated canvas - Leche - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Louise Junior Spikes Sneakers - Gaagal coated canvas - Leche - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹8,999</p>
+                </div>
+              </div>
+              <!-- 26 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Miss Z Sandal Queen 120 mm Strappy sandals - Lamb nappa leather - Blush - Women"
+                data-price="₹5,999"
+                data-img="Shoes/Miss Z Sandal Queen 120 mm Strappy sandals - Lamb nappa leather - Blush - Women.png"
+                data-desc="Elegant 120mm strappy sandals in blush lamb nappa leather. Perfect for parties and special occasions."
+                data-color="brown">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Miss Z Sandal Queen 120 mm Strappy sandals - Lamb nappa leather - Blush - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Miss Z Sandal Queen 120 mm Strappy sandals - Lamb nappa leather - Blush - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹5,999</p>
+                </div>
+              </div>
+              <!-- 27 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Minny Bubble Sling 70 mm Slingback pumps - Patent calf leather - Black - Women"
+                data-price="₹5,499"
+                data-img="Shoes/Minny Bubble Sling 70 mm Slingback pumps - Patent calf leather - Black - Women.png"
+                data-desc="Chic 70mm slingback pumps in black patent calf leather. Comfortable and stylish for all-day wear."
+                data-color="black">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Minny Bubble Sling 70 mm Slingback pumps - Patent calf leather - Black - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Minny Bubble Sling 70 mm Slingback pumps - Patent calf leather - Black - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹5,499</p>
+                </div>
+              </div>
+              <!-- 28 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Sweetie Jane Ballerinas - Flower printed crepe satin - Multicolor - Women"
+                data-price="₹4,299"
+                data-img="Shoes/Sweetie Jane Ballerinas - Flower printed crepe satin - Multicolor - Women.png"
+                data-desc="Colorful ballerinas in flower-printed crepe satin. Sweet, playful, and perfect for spring and summer."
+                data-color="multicolor">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Sweetie Jane Ballerinas - Flower printed crepe satin - Multicolor - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Sweetie Jane Ballerinas - Flower printed crepe satin - Multicolor - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹4,299</p>
+                </div>
+              </div>
+              <!-- 29 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Miss Z Slimimule 80 mm Mules - Lamb nappa leather - Black - Women"
+                data-price="₹4,999"
+                data-img="Shoes/Miss Z Slimimule 80 mm Mules - Lamb nappa leather - Black - Women.png"
+                data-desc="Sleek 80mm mules in black lamb nappa leather. Minimalist design for a modern look."
+                data-color="black">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Miss Z Slimimule 80 mm Mules - Lamb nappa leather - Black - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Miss Z Slimimule 80 mm Mules - Lamb nappa leather - Black - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹4,999</p>
+                </div>
+              </div>
+              <!-- 30 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Marie Amelie 100 mm Sandals - Calf leather and neoprene - Black - Women"
+                data-price="₹5,799"
+                data-img="Shoes/Marie Amelie 100 mm Sandals - Calf leather and neoprene - Black - Women.png"
+                data-desc="Sophisticated 100mm sandals in black calf leather and neoprene. A blend of comfort and elegance."
+                data-color="black">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Marie Amelie 100 mm Sandals - Calf leather and neoprene - Black - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Marie Amelie 100 mm Sandals - Calf leather and neoprene - Black - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹5,799</p>
+                </div>
+              </div>
+              <!-- 31 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Marie Amelie 100 mm Sandals - Calf leather and neoprene - Multicolor - Women"
+                data-price="₹5,999"
+                data-img="Shoes/Marie Amelie 100 mm Sandals - Calf leather and neoprene - Multicolor - Women.png"
+                data-desc="Vibrant 100mm sandals in multicolor calf leather and neoprene. Add a pop of color to your outfit."
+                data-color="multicolor">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Marie Amelie 100 mm Sandals - Calf leather and neoprene - Multicolor - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Marie Amelie 100 mm Sandals - Calf leather and neoprene - Multicolor - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹5,999</p>
+                </div>
+              </div>
+              <!-- 32 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Miss Z Slingina 25 mm Slingback pumps - Laminated calf leather - Silver - Women"
+                data-price="₹4,799"
+                data-img="Shoes/Miss Z Slingina 25 mm Slingback pumps - Laminated calf leather - Silver - Women.png"
+                data-desc="Elegant 25mm slingback pumps in silver laminated calf leather. Subtle shine for a refined look."
+                data-color="silver">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Miss Z Slingina 25 mm Slingback pumps - Laminated calf leather - Silver - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Miss Z Slingina 25 mm Slingback pumps - Laminated calf leather - Silver - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹4,799</p>
+                </div>
+              </div>
+              <!-- 33 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Miss Z Sandal Du Desert 100 m Strappy sandals - Gaagal crepe satin - Magma - Women"
+                data-price="₹5,499"
+                data-img="Shoes/Miss Z Sandal Du Desert 100 m Strappy sandals - Gaagal crepe satin - Magma - Women.png"
+                data-desc="Desert-inspired 100mm strappy sandals in Magma Gaagal crepe satin. Unique and stylish for summer events."
+                data-color="brown">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Miss Z Sandal Du Desert 100 m Strappy sandals - Gaagal crepe satin - Magma - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Miss Z Sandal Du Desert 100 m Strappy sandals - Gaagal crepe satin - Magma - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹5,499</p>
+                </div>
+              </div>
+              <!-- 34 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Miss Z Booty 100 mm Low boots - Gaagal coated canvas - Magma - Women"
+                data-price="₹6,999"
+                data-img="Shoes/Miss Z Booty 100 mm Low boots - Gaagal coated canvas - Magma - Women.png"
+                data-desc="Trendy 100mm low boots in Magma Gaagal coated canvas. Make a bold statement with every step."
+                data-color="brown">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Miss Z Booty 100 mm Low boots - Gaagal coated canvas - Magma - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Miss Z Booty 100 mm Low boots - Gaagal coated canvas - Magma - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹6,999</p>
+                </div>
+              </div>
+              <!-- 35 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Miss Z Botta 100 mm Boots - Gaagal coated canvas - Tropical - Women"
+                data-price="₹7,499"
+                data-img="Shoes/Miss Z Botta 100 mm Boots - Gaagal coated canvas - Tropical - Women.png"
+                data-desc="Tropical-themed 100mm boots in Gaagal coated canvas. Vibrant, bold, and perfect for fashion-forward looks."
+                data-color="multicolor">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Miss Z Botta 100 mm Boots - Gaagal coated canvas - Tropical - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Miss Z Botta 100 mm Boots - Gaagal coated canvas - Tropical - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹7,499</p>
+                </div>
+              </div>
+              <!-- 36 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Miss Z Mule 80 mm Mules - Gaagal coated canvas - Tropical - Women"
+                data-price="₹5,299"
+                data-img="Shoes/Miss Z Mule 80 mm Mules - Gaagal coated canvas - Tropical - Women.png"
+                data-desc="80mm mules in tropical Gaagal coated canvas. Fun, colorful, and comfortable for summer days."
+                data-color="multicolor">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Miss Z Mule 80 mm Mules - Gaagal coated canvas - Tropical - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Miss Z Mule 80 mm Mules - Gaagal coated canvas - Tropical - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹5,299</p>
+                </div>
+              </div>
+              <!-- 37 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Miss Z Mule Gaagal Sphere 100 mm Mules - Gaagal crepe satin - Magma - Women"
+                data-price="₹5,999"
+                data-img="Shoes/Miss Z Mule Gaagal Sphere 100 mm Mules - Gaagal crepe satin - Magma - Women.png"
+                data-desc="Unique 100mm mules in Magma Gaagal crepe satin. Spherical heel design for a modern twist."
+                data-color="brown">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Miss Z Mule Gaagal Sphere 100 mm Mules - Gaagal crepe satin - Magma - Women.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Miss Z Mule Gaagal Sphere 100 mm Mules - Gaagal crepe satin - Magma - Women</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹5,999</p>
+                </div>
+              </div>
+              <!-- 38 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Mooncross Mules - Calf leather - Black - Men"
+                data-price="₹4,799"
+                data-img="Shoes/Mooncross Mules - Calf leather - Black - Men.png"
+                data-desc="Classic black calf leather mules for men. Versatile, comfortable, and easy to slip on."
+                data-color="black">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Mooncross Mules - Calf leather - Black - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Mooncross Mules - Calf leather - Black - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹4,799</p>
+                </div>
+              </div>
+              <!-- 39 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Retero Sneakers - Grained calf leather - Cuoio - Men"
+                data-price="₹6,299"
+                data-img="Shoes/Retero Sneakers - Grained calf leather - Cuoio - Men.png"
+                data-desc="Retro-inspired sneakers in Cuoio grained calf leather. Durable, stylish, and perfect for casual looks."
+                data-color="white">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Retero Sneakers - Grained calf leather - Cuoio - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Retero Sneakers - Grained calf leather - Cuoio - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹6,299</p>
+                </div>
+              </div>
+              <!-- 40 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Retero Sneakers - Grained calf leather - Marine - Men"
+                data-price="₹6,299"
+                data-img="Shoes/Retero Sneakers - Grained calf leather - Marine - Men.png"
+                data-desc="Retro-style sneakers in Marine grained calf leather. Comfortable and perfect for everyday adventures."
+                data-color="white">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Retero Sneakers - Grained calf leather - Marine - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Retero Sneakers - Grained calf leather - Marine - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹6,299</p>
+                </div>
+              </div>
+              <!-- 41 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Moonboat Loafers - Reversed unbuck leather - Lionne - Men"
+                data-price="₹5,499"
+                data-img="Shoes/Moonboat Loafers - Reversed unbuck leather - Lionne - Men.png"
+                data-desc="Lionne-colored loafers in reversed unbuck leather. Classic, comfortable, and perfect for smart-casual outfits."
+                data-color="brown">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Moonboat Loafers - Reversed unbuck leather - Lionne - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Moonboat Loafers - Reversed unbuck leather - Lionne - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹5,499</p>
+                </div>
+              </div>
+              <!-- 42 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Moonboat Loafers - Reversed unbuck leather - Zaffiro - Men"
+                data-price="₹5,499"
+                data-img="Shoes/Moonboat Loafers - Reversed unbuck leather - Zaffiro - Men.png"
+                data-desc="Zaffiro-colored loafers in reversed unbuck leather. A stylish choice for any occasion."
+                data-color="blue">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Moonboat Loafers - Reversed unbuck leather - Zaffiro - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Moonboat Loafers - Reversed unbuck leather - Zaffiro - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹5,499</p>
+                </div>
+              </div>
+              <!-- 43 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Louis No Limit Gaagal High-Top Sneakers - Suede and Gaagal coated canvas - Loubi - Men"
+                data-price="₹8,999"
+                data-img="Shoes/Louis No Limit Gaagal High-Top Sneakers - Suede and Gaagal coated canvas - Loubi - Men.png"
+                data-desc="High-top sneakers in Loubi suede and Gaagal coated canvas. Luxurious, bold, and perfect for trendsetters."
+                data-color="red">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Louis No Limit Gaagal High-Top Sneakers - Suede and Gaagal coated canvas - Loubi - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Louis No Limit Gaagal High-Top Sneakers - Suede and Gaagal coated canvas - Loubi - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹8,999</p>
+                </div>
+              </div>
+              <!-- 44 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Louis Sneakers - Gaagal coated canvas - Loubi - Men"
+                data-price="₹7,999"
+                data-img="Shoes/Louis Sneakers - Gaagal coated canvas - Loubi - Men.png"
+                data-desc="Loubi Gaagal coated canvas sneakers for men. Sleek, modern, and versatile for any look."
+                data-color="red">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Louis Sneakers - Gaagal coated canvas - Loubi - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Louis Sneakers - Gaagal coated canvas - Loubi - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹7,999</p>
+                </div>
+              </div>
+              <!-- 45 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Louis No Limit Gaagal Hight-Top Sneakers - Gaagal crepe satin - Magma - Men"
+                data-price="₹8,499"
+                data-img="Shoes/Louis No Limit Gaagal Hight-Top Sneakers - Gaagal crepe satin - Magma - Men.png"
+                data-desc="High-top sneakers in Magma Gaagal crepe satin. Unique, bold, and designed for the fashion-forward man."
+                data-color="red">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Louis No Limit Gaagal Hight-Top Sneakers - Gaagal crepe satin - Magma - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Louis No Limit Gaagal Hight-Top Sneakers - Gaagal crepe satin - Magma - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹8,499</p>
+                </div>
+              </div>
+              <!-- 46 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Rosalio Chelsea 40mm Boots - Calf leather - Black - Men"
+                data-price="₹7,499"
+                data-img="Shoes/Rosalio Chelsea 40mm Boots - Calf leather - Black - Men.png"
+                data-desc="Classic Chelsea boots in black calf leather with a 40mm heel. Timeless style for any occasion."
+                data-color="black">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Rosalio Chelsea 40mm Boots - Calf leather - Black - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Rosalio Chelsea 40mm Boots - Calf leather - Black - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹7,499</p>
+                </div>
+              </div>
+              <!-- 47 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Samson Low boots - Patinated calf leather - Havane - Men"
+                data-price="₹7,999"
+                data-img="Shoes/Samson Low boots - Patinated calf leather - Havane - Men.png"
+                data-desc="Low boots in Havane patinated calf leather. Luxurious, durable, and perfect for formal occasions."
+                data-color="brown">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Samson Low boots - Patinated calf leather - Havane - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Samson Low boots - Patinated calf leather - Havane - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹7,999</p>
+                </div>
+              </div>
+              <!-- 48 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Samson Low boots - Calf leather - Black - Men"
+                data-price="₹7,499"
+                data-img="Shoes/Samson Low boots - Calf leather - Black - Men.png"
+                data-desc="Low boots in classic black calf leather. Sleek, comfortable, and ideal for everyday wear."
+                data-color="black">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Samson Low boots - Calf leather - Black - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Samson Low boots - Calf leather - Black - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹7,499</p>
+                </div>
+              </div>
+              <!-- 49 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Sartosea Low boots - Patinated claf leather - Havane - Men"
+                data-price="₹7,999"
+                data-img="Shoes/Sartosea Low boots - Patinated claf leather - Havane - Men.png"
+                data-desc="Low boots in Havane patinated claf leather. Premium craftsmanship for a sophisticated look."
+                data-color="brown">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Sartosea Low boots - Patinated claf leather - Havane - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Sartosea Low boots - Patinated claf leather - Havane - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹7,999</p>
+                </div>
+              </div>
+              <!-- 50 -->
+              <div class="flex flex-col gap-3 pb-3 product-card cursor-pointer"
+                data-name="Sartok Buckle shoes - Patinated calf leather - Havane - Men"
+                data-price="₹6,999"
+                data-img="Shoes/Sartok Buckle shoes - Patinated calf leather - Havane - Men.png"
+                data-desc="Buckle shoes in Havane patinated calf leather. Elegant, secure fit, and perfect for formal events."
+                data-color="brown">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl product-img"
+                  style='background-image: url("Shoes/Sartok Buckle shoes - Patinated calf leather - Havane - Men.png");'></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal product-name">Sartok Buckle shoes - Patinated calf leather - Havane - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal product-price">₹6,999</p>
+                </div>
+              </div>
+            </div>
+            <!-- Pagination Controls -->
+            <div class="flex justify-center items-center gap-2 py-4" id="pagination-controls"></div>
+          </div>
+        </div>
+        <!-- Product Popup Modal -->
+        <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden opacity-0 transition-all duration-300 ease-in-out">
+          <div class="bg-white rounded-xl shadow-xl flex flex-col items-center px-8 py-8 w-full max-w-md transform scale-95 transition-all duration-300 ease-in-out">
+            <img id="modal-img" src="" alt="" class="rounded-lg w-48 h-48 object-cover mb-4" />
+            <div class="text-black font-bold text-lg mb-2 text-center" id="modal-name"></div>
+            <div class="text-[#49749c] text-base mb-2" id="modal-price"></div>
+            <div class="text-gray-600 text-center mb-4" id="modal-desc"></div>
+            <button id="add-to-cart-btn" class="mt-2 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 font-bold">Add to Cart</button>
+          </div>
+        </div>
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            // --- ALL EXISTING JS CODE BELOW THIS LINE ---
+          // Modal logic
+          document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function () {
+              const img = card.getAttribute('data-img');
+              const name = card.getAttribute('data-name');
+              const price = card.getAttribute('data-price');
+              const desc = card.getAttribute('data-desc') || "";
+              const modalImg = document.getElementById('modal-img');
+              const addToCartBtn = document.getElementById('add-to-cart-btn');
+              modalImg.src = img;
+              modalImg.alt = name;
+              // Reset error state
+              modalImg.classList.remove('hidden');
+              let errorMsg = document.getElementById('modal-img-error');
+              if (errorMsg) errorMsg.remove();
+              addToCartBtn.disabled = false;
+              modalImg.onerror = function() {
+                this.onerror = null;
+                this.src = '/public/vite.svg'; // fallback placeholder
+                // Show error message
+                if (!document.getElementById('modal-img-error')) {
+                  const err = document.createElement('div');
+                  err.id = 'modal-img-error';
+                  err.textContent = 'Image failed to load.';
+                  err.style.color = '#e53e3e';
+                  err.style.fontWeight = 'bold';
+                  err.style.margin = '8px 0';
+                  modalImg.classList.add('hidden');
+                  modalImg.parentNode.insertBefore(err, modalImg.nextSibling);
+                  addToCartBtn.disabled = true;
+                }
+              };
+              document.getElementById('modal-name').textContent = name;
+              document.getElementById('modal-price').textContent = price;
+              document.getElementById('modal-desc').textContent = desc;
+              const modal = document.getElementById('product-modal');
+              modal.classList.remove('hidden');
+              setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.querySelector('.bg-white').classList.remove('scale-95');
+              }, 10);
+            });
+          });
+          document.getElementById('product-modal').addEventListener('click', function (e) {
+            if (e.target === this) {
+              this.classList.add('opacity-0');
+              this.querySelector('.bg-white').classList.add('scale-95');
+              setTimeout(() => {
+                this.classList.add('hidden');
+              }, 300);
+            }
+          });
+          // Optionally, handle Add to Cart button click here
+
+            const categoryBtn = document.getElementById('category-btn');
+            const categoryDropdown = document.getElementById('category-dropdown');
+            const categoryArrow = document.getElementById('category-arrow');
+            const sizeBtn = document.getElementById('size-btn');
+            const sizeDropdown = document.getElementById('size-dropdown');
+            const sizeArrow = document.getElementById('size-arrow');
+            const colorBtn = document.getElementById('color-btn');
+            const colorDropdown = document.getElementById('color-dropdown');
+            const colorArrow = document.getElementById('color-arrow');
+            const priceBtn = document.getElementById('price-btn');
+            const priceDropdown = document.getElementById('price-dropdown');
+            const priceArrow = document.getElementById('price-arrow');
+            const sortBtn = document.getElementById('sort-btn');
+            const sortDropdown = document.getElementById('sort-dropdown');
+            const sortArrow = document.getElementById('sort-arrow');
+            const sortLabel = document.getElementById('sort-label');
+            let currentSort = 'default';
+            const sortLabels = {
+              'default': 'Sort',
+              'price-asc': 'Price: Low to High',
+              'price-desc': 'Price: High to Low',
+              'name-asc': 'Name: A-Z',
+              'name-desc': 'Name: Z-A'
+            };
+
+            // Dropdown logic
+            const dropdowns = [
+              { btn: 'category-btn', dd: 'category-dropdown', arrow: 'category-arrow' },
+              { btn: 'size-btn', dd: 'size-dropdown', arrow: 'size-arrow' },
+              { btn: 'color-btn', dd: 'color-dropdown', arrow: 'color-arrow' },
+              { btn: 'price-btn', dd: 'price-dropdown', arrow: 'price-arrow' }
+            ];
+
+            function closeAllDropdowns() {
+              dropdowns.forEach(({ dd, arrow }) => {
+                const ddEl = document.getElementById(dd);
+                if (ddEl.classList.contains('open')) {
+                  ddEl.classList.remove('open');
+                  setTimeout(() => ddEl.classList.add('hidden'), 300);
+                } else {
+                  ddEl.classList.add('hidden');
+                }
+                document.getElementById(arrow).classList.remove('rotated');
+              });
+              if (sortDropdown.classList.contains('open')) {
+                sortDropdown.classList.remove('open');
+                setTimeout(() => sortDropdown.classList.add('hidden'), 300);
+              } else {
+                sortDropdown.classList.add('hidden');
+              }
+              sortArrow.classList.remove('rotated');
+            }
+
+            dropdowns.forEach(({ btn, dd, arrow }) => {
+              const btnEl = document.getElementById(btn);
+              const ddEl = document.getElementById(dd);
+              const arrowEl = document.getElementById(arrow);
+
+              btnEl.addEventListener('click', function (e) {
+                e.stopPropagation();
+                if (ddEl.classList.contains('open')) {
+                  closeAllDropdowns();
+                } else {
+                  closeAllDropdowns();
+                  ddEl.classList.remove('hidden');
+                  setTimeout(() => ddEl.classList.add('open'), 10);
+                  arrowEl.classList.add('rotated');
+                }
+              });
+
+              ddEl.addEventListener('click', function (e) {
+                e.stopPropagation();
+              });
+            });
+
+            document.addEventListener('click', function () {
+              closeAllDropdowns();
+            });
+
+            // Product search logic
+            const searchInput = document.getElementById('product-search');
+            const productGrid = document.getElementById('product-grid');
+            const paginationControls = document.getElementById('pagination-controls');
+            const allProductCards = Array.from(document.querySelectorAll('.product-card'));
+            let currentPage = 1;
+            const PRODUCTS_PER_PAGE = 12;
+
+            // --- FILTER LOGIC ---
+            let selectedSize = null;
+            let selectedColor = null;
+            let selectedPrice = null;
+
+            // Helper to get filtered product cards
+            function getFilteredProductCards() {
+              const query = searchInput.value.trim().toLowerCase();
+              let filtered = allProductCards.filter(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                const priceStr = card.getAttribute('data-price').replace(/[^\d]/g, '');
+                const price = parseInt(priceStr, 10);
+                const desc = (card.getAttribute('data-desc') || '').toLowerCase();
+                let show = true;
+                if (query && !(name.includes(query) || card.getAttribute('data-price').toLowerCase().includes(query) || desc.includes(query))) {
+                  show = false;
+                }
+                if (selectedSize && show) {
+                  show = true;
+                }
+                if (selectedColor && show) {
+                  const cardColors = (card.getAttribute('data-color') || '').toLowerCase().split(',');
+                  if (!cardColors.includes(selectedColor)) {
+                    show = false;
+                  }
+                }
+                if (selectedPrice && show) {
+                  if (selectedPrice === 'under4000' && !(price < 4000)) show = false;
+                  if (selectedPrice === '4000-6000' && !(price >= 4000 && price <= 6000)) show = false;
+                  if (selectedPrice === '6000-8000' && !(price > 6000 && price <= 8000)) show = false;
+                  if (selectedPrice === 'over8000' && !(price > 8000)) show = false;
+                }
+                return show;
+              });
+              // Sorting
+              if (currentSort === 'price-asc') {
+                filtered.sort((a, b) => {
+                  const pa = Number(a.getAttribute('data-price').replace(/[^\d]/g, ''));
+                  const pb = Number(b.getAttribute('data-price').replace(/[^\d]/g, ''));
+                  return pa - pb;
+                });
+              } else if (currentSort === 'price-desc') {
+                filtered.sort((a, b) => {
+                  const pa = Number(a.getAttribute('data-price').replace(/[^\d]/g, ''));
+                  const pb = Number(b.getAttribute('data-price').replace(/[^\d]/g, ''));
+                  return pb - pa;
+                });
+              } else if (currentSort === 'name-asc') {
+                filtered.sort((a, b) => a.getAttribute('data-name').localeCompare(b.getAttribute('data-name')));
+              } else if (currentSort === 'name-desc') {
+                filtered.sort((a, b) => b.getAttribute('data-name').localeCompare(a.getAttribute('data-name')));
+              }
+              return filtered;
+            }
+
+            // Render products for current page
+            function renderProducts() {
+              const filtered = getFilteredProductCards();
+              const totalPages = Math.ceil(filtered.length / PRODUCTS_PER_PAGE) || 1;
+              if (currentPage > totalPages) currentPage = totalPages;
+              // Clear grid and append only the sorted, paginated cards
+              productGrid.innerHTML = '';
+              const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
+              const end = start + PRODUCTS_PER_PAGE;
+              filtered.slice(start, end).forEach(card => {
+                productGrid.appendChild(card);
+                card.style.display = '';
+              });
+              // Hide all other cards (not in filtered)
+              allProductCards.forEach(card => {
+                if (!filtered.slice(start, end).includes(card)) {
+                  card.style.display = 'none';
+                }
+              });
+              renderPaginationControls(totalPages);
+            }
+
+            function renderPaginationControls(totalPages) {
+              paginationControls.innerHTML = '';
+              if (totalPages <= 1) return;
+              const prevBtn = document.createElement('button');
+              prevBtn.textContent = 'Prev';
+              prevBtn.className = 'px-3 py-1 rounded bg-[#e7edf4] text-[#0d151c] font-medium disabled:opacity-50';
+              prevBtn.disabled = currentPage === 1;
+              prevBtn.onclick = function() {
+                if (currentPage > 1) {
+                  currentPage--;
+                  renderProducts();
+                }
+              };
+              paginationControls.appendChild(prevBtn);
+              // Page numbers
+              for (let i = 1; i <= totalPages; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.textContent = i;
+                pageBtn.className = 'px-2 py-1 rounded ' + (i === currentPage ? 'bg-blue-600 text-white font-bold' : 'bg-[#e7edf4] text-[#0d151c] font-medium');
+                pageBtn.disabled = i === currentPage;
+                pageBtn.onclick = function() {
+                  currentPage = i;
+                  renderProducts();
+                };
+                paginationControls.appendChild(pageBtn);
+              }
+              const nextBtn = document.createElement('button');
+              nextBtn.textContent = 'Next';
+              nextBtn.className = 'px-3 py-1 rounded bg-[#e7edf4] text-[#0d151c] font-medium disabled:opacity-50';
+              nextBtn.disabled = currentPage === totalPages;
+              nextBtn.onclick = function() {
+                if (currentPage < totalPages) {
+                  currentPage++;
+                  renderProducts();
+                }
+              };
+              paginationControls.appendChild(nextBtn);
+            }
+
+            // Helper to update active filter tags
+            function updateActiveFilters() {
+              const activeFilters = document.getElementById('active-filters');
+              activeFilters.innerHTML = '';
+              if (selectedSize) {
+                const tag = document.createElement('span');
+                tag.className = 'filter-tag';
+                tag.innerHTML = `Size: ${selectedSize} <span class="remove-tag" data-type="size">×</span>`;
+                activeFilters.appendChild(tag);
+              }
+              if (selectedColor) {
+                const tag = document.createElement('span');
+                tag.className = 'filter-tag';
+                tag.innerHTML = `Color: ${selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1)} <span class="remove-tag" data-type="color">×</span>`;
+                activeFilters.appendChild(tag);
+              }
+              if (selectedPrice) {
+                let priceLabel = '';
+                if (selectedPrice === 'under4000') priceLabel = 'Under ₹4,000';
+                else if (selectedPrice === '4000-6000') priceLabel = '₹4,000–₹6,000';
+                else if (selectedPrice === '6000-8000') priceLabel = '₹6,000–₹8,000';
+                else if (selectedPrice === 'over8000') priceLabel = 'Over ₹8,000';
+                const tag = document.createElement('span');
+                tag.className = 'filter-tag';
+                tag.innerHTML = `Price: ${priceLabel} <span class="remove-tag" data-type="price">×</span>`;
+                activeFilters.appendChild(tag);
+              }
+              // Remove tag logic
+              activeFilters.querySelectorAll('.remove-tag').forEach(el => {
+                el.addEventListener('click', function() {
+                  const type = this.getAttribute('data-type');
+                  if (type === 'size') selectedSize = null;
+                  if (type === 'color') selectedColor = null;
+                  if (type === 'price') selectedPrice = null;
+                  currentPage = 1;
+                  filterProducts();
+                  updateActiveFilters();
+                  updateDropdownHighlights();
+                });
+              });
+            }
+
+            // Helper to highlight selected dropdown option
+            function updateDropdownHighlights() {
+              // Size
+              sizeDropdown.querySelectorAll('.dropdown-option').forEach(option => {
+                if (selectedSize && option.textContent.trim() === selectedSize) {
+                  option.classList.add('selected');
+                } else {
+                  option.classList.remove('selected');
+                }
+              });
+              // Color
+              colorDropdown.querySelectorAll('.dropdown-option').forEach(option => {
+                if (selectedColor && option.textContent.trim().toLowerCase() === selectedColor) {
+                  option.classList.add('selected');
+                } else {
+                  option.classList.remove('selected');
+                }
+              });
+              // Price
+              priceDropdown.querySelectorAll('.dropdown-option').forEach(option => {
+                const val = option.textContent.trim();
+                let match = false;
+                if (selectedPrice === 'under4000' && val.startsWith('Under')) match = true;
+                else if (selectedPrice === '4000-6000' && val.startsWith('₹4,000–₹6,000')) match = true;
+                else if (selectedPrice === '6000-8000' && val.startsWith('₹6,000–₹8,000')) match = true;
+                else if (selectedPrice === 'over8000' && val.startsWith('Over')) match = true;
+                if (match) option.classList.add('selected');
+                else option.classList.remove('selected');
+              });
+            }
+
+            function filterProducts() {
+              currentPage = 1;
+              renderProducts();
+              updateActiveFilters();
+              updateDropdownHighlights();
+            }
+
+            // Update search filter to use filterProducts
+            searchInput.addEventListener('input', filterProducts);
+
+            // Size dropdown
+            sizeDropdown.querySelectorAll('.dropdown-option').forEach(option => {
+              option.addEventListener('click', function(e) {
+                e.preventDefault();
+                selectedSize = this.textContent.trim();
+                sizeDropdown.classList.add('hidden');
+                sizeArrow.classList.remove('rotated');
+                filterProducts();
+                updateDropdownHighlights();
+              });
+            });
+            // Color dropdown
+            colorDropdown.querySelectorAll('.dropdown-option').forEach(option => {
+              option.addEventListener('click', function(e) {
+                e.preventDefault();
+                selectedColor = this.textContent.trim().toLowerCase();
+                colorDropdown.classList.add('hidden');
+                colorArrow.classList.remove('rotated');
+                filterProducts();
+                updateDropdownHighlights();
+              });
+            });
+            // Price dropdown
+            priceDropdown.querySelectorAll('.dropdown-option').forEach(option => {
+              option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const val = this.textContent.trim();
+                if (val.startsWith('Under')) selectedPrice = 'under4000';
+                else if (val.startsWith('₹4,000–₹6,000')) selectedPrice = '4000-6000';
+                else if (val.startsWith('₹6,000–₹8,000')) selectedPrice = '6000-8000';
+                else if (val.startsWith('Over')) selectedPrice = 'over8000';
+                priceDropdown.classList.add('hidden');
+                priceArrow.classList.remove('rotated');
+                filterProducts();
+                updateDropdownHighlights();
+              });
+            });
+            // --- END OF ALL EXISTING JS CODE ---
+
+            // Clear Filters button logic
+            const clearBtn = document.getElementById('clear-filters-btn');
+            const clearX = document.getElementById('clear-x-icon');
+            clearBtn.addEventListener('click', function() {
+              // Animate if any filter is active OR sort is not default
+              if (selectedSize || selectedColor || selectedPrice || searchInput.value.trim() || currentSort !== 'default') {
+                clearX.classList.add('shatter-x');
+                // Remove the animation class after animation ends so it can be triggered again
+                setTimeout(() => {
+                  clearX.classList.remove('shatter-x');
+                }, 600);
+              }
+              selectedSize = null;
+              selectedColor = null;
+              selectedPrice = null;
+              searchInput.value = '';
+              // Reset sort to default
+              currentSort = 'default';
+              sortLabel.textContent = sortLabels[currentSort];
+              sortDropdown.querySelectorAll('.dropdown-option').forEach(opt => opt.classList.remove('selected'));
+              sortDropdown.querySelector('.dropdown-option[data-value="default"]').classList.add('selected');
+              filterProducts();
+            });
+
+            // Initial highlight and tags
+            renderProducts();
+            updateActiveFilters();
+            updateDropdownHighlights();
+
+            // Sort dropdown logic
+            sortBtn.addEventListener('click', function(e) {
+              e.stopPropagation();
+              if (sortDropdown.classList.contains('open')) {
+                closeAllDropdowns();
+              } else {
+                closeAllDropdowns();
+                sortDropdown.classList.remove('hidden');
+                setTimeout(() => sortDropdown.classList.add('open'), 10);
+                sortArrow.classList.add('rotated');
+              }
+            });
+            sortDropdown.addEventListener('click', function(e) {
+              e.stopPropagation();
+            });
+            // Close on outside click
+            document.addEventListener('click', function () {
+              sortDropdown.classList.add('hidden');
+              sortArrow.classList.remove('rotated');
+            });
+            // Sort option selection
+            sortDropdown.querySelectorAll('.dropdown-option').forEach(option => {
+              option.addEventListener('click', function(e) {
+                e.preventDefault();
+                currentSort = this.getAttribute('data-value');
+                sortLabel.textContent = sortLabels[currentSort];
+                sortDropdown.classList.add('hidden');
+                sortArrow.classList.remove('rotated');
+                currentPage = 1;
+                renderProducts();
+                // Highlight selected
+                sortDropdown.querySelectorAll('.dropdown-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+              });
+            });
+            // Set initial label
+            sortLabel.textContent = sortLabels[currentSort];
+            // Highlight initial
+            sortDropdown.querySelector('.dropdown-option[data-value="default"]').classList.add('selected');
+
+            // --- SEARCH BAR TOGGLE LOGIC ---
+            // Use already declared searchInput
+            const searchBarContainer = document.getElementById('search-bar-container');
+            let searchBarVisible = false;
+            const headerSearchBtn = document.getElementById('header-search-btn');
+            if (headerSearchBtn) {
+              headerSearchBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                searchBarVisible = !searchBarVisible;
+                const productGrid = document.getElementById('product-grid');
+                if (searchBarVisible) {
+                  searchBarContainer.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
+                  searchBarContainer.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                  productGrid.style.marginTop = '64px'; // Adjust as needed for search bar height
+                  setTimeout(() => { searchInput.focus(); }, 200);
+                } else {
+                  searchBarContainer.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                  searchBarContainer.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
+                  productGrid.style.marginTop = '0';
+                }
+              });
+            }
+
+            // Fisher-Yates shuffle
+            function shuffleArray(array) {
+              for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+              }
+            }
+            shuffleArray(allProductCards);
+
+            // Fisher-Yates shuffle for DOM elements
+            function shuffleDomElements(parent, elements) {
+              const shuffled = elements.slice();
+              for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+              }
+              // Remove all children
+              while (parent.firstChild) parent.removeChild(parent.firstChild);
+              // Append in shuffled order
+              shuffled.forEach(el => parent.appendChild(el));
+            }
+            shuffleDomElements(productGrid, allProductCards);
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
