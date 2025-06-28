@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
     />
 
-    <title>Stitch Design</title>
+    <title>Style Zone</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -26,7 +26,7 @@
             </div>
             <h2 class="text-[#0d141c] text-lg font-bold leading-tight tracking-[-0.015em]">StyleZone</h2>
             <div class="flex items-center gap-9 ml-8">
-              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#">Home</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#" id="home-link">Home</a>
               <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#" id="shop-link">Shop</a>
               <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#" id="categories-link">Categories</a>
               <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#" id="sale-link">Sale</a>
@@ -94,7 +94,7 @@
               </button>
             </div>
             <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
-              <div class="flex flex-col gap-3 pb-3">
+              <div class="flex flex-col gap-3 pb-3 cursor-pointer" onclick="showProductPopup('Summer Dress', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBnWKUg8IBvbDdgS3g0Lt_ADiZuyaFVs4Z4iNbaGFEoOJCnYaF5MPnvqPmlmRxug1e-A0_P8ETIxhuXknxnAhgTruR5ILAGe9Jd1Hp4R7Lb_zPKoTAeu7Ku2XrHBEAfuDzpm4m3o5ecyB76ew5Ye_IQq0JS45qkg7gXwjVGzSSNXpfOS3leqhU3ntF5y91hGWpDP9XDBpCXexpJ7XeA0bSJM70OmUwP9giHrZJhPHCT_dao3R32wLfVj2EkQ7F8kv1hRR3GrVnn869b', '$49.99', 'A stylish summer dress made from lightweight fabric. Perfect for casual outings and warm weather.')">
                 <div
                   class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBnWKUg8IBvbDdgS3g0Lt_ADiZuyaFVs4Z4iNbaGFEoOJCnYaF5MPnvqPmlmRxug1e-A0_P8ETIxhuXknxnAhgTruR5ILAGe9Jd1Hp4R7Lb_zPKoTAeu7Ku2XrHBEAfuDzpm4m3o5ecyB76ew5Ye_IQq0JS45qkg7gXwjVGzSSNXpfOS3leqhU3ntF5y91hGWpDP9XDBpCXexpJ7XeA0bSJM70OmUwP9giHrZJhPHCT_dao3R32wLfVj2EkQ7F8kv1hRR3GrVnn869b");'
@@ -104,7 +104,7 @@
                   <p class="text-[#49749c] text-sm font-normal leading-normal">$49.99</p>
                 </div>
               </div>
-              <div class="flex flex-col gap-3 pb-3">
+              <div class="flex flex-col gap-3 pb-3 cursor-pointer" onclick="showProductPopup('Leather Handbag', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCPq2ZffkcXgr9lgFiCqplxTnjXZ5Z1F51_hSAYreEzFbRjcFWkaA-vw7WpcSzoZyhOdi06JcxuNgNfvjenLTWTqh6Nq3CeT6g4ovuV9N-182_EcQxoAPr21jWXPJi7UI4aqyN30rTN6drW02gXN71WJenZNnVnEQbqE7qv7pHMPRG-1or8xwWcnHPrattIq6pOPWRZ4wHN0KmZYm-nPOzWqu8GeRa2HqxqfOwp2G63GwOAbp9zUT89pKmiZgvbwGrTG84WIHItcCC-', '$99.99')">
                 <div
                   class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPq2ZffkcXgr9lgFiCqplxTnjXZ5Z1F51_hSAYreEzFbRjcFWkaA-vw7WpcSzoZyhOdi06JcxuNgNfvjenLTWTqh6Nq3CeT6g4ovuV9N-182_EcQxoAPr21jWXPJi7UI4aqyN30rTN6drW02gXN71WJenZNnVnEQbqE7qv7pHMPRG-1or8xwWcnHPrattIq6pOPWRZ4wHN0KmZYm-nPOzWqu8GeRa2HqxqfOwp2G63GwOAbp9zUT89pKmiZgvbwGrTG84WIHItcCC-");'
@@ -114,7 +114,7 @@
                   <p class="text-[#49749c] text-sm font-normal leading-normal">$99.99</p>
                 </div>
               </div>
-              <div class="flex flex-col gap-3 pb-3">
+              <div class="flex flex-col gap-3 pb-3 cursor-pointer" onclick="showProductPopup('Running Shoes', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBtXpaZgWS2dq_ohAtJzI_ed4g9hzgqihrJgqnlThDYnI1BHGN3beI4ruiEyv1ej9jjzOjtiKmHMAA_0I0lIVGnzNK9XzwxTEBaG2vT1rQZx2lWGNWMcuzji3_3xvIJNNKt0tbDqV736Ep2n74Dv2vHLaTC6X-If5QfYG93c1YNQ-R7shg9A-EDs96HYZe5JCkWHTzszGha5PrmOC_kE4Pf9eLe1lie_6_RWMZ2LEsDmMOWuLFKYpDbHJ7UfifLRhti3voaLQm7nhch', '$59.99')">
                 <div
                   class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBtXpaZgWS2dq_ohAtJzI_ed4g9hzgqihrJgqnlThDYnI1BHGN3beI4ruiEyv1ej9jjzOjtiKmHMAA_0I0lIVGnzNK9XzwxTEBaG2vT1rQZx2lWGNWMcuzji3_3xvIJNNKt0tbDqV736Ep2n74Dv2vHLaTC6X-If5QfYG93c1YNQ-R7shg9A-EDs96HYZe5JCkWHTzszGha5PrmOC_kE4Pf9eLe1lie_6_RWMZ2LEsDmMOWuLFKYpDbHJ7UfifLRhti3voaLQm7nhch");'
@@ -124,7 +124,7 @@
                   <p class="text-[#49749c] text-sm font-normal leading-normal">$59.99</p>
                 </div>
               </div>
-              <div class="flex flex-col gap-3 pb-3">
+              <div class="flex flex-col gap-3 pb-3 cursor-pointer" onclick="showProductPopup('Stylish Watch', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBvX9C4HEGJ2sYzqeMaer2OZkVgc7Nhk2dYY6Eb718OsrCAD7RHz8A5kbYT7WmP0pQ-ftkt3cHF79jTJUdCrCsPkHHeBCtHtlk89myp8xDO06wKZ3R3MMyN1p7gPotEaiL5gz-HRQyVpZacOJwTPL3IRbcz-TIKqIl_K9B2smP-71nmWAi-BIzFdKydnTJL0uCiabbzAbI1eyhi3bM1JFjvZ7q568vqIOVAqnSja27hTvblu8J55cfxMRWthVP3BIYO7psQP4L08qb5', '$99.99')">
                 <div
                   class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBvX9C4HEGJ2sYzqeMaer2OZkVgc7Nhk2dYY6Eb718OsrCAD7RHz8A5kbYT7WmP0pQ-ftkt3cHF79jTJUdCrCsPkHHeBCtHtlk89myp8xDO06wKZ3R3MMyN1p7gPotEaiL5gz-HRQyVpZacOJwTPL3IRbcz-TIKqIl_K9B2smP-71nmWAi-BIzFdKydnTJL0uCiabbzAbI1eyhi3bM1JFjvZ7q568vqIOVAqnSja27hTvblu8J55cfxMRWthVP3BIYO7psQP4L08qb5");'
@@ -134,7 +134,7 @@
                   <p class="text-[#49749c] text-sm font-normal leading-normal">$99.99</p>
                 </div>
               </div>
-              <div class="flex flex-col gap-3 pb-3">
+              <div class="flex flex-col gap-3 pb-3 cursor-pointer" onclick="showProductPopup('Denim Jacket', 'https://lh3.googleusercontent.com/aida-public/AB6AXuA77M_UBQlCGsG9R8jTqTMPribotMgqpjOFeL-uIeSm9BKd3XROMtesKnNj6rhgKsI34gjlUcdJtZWwcGVpubkbrqZh80vgOnn5oBS5qa9QKVRlIbkKiKt_LKEt1CtC8PdjAmhx4OhxHvyHFy8F7Gi63eAd71GxKOzbpYHO3iQkpKnU_ieAfV-Ix8mfC6iLR--7BQwArRtg1gU7HNnvbQIjXs8uw3CzRAvxU1AOpHHBF-OVmm5Xb7bH__RE5pFf4qAtuwailLeCi4SX', '$49.99')">
                 <div
                   class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA77M_UBQlCGsG9R8jTqTMPribotMgqpjOFeL-uIeSm9BKd3XROMtesKnNj6rhgKsI34gjlUcdJtZWwcGVpubkbrqZh80vgOnn5oBS5qa9QKVRlIbkKiKt_LKEt1CtC8PdjAmhx4OhxHvyHFy8F7Gi63eAd71GxKOzbpYHO3iQkpKnU_ieAfV-Ix8mfC6iLR--7BQwArRtg1gU7HNnvbQIjXs8uw3CzRAvxU1AOpHHBF-OVmm5Xb7bH__RE5pFf4qAtuwailLeCi4SX");'
@@ -144,7 +144,7 @@
                   <p class="text-[#49749c] text-sm font-normal leading-normal">$49.99</p>
                 </div>
               </div>
-              <div class="flex flex-col gap-3 pb-3">
+              <div class="flex flex-col gap-3 pb-3 cursor-pointer" onclick="showProductPopup('Sunglasses', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCSZkis3306tdfwQ8vv6aNhUyzb5KcHGVZPkjN0aPmD5ZVjZCbQso_tlohx-riT0ZSeJl9hgyoGPXkhb25Lo-C4CHTc1ymEk3djOlQTxUvcxYA9yzV-uSS62HjigJl14cUuhrBiw7T35xA2uU6opBorb74Dc8_emX3dTcc7dcoNYruN8Skx79GYJWdiEp6w4T_VYdNaDfbxgFORsw0uZBkFCCy0F9CRuxeBodS359vmEYVOJb-QT6BcIS3PtyuQs5D8vMHVLdIP8w08', '$29.99')">
                 <div
                   class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCSZkis3306tdfwQ8vv6aNhUyzb5KcHGVZPkjN0aPmD5ZVjZCbQso_tlohx-riT0ZSeJl9hgyoGPXkhb25Lo-C4CHTc1ymEk3djOlQTxUvcxYA9yzV-uSS62HjigJl14cUuhrBiw7T35xA2uU6opBorb74Dc8_emX3dTcc7dcoNYruN8Skx79GYJWdiEp6w4T_VYdNaDfbxgFORsw0uZBkFCCy0F9CRuxeBodS359vmEYVOJb-QT6BcIS3PtyuQs5D8vMHVLdIP8w08");'
@@ -152,6 +152,33 @@
                 <div>
                   <p class="text-[#0d151c] text-base font-medium leading-normal">Sunglasses</p>
                   <p class="text-[#49749c] text-sm font-normal leading-normal">$29.99</p>
+                </div>
+              </div>
+            </div>
+            <!-- Product Popup Modal -->
+            <div id="productPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+              <div class="bg-white rounded-lg p-6 max-w-md w-full">
+                <div class="flex justify-between items-start mb-4">
+                  <h2 id="productName" class="text-xl font-bold"></h2>
+                  <button onclick="closeProductPopup()" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                  </button>
+                </div>
+                <div class="flex flex-col gap-4">
+                  <div class="relative w-full aspect-square">
+                    <img id="productImage" class="w-full h-full object-cover rounded-lg" src="" alt="">
+                  </div>
+                  <div class="space-y-4">
+                    <p id="productDescription" class="text-gray-600 text-sm leading-relaxed"></p>
+                    <div class="flex justify-between items-center">
+                      <p id="productPrice" class="text-lg font-semibold"></p>
+                      <button onclick="addToCart()" class="bg-[#49749c] text-white px-6 py-2 rounded-full hover:bg-[#3a6085] transition-colors">
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -222,18 +249,51 @@
       </div>
     </div>
     <script>
-document.getElementById('shop-link').onclick = function(e) {
-  e.preventDefault();
-  window.location.href = 'shop.html';
-};
-document.getElementById('categories-link').onclick = function(e) {
-  e.preventDefault();
-  window.location.href = 'categories.html';
-};
-document.getElementById('sale-link').onclick = function(e) {
-  e.preventDefault();
-  window.location.href = 'sale.html';
-};
-</script>
+      // Navigation links
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('home-link').addEventListener('click', function(e) {
+          e.preventDefault();
+          window.location.href = 'index.html';
+        });
+        document.getElementById('shop-link').onclick = function(e) {
+          e.preventDefault();
+          window.location.href = 'shop.html';
+        };
+        document.getElementById('categories-link').onclick = function(e) {
+          e.preventDefault();
+          window.location.href = 'categories.html';
+        };
+        document.getElementById('sale-link').onclick = function(e) {
+          e.preventDefault();
+          window.location.href = 'sale.html';
+        };
+      });
+
+      // Product Popup Functions
+      function showProductPopup(name, image, price, description) {
+        document.getElementById('productName').textContent = name;
+        document.getElementById('productImage').src = image;
+        document.getElementById('productPrice').textContent = price;
+        document.getElementById('productDescription').textContent = description;
+        document.getElementById('productPopup').classList.remove('hidden');
+      }
+
+      function closeProductPopup() {
+        document.getElementById('productPopup').classList.add('hidden');
+      }
+
+      function addToCart() {
+        const productName = document.getElementById('productName').textContent;
+        alert(`${productName} has been added to your cart!`);
+        closeProductPopup();
+      }
+
+      // Close popup when clicking outside
+      document.addEventListener('click', function(e) {
+        if (e.target.id === 'productPopup') {
+          closeProductPopup();
+        }
+      });
+    </script>
   </body>
 </html>
