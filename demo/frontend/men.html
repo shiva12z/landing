@@ -356,10 +356,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (color !== selectedColor) show = false;
       }
       if (selectedPrice && show) {
-        if (selectedPrice === 'under4000' && !(price < 4000)) show = false;
-        if (selectedPrice === '4000-6000' && !(price >= 4000 && price <= 6000)) show = false;
-        if (selectedPrice === '6000-8000' && !(price > 6000 && price <= 8000)) show = false;
-        if (selectedPrice === 'over8000' && !(price > 8000)) show = false;
+        if (selectedPrice === 'under50' && !(price < 50)) show = false;
+        if (selectedPrice === '50-75' && !(price >= 50 && price <= 75)) show = false;
+        if (selectedPrice === '75-100' && !(price > 75 && price <= 100)) show = false;
+        if (selectedPrice === 'over100' && !(price > 100)) show = false;
       }
       return show;
     });
@@ -568,10 +568,10 @@ document.addEventListener('DOMContentLoaded', function () {
     option.addEventListener('click', function(e) {
       e.preventDefault();
       const val = this.textContent.trim();
-      if (val.startsWith('Under')) selectedPrice = 'under4000';
-      else if (val.startsWith('$50–$75')) selectedPrice = '4000-6000';
-      else if (val.startsWith('$75–$100')) selectedPrice = '6000-8000';
-      else if (val.startsWith('Over')) selectedPrice = 'over8000';
+      if (val.startsWith('Under')) selectedPrice = 'under50';
+      else if (val.startsWith('$50–$75')) selectedPrice = '50-75';
+      else if (val.startsWith('$75–$100')) selectedPrice = '75-100';
+      else if (val.startsWith('Over')) selectedPrice = 'over100';
       priceDropdown.classList.add('hidden');
       priceArrow.classList.remove('rotated');
       filterProducts();
@@ -611,10 +611,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     if (selectedPrice) {
       let priceLabel = '';
-      if (selectedPrice === 'under4000') priceLabel = 'Under $50';
-      else if (selectedPrice === '4000-6000') priceLabel = '$50–$75';
-      else if (selectedPrice === '6000-8000') priceLabel = '$75–$100';
-      else if (selectedPrice === 'over8000') priceLabel = 'Over $100';
+      if (selectedPrice === 'under50') priceLabel = 'Under $50';
+      else if (selectedPrice === '50-75') priceLabel = '$50–$75';
+      else if (selectedPrice === '75-100') priceLabel = '$75–$100';
+      else if (selectedPrice === 'over100') priceLabel = 'Over $100';
       const tag = document.createElement('span');
       tag.className = 'filter-tag';
       tag.innerHTML = `Price: ${priceLabel} <span class="remove-tag" data-type="price">×</span>`;
@@ -665,10 +665,10 @@ document.addEventListener('DOMContentLoaded', function () {
     priceDropdown.querySelectorAll('.dropdown-option').forEach(option => {
       const val = option.textContent.trim();
       let match = false;
-      if (selectedPrice === 'under4000' && val.startsWith('Under')) match = true;
-      else if (selectedPrice === '4000-6000' && val.startsWith('$50–$75')) match = true;
-      else if (selectedPrice === '6000-8000' && val.startsWith('$75–$100')) match = true;
-      else if (selectedPrice === 'over8000' && val.startsWith('Over')) match = true;
+      if (selectedPrice === 'under50' && val.startsWith('Under')) match = true;
+      else if (selectedPrice === '50-75' && val.startsWith('$50–$75')) match = true;
+      else if (selectedPrice === '75-100' && val.startsWith('$75–$100')) match = true;
+      else if (selectedPrice === 'over100' && val.startsWith('Over')) match = true;
       if (match) option.classList.add('selected');
       else option.classList.remove('selected');
     });

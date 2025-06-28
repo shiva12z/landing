@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
     />
 
-    <title>Stitch Design</title>
+    <title>StyleZone</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -59,13 +59,19 @@
                 </svg>
               </div>
             </button>
-            <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5" aria-label="Account">
-              <div class="text-[#0d141c]" data-icon="User" data-size="20px" data-weight="regular">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                  <path d="M128,128a48,48,0,1,0-48-48A48,48,0,0,0,128,128Zm0,16c-39.7,0-72,32.3-72,72a8,8,0,0,0,8,8H192a8,8,0,0,0,8-8C200,176.3,167.7,144,128,144Z"></path>
-                </svg>
+            <div class="relative">
+              <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5" aria-label="Account" id="profile-btn">
+                <div class="text-[#0d141c]" data-icon="User" data-size="20px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M128,128a48,48,0,1,0-48-48A48,48,0,0,0,128,128Zm0,16c-39.7,0-72,32.3-72,72a8,8,0,0,0,8,8H192a8,8,0,0,0,8-8C200,176.3,167.7,144,128,144Z"></path>
+                  </svg>
+                </div>
+              </button>
+              <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-50 border border-[#e7edf4]">
+                <a href="account-settings.html" class="block px-4 py-2 text-[#0d141c] hover:bg-[#e7edf4]">Account Settings</a>
+                <a href="#" class="block px-4 py-2 text-[#0d141c] hover:bg-[#e7edf4]" id="logout-btn">Logout</a>
               </div>
-            </button>
+            </div>
           </div>
         </header>
         <div class="px-40 flex flex-1 justify-center py-5">
@@ -184,6 +190,27 @@ document.addEventListener('click', function(e) {
   if (!categoriesLink.contains(e.target) && !categoriesDropdown.contains(e.target)) {
     categoriesDropdown.classList.add('hidden');
   }
+});
+
+const profileBtn = document.getElementById('profile-btn');
+const profileDropdown = document.getElementById('profile-dropdown');
+
+profileBtn.addEventListener('click', function(e) {
+  e.preventDefault();
+  profileDropdown.classList.toggle('hidden');
+});
+
+document.addEventListener('click', function(e) {
+  if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+    profileDropdown.classList.add('hidden');
+  }
+});
+
+// Logout functionality
+document.getElementById('logout-btn').addEventListener('click', function(e) {
+  e.preventDefault();
+  // Redirect to login page
+  window.location.href = 'login.html';
 });
     </script>
   </body>
