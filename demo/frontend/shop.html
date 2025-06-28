@@ -38,8 +38,8 @@
             <div class="flex items-center gap-9 ml-8">
               <a class="text-[#0d141c] text-sm font-medium leading-normal" href="index.html">Home</a>
               <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#" id="shop-link">Shop</a>
-              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#">Categories</a>
-              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#">Sale</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="categories.html">Categories</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="sale.html">Sale</a>
             </div>
           </div>
           <div class="flex gap-2">
@@ -65,16 +65,24 @@
                 </svg>
               </div>
             </button>
-            <button
-              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
-              aria-label="Account"
-            >
-              <div class="text-[#0d141c]" data-icon="User" data-size="20px" data-weight="regular">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                  <path d="M128,128a48,48,0,1,0-48-48A48,48,0,0,0,128,128Zm0,16c-39.7,0-72,32.3-72,72a8,8,0,0,0,8,8H192a8,8,0,0,0,8-8C200,176.3,167.7,144,128,144Z"></path>
-                </svg>
+            <div class="relative" id="profile-dropdown-container">
+              <button
+                id="profile-btn"
+                class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
+                aria-label="Account"
+                type="button"
+              >
+                <div class="text-[#0d141c]" data-icon="User" data-size="20px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M128,128a48,48,0,1,0-48-48A48,48,0,0,0,128,128Zm0,16c-39.7,0-72,32.3-72,72a8,8,0,0,0,8,8H192a8,8,0,0,0,8-8C200,176.3,167.7,144,128,144Z"></path>
+                  </svg>
+                </div>
+              </button>
+              <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                <a href="account-settings.html" class="block px-4 py-2 text-[#0d141c] hover:bg-[#e7edf4] text-sm">Account Settings</a>
+                <a href="login.html" class="block px-4 py-2 text-[#0d141c] hover:bg-[#e7edf4] text-sm">Logout</a>
               </div>
-            </button>
+            </div>
           </div>
         </header>
         <div class="px-40 flex flex-1 justify-center py-5">
@@ -109,6 +117,30 @@
               </label>
             </div>
             <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+              <!-- Louis No Limit Gaagal High-Top Sneakers - Suede and Gaagal coated canvas - Loubi - Men -->
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Louis No Limit Gaagal High-Top Sneakers - Suede and Gaagal coated canvas - Loubi - Men","price":"$120.00","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuDFkjVdYjx2aNoBW-3Da7er6jeHiOhpCHTi98FnDDcCAK2L5-JKZhgW9F70MpI2c5f_feAmCy0iU73OBYpQXlk_Ir9OzsMFZyScWP4JUV1H6kZUdIPKwfHDp-9pdAeqESC9UdDem2tAPFsxjZ__KwgVuqRjRueX8VITOFBgfsCFGURG2LYfbO89aE-Z20ZJ1fDYGoz8-jzCs8zaoxdE-5gGnE5UEVc7bvsT12zC0dO5VRsHigyJuNy6qT1_fjmagrMAQVBZPT1pmx3p","desc":"Premium high-top sneakers for men in Loubi color, crafted from suede and Gaagal coated canvas. Bold, stylish, and perfect for making a statement."}'
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDFkjVdYjx2aNoBW-3Da7er6jeHiOhpCHTi98FnDDcCAK2L5-JKZhgW9F70MpI2c5f_feAmCy0iU73OBYpQXlk_Ir9OzsMFZyScWP4JUV1H6kZUdIPKwfHDp-9pdAeqESC9UdDem2tAPFsxjZ__KwgVuqRjRueX8VITOFBgfsCFGURG2LYfbO89aE-Z20ZJ1fDYGoz8-jzCs8zaoxdE-5gGnE5UEVc7bvsT12zC0dO5VRsHigyJuNy6qT1_fjmagrMAQVBZPT1pmx3p");'
+                ></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal">Louis No Limit Gaagal High-Top Sneakers - Suede and Gaagal coated canvas - Loubi - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal">$120.00</p>
+                </div>
+              </div>
+              <!-- Moonboat Loafers - Reversed unbuck leather - Lionne - Men -->
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
+                  data-product='{"name":"Moonboat Loafers - Reversed unbuck leather - Lionne - Men","price":"$72.00","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuC5G6ozIJmPfi1nkuvSy6vwwFaMdENqfsvHd2kzZyvLh6QO8_-YPSuTEgEJmYfpen-V42ICCfNQTHA1Z-Hdb4fVsgUnyCDcgHLgs62NFxYX9V64o6NBNarkbv-8yWUCe4JC6J9-6uwKMLOfQ5ZoDJHwmSk-IhVKRv0DfEMRxk-5hJZLzUXmzdmSBg4Ru0VV_je1tb4L3D7IIQwl0Xwb5KTVXY4K8BCga-SqpZUXAYZhhq-Ucv2XWcJbqRbgX70MT34ooy8IWfy8Xcgv","desc":"Elegant loafers for men in Lionne color, crafted from reversed unbuck leather. Perfect for both formal and casual occasions."}'
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC5G6ozIJmPfi1nkuvSy6vwwFaMdENqfsvHd2kzZyvLh6QO8_-YPSuTEgEJmYfpen-V42ICCfNQTHA1Z-Hdb4fVsgUnyCDcgHLgs62NFxYX9V64o6NBNarkbv-8yWUCe4JC6J9-6uwKMLOfQ5ZoDJHwmSk-IhVKRv0DfEMRxk-5hJZLzUXmzdmSBg4Ru0VV_je1tb4L3D7IIQwl0Xwb5KTVXY4K8BCga-SqpZUXAYZhhq-Ucv2XWcJbqRbgX70MT34ooy8IWfy8Xcgv");'
+                ></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal">Moonboat Loafers - Reversed unbuck leather - Lionne - Men</p>
+                  <p class="text-[#49749c] text-sm font-normal leading-normal">$72.00</p>
+                </div>
+              </div>
               <!-- Product Card Example -->
               <div class="flex flex-col gap-3 pb-3">
                 <div
@@ -302,25 +334,61 @@
       </div>
     </div>
     <script>
-      // Product modal logic for all product cards
-      document.querySelectorAll('.product-card').forEach(function(card) {
-        card.onclick = function(e) {
-          e.stopPropagation();
-          var data = JSON.parse(this.getAttribute('data-product'));
-          document.getElementById('modal-product-img').style.backgroundImage = 'url("' + data.img + '")';
-          document.getElementById('modal-product-name').textContent = data.name;
-          document.getElementById('modal-product-price').textContent = data.price;
-          document.getElementById('modal-product-desc').textContent = data.desc;
-          document.getElementById('product-modal').classList.remove('hidden');
+      document.addEventListener('DOMContentLoaded', function() {
+        // Product modal logic for all product cards
+        document.querySelectorAll('.product-card').forEach(function(card) {
+          card.onclick = function(e) {
+            e.stopPropagation();
+            var data = JSON.parse(this.getAttribute('data-product'));
+            document.getElementById('modal-product-img').style.backgroundImage = 'url("' + data.img + '")';
+            document.getElementById('modal-product-name').textContent = data.name;
+            document.getElementById('modal-product-price').textContent = data.price;
+            document.getElementById('modal-product-desc').textContent = data.desc;
+            document.getElementById('product-modal').classList.remove('hidden');
+          };
+        });
+        document.getElementById('close-product-modal').onclick = function() {
+          document.getElementById('product-modal').classList.add('hidden');
         };
+        document.getElementById('modal-add-to-cart-btn').onclick = function() {
+          var name = document.getElementById('modal-product-name').textContent;
+          alert(name + ' added to cart!');
+        };
+
+        // Navigation: Categories and Sale
+        var navLinks = document.querySelectorAll('header a');
+        navLinks.forEach(function(link) {
+          if (link.textContent.trim() === 'Categories') {
+            link.addEventListener('click', function(e) {
+              e.preventDefault();
+              window.location.href = 'categories.html';
+            });
+          }
+          if (link.textContent.trim() === 'Sale') {
+            link.addEventListener('click', function(e) {
+              e.preventDefault();
+              window.location.href = 'sale.html';
+            });
+          }
+        });
+
+        // Profile dropdown logic
+        var profileBtn = document.getElementById('profile-btn');
+        var dropdown = document.getElementById('profile-dropdown');
+        var container = document.getElementById('profile-dropdown-container');
+        if (profileBtn && dropdown) {
+          profileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dropdown.classList.toggle('hidden');
+          });
+          // Hide dropdown when clicking outside
+          document.addEventListener('click', function(e) {
+            if (!container.contains(e.target)) {
+              dropdown.classList.add('hidden');
+            }
+          });
+        }
       });
-      document.getElementById('close-product-modal').onclick = function() {
-        document.getElementById('product-modal').classList.add('hidden');
-      };
-      document.getElementById('modal-add-to-cart-btn').onclick = function() {
-        var name = document.getElementById('modal-product-name').textContent;
-        alert(name + ' added to cart!');
-      };
     </script>
   </body>
 </html>
