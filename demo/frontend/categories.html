@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
     />
 
-    <title>StyleZone</title>
+    <title>Style Zone</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -26,7 +26,7 @@
             </div>
             <h2 class="text-[#0d141c] text-lg font-bold leading-tight tracking-[-0.015em]">StyleZone</h2>
             <div class="flex items-center gap-9 ml-8 relative">
-              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#">Home</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#" id="home-link">Home</a>
               <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#" id="shop-link">Shop</a>
               <div class="relative group" id="categories-dropdown-wrapper">
                 <a class="text-[#0d141c] text-sm font-medium leading-normal cursor-pointer" id="categories-link">Categories</a>
@@ -166,6 +166,10 @@
       </div>
     </div>
     <script>
+document.getElementById('home-link').onclick = function(e) {
+  e.preventDefault();
+  window.location.href = 'index.html';
+};
 document.getElementById('shop-link').onclick = function(e) {
   e.preventDefault();
   window.location.href = 'shop.html';
