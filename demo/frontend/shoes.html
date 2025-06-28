@@ -207,10 +207,10 @@
                   </span>
                 </button>
                 <div id="price-dropdown" class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-10 hidden dropdown-anim">
-                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Under ₹4,000</a>
-                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">₹4,000–₹6,000</a>
-                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">₹6,000–₹8,000</a>
-                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Over ₹8,000</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Under $50</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">$50–$75</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">$75–$100</a>
+                  <a href="#" class="block px-4 py-2 text-[#0d151c] hover:bg-[#e7edf4] dropdown-option">Over $100</a>
                 </div>
               </div>
               <button id="clear-filters-btn" class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf4] px-4 text-[#0d151c] text-sm font-medium leading-normal ml-2 hover:bg-[#d1e3fa] transition-colors">
@@ -1246,10 +1246,10 @@
               }
               if (selectedPrice) {
                 let priceLabel = '';
-                if (selectedPrice === 'under4000') priceLabel = 'Under ₹4,000';
-                else if (selectedPrice === '4000-6000') priceLabel = '₹4,000–₹6,000';
-                else if (selectedPrice === '6000-8000') priceLabel = '₹6,000–₹8,000';
-                else if (selectedPrice === 'over8000') priceLabel = 'Over ₹8,000';
+                if (selectedPrice === 'under4000') priceLabel = 'Under $50';
+                else if (selectedPrice === '4000-6000') priceLabel = '$50–$75';
+                else if (selectedPrice === '6000-8000') priceLabel = '$75–$100';
+                else if (selectedPrice === 'over8000') priceLabel = 'Over $100';
                 const tag = document.createElement('span');
                 tag.className = 'filter-tag';
                 tag.innerHTML = `Price: ${priceLabel} <span class="remove-tag" data-type="price">×</span>`;
@@ -1293,8 +1293,8 @@
                 const val = option.textContent.trim();
                 let match = false;
                 if (selectedPrice === 'under4000' && val.startsWith('Under')) match = true;
-                else if (selectedPrice === '4000-6000' && val.startsWith('₹4,000–₹6,000')) match = true;
-                else if (selectedPrice === '6000-8000' && val.startsWith('₹6,000–₹8,000')) match = true;
+                else if (selectedPrice === '4000-6000' && val.startsWith('$50–$75')) match = true;
+                else if (selectedPrice === '6000-8000' && val.startsWith('$75–$100')) match = true;
                 else if (selectedPrice === 'over8000' && val.startsWith('Over')) match = true;
                 if (match) option.classList.add('selected');
                 else option.classList.remove('selected');
@@ -1339,8 +1339,8 @@
                 e.preventDefault();
                 const val = this.textContent.trim();
                 if (val.startsWith('Under')) selectedPrice = 'under4000';
-                else if (val.startsWith('₹4,000–₹6,000')) selectedPrice = '4000-6000';
-                else if (val.startsWith('₹6,000–₹8,000')) selectedPrice = '6000-8000';
+                else if (val.startsWith('$50–$75')) selectedPrice = '4000-6000';
+                else if (val.startsWith('$75–$100')) selectedPrice = '6000-8000';
                 else if (val.startsWith('Over')) selectedPrice = 'over8000';
                 priceDropdown.classList.add('hidden');
                 priceArrow.classList.remove('rotated');
