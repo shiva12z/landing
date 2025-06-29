@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse
 from typing import Dict, Any
-from backend.personalization_logic import PersonalizationEngine
+from personalization_logic import PersonalizationEngine
 import traceback
 
 router = APIRouter()

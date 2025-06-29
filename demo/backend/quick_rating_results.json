@@ -1,0 +1,40 @@
+{
+  "timestamp": "2025-06-29T15:15:11.957350",
+  "test_summary": {
+    "users": 20,
+    "ground_truth": 20
+  },
+  "metrics": {
+    "Random": {
+      "precision@k": 0.5166666666666666,
+      "recall@k": 0.5508333333333333,
+      "f1@k": 0.5172619047619048,
+      "hit_rate@k": 0.9,
+      "users_evaluated": 20
+    },
+    "Popular": {
+      "precision@k": 0.7,
+      "recall@k": 0.7883333333333333,
+      "f1@k": 0.716547619047619,
+      "hit_rate@k": 1.0,
+      "users_evaluated": 20
+    },
+    "Demographic": {
+      "precision@k": 0.7833333333333333,
+      "recall@k": 0.8800000000000001,
+      "f1@k": 0.8032142857142857,
+      "hit_rate@k": 1.0,
+      "users_evaluated": 20
+    },
+    "Engagement-Based": {
+      "precision@k": 0.55,
+      "recall@k": 0.5883333333333334,
+      "f1@k": 0.5515476190476192,
+      "hit_rate@k": 0.9,
+      "users_evaluated": 20
+    }
+  },
+  "best_strategy": "Demographic",
+  "best_f1": 0.8032142857142857,
+  "rating": "EXCELLENT \ud83c\udfc6"
+}
