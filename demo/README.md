@@ -409,6 +409,12 @@ demo/
 └── README.md                         # This file
 ```
 
+**Legend:**
+- `├──` = Directory with more items below
+- `└──` = Last item in a directory
+- `│   ` = Vertical line showing hierarchy
+- `[IGNORED]` = Files/folders not tracked by git
+
 ## 🔧 Configuration
 
 ### Environment Variables
