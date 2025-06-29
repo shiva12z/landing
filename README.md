@@ -7,7 +7,7 @@ A modern fashion e-commerce web application with a FastAPI backend and a React/V
 ### 1. Clone the Repository
 
 ```
-git clone <your-repo-url>
+git clone https://github.com/shiva12z/landing.git
 cd landing/demo
 ```
 
