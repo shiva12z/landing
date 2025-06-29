@@ -405,7 +405,6 @@ demo/
 │   ├── dataset2_final.csv            # [IGNORED] Large dataset (2.4MB)
 │   ├── accuracy_results.json         # Accuracy evaluation results
 │   ├── quick_rating_results.json     # Quick rating results
-│   ├── Untitled.ipynb                # Jupyter notebook
 │   ├── README.md                     # Backend documentation
 │   ├── COLD_START_STRATEGY_README.md # Cold start strategy documentation
 │   ├── DATA_PREPROCESSING_README.md  # Data preprocessing documentation
