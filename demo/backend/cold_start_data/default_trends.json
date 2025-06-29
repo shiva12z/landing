@@ -1,0 +1,652 @@
+{
+  "regional": {
+    "California": {
+      "top_categories": [
+        {
+          "category": "Accessories",
+          "session_count": 1661
+        },
+        {
+          "category": "Jewelry",
+          "session_count": 1586
+        },
+        {
+          "category": "Clothing",
+          "session_count": 1530
+        },
+        {
+          "category": "Shoes",
+          "session_count": 1513
+        },
+        {
+          "category": "Bags",
+          "session_count": 1510
+        }
+      ],
+      "top_revenue_categories": [
+        {
+          "category": "Accessories",
+          "total_revenue": 0
+        },
+        {
+          "category": "Bags",
+          "total_revenue": 0
+        },
+        {
+          "category": "Clothing",
+          "total_revenue": 0
+        },
+        {
+          "category": "Jewelry",
+          "total_revenue": 0
+        },
+        {
+          "category": "Shoes",
+          "total_revenue": 0
+        }
+      ]
+    },
+    "Florida": {
+      "top_categories": [
+        {
+          "category": "Clothing",
+          "session_count": 1608
+        },
+        {
+          "category": "Accessories",
+          "session_count": 1607
+        },
+        {
+          "category": "Shoes",
+          "session_count": 1580
+        },
+        {
+          "category": "Bags",
+          "session_count": 1521
+        },
+        {
+          "category": "Jewelry",
+          "session_count": 1483
+        }
+      ],
+      "top_revenue_categories": [
+        {
+          "category": "Accessories",
+          "total_revenue": 0
+        },
+        {
+          "category": "Bags",
+          "total_revenue": 0
+        },
+        {
+          "category": "Clothing",
+          "total_revenue": 0
+        },
+        {
+          "category": "Jewelry",
+          "total_revenue": 0
+        },
+        {
+          "category": "Shoes",
+          "total_revenue": 0
+        }
+      ]
+    },
+    "Illinois": {
+      "top_categories": [
+        {
+          "category": "Accessories",
+          "session_count": 1803
+        },
+        {
+          "category": "Clothing",
+          "session_count": 1721
+        },
+        {
+          "category": "Bags",
+          "session_count": 1681
+        },
+        {
+          "category": "Shoes",
+          "session_count": 1548
+        },
+        {
+          "category": "Jewelry",
+          "session_count": 1502
+        }
+      ],
+      "top_revenue_categories": [
+        {
+          "category": "Accessories",
+          "total_revenue": 0
+        },
+        {
+          "category": "Bags",
+          "total_revenue": 0
+        },
+        {
+          "category": "Clothing",
+          "total_revenue": 0
+        },
+        {
+          "category": "Jewelry",
+          "total_revenue": 0
+        },
+        {
+          "category": "Shoes",
+          "total_revenue": 0
+        }
+      ]
+    },
+    "New York": {
+      "top_categories": [
+        {
+          "category": "Jewelry",
+          "session_count": 1639
+        },
+        {
+          "category": "Bags",
+          "session_count": 1591
+        },
+        {
+          "category": "Shoes",
+          "session_count": 1580
+        },
+        {
+          "category": "Accessories",
+          "session_count": 1575
+        },
+        {
+          "category": "Clothing",
+          "session_count": 1538
+        }
+      ],
+      "top_revenue_categories": [
+        {
+          "category": "Accessories",
+          "total_revenue": 0
+        },
+        {
+          "category": "Bags",
+          "total_revenue": 0
+        },
+        {
+          "category": "Clothing",
+          "total_revenue": 0
+        },
+        {
+          "category": "Jewelry",
+          "total_revenue": 0
+        },
+        {
+          "category": "Shoes",
+          "total_revenue": 0
+        }
+      ]
+    },
+    "Texas": {
+      "top_categories": [
+        {
+          "category": "Shoes",
+          "session_count": 1740
+        },
+        {
+          "category": "Accessories",
+          "session_count": 1652
+        },
+        {
+          "category": "Clothing",
+          "session_count": 1601
+        },
+        {
+          "category": "Jewelry",
+          "session_count": 1592
+        },
+        {
+          "category": "Bags",
+          "session_count": 1529
+        }
+      ],
+      "top_revenue_categories": [
+        {
+          "category": "Accessories",
+          "total_revenue": 0
+        },
+        {
+          "category": "Bags",
+          "total_revenue": 0
+        },
+        {
+          "category": "Clothing",
+          "total_revenue": 0
+        },
+        {
+          "category": "Jewelry",
+          "total_revenue": 0
+        },
+        {
+          "category": "Shoes",
+          "total_revenue": 0
+        }
+      ]
+    }
+  },
+  "time_of_day": {
+    "Afternoon": {
+      "top_categories": [
+        {
+          "category": "Accessories",
+          "session_count": 1751
+        },
+        {
+          "category": "Jewelry",
+          "session_count": 1643
+        },
+        {
+          "category": "Shoes",
+          "session_count": 1618
+        },
+        {
+          "category": "Bags",
+          "session_count": 1616
+        },
+        {
+          "category": "Clothing",
+          "session_count": 1600
+        }
+      ],
+      "top_revenue_categories": [
+        {
+          "category": "Accessories",
+          "total_revenue": 0
+        },
+        {
+          "category": "Bags",
+          "total_revenue": 0
+        },
+        {
+          "category": "Clothing",
+          "total_revenue": 0
+        },
+        {
+          "category": "Jewelry",
+          "total_revenue": 0
+        },
+        {
+          "category": "Shoes",
+          "total_revenue": 0
+        }
+      ]
+    },
+    "Evening": {
+      "top_categories": [
+        {
+          "category": "Accessories",
+          "session_count": 1433
+        },
+        {
+          "category": "Shoes",
+          "session_count": 1326
+        },
+        {
+          "category": "Clothing",
+          "session_count": 1317
+        },
+        {
+          "category": "Jewelry",
+          "session_count": 1305
+        },
+        {
+          "category": "Bags",
+          "session_count": 1252
+        }
+      ],
+      "top_revenue_categories": [
+        {
+          "category": "Accessories",
+          "total_revenue": 0
+        },
+        {
+          "category": "Bags",
+          "total_revenue": 0
+        },
+        {
+          "category": "Clothing",
+          "total_revenue": 0
+        },
+        {
+          "category": "Jewelry",
+          "total_revenue": 0
+        },
+        {
+          "category": "Shoes",
+          "total_revenue": 0
+        }
+      ]
+    },
+    "Morning": {
+      "top_categories": [
+        {
+          "category": "Clothing",
+          "session_count": 2066
+        },
+        {
+          "category": "Shoes",
+          "session_count": 2044
+        },
+        {
+          "category": "Accessories",
+          "session_count": 2014
+        },
+        {
+          "category": "Jewelry",
+          "session_count": 1954
+        },
+        {
+          "category": "Bags",
+          "session_count": 1908
+        }
+      ],
+      "top_revenue_categories": [
+        {
+          "category": "Accessories",
+          "total_revenue": 0
+        },
+        {
+          "category": "Bags",
+          "total_revenue": 0
+        },
+        {
+          "category": "Clothing",
+          "total_revenue": 0
+        },
+        {
+          "category": "Jewelry",
+          "total_revenue": 0
+        },
+        {
+          "category": "Shoes",
+          "total_revenue": 0
+        }
+      ]
+    },
+    "Night": {
+      "top_categories": [
+        {
+          "category": "Accessories",
+          "session_count": 3100
+        },
+        {
+          "category": "Bags",
+          "session_count": 3056
+        },
+        {
+          "category": "Clothing",
+          "session_count": 3015
+        },
+        {
+          "category": "Shoes",
+          "session_count": 2973
+        },
+        {
+          "category": "Jewelry",
+          "session_count": 2900
+        }
+      ],
+      "top_revenue_categories": [
+        {
+          "category": "Accessories",
+          "total_revenue": 0
+        },
+        {
+          "category": "Bags",
+          "total_revenue": 0
+        },
+        {
+          "category": "Clothing",
+          "total_revenue": 0
+        },
+        {
+          "category": "Jewelry",
+          "total_revenue": 0
+        },
+        {
+          "category": "Shoes",
+          "total_revenue": 0
+        }
+      ]
+    }
+  },
+  "source": {
+    "direct": {
+      "top_categories": [
+        {
+          "category": "Shoes",
+          "session_count": 1741
+        },
+        {
+          "category": "Bags",
+          "session_count": 1726
+        },
+        {
+          "category": "Accessories",
+          "session_count": 1638
+        },
+        {
+          "category": "Jewelry",
+          "session_count": 1585
+        },
+        {
+          "category": "Clothing",
+          "session_count": 1562
+        }
+      ],
+      "top_revenue_categories": [
+        {
+          "category": "Accessories",
+          "total_revenue": 0
+        },
+        {
+          "category": "Bags",
+          "total_revenue": 0
+        },
+        {
+          "category": "Clothing",
+          "total_revenue": 0
+        },
+        {
+          "category": "Jewelry",
+          "total_revenue": 0
+        },
+        {
+          "category": "Shoes",
+          "total_revenue": 0
+        }
+      ]
+    },
+    "email": {
+      "top_categories": [
+        {
+          "category": "Accessories",
+          "session_count": 1608
+        },
+        {
+          "category": "Clothing",
+          "session_count": 1561
+        },
+        {
+          "category": "Shoes",
+          "session_count": 1550
+        },
+        {
+          "category": "Jewelry",
+          "session_count": 1446
+        },
+        {
+          "category": "Bags",
+          "session_count": 1427
+        }
+      ],
+      "top_revenue_categories": [
+        {
+          "category": "Accessories",
+          "total_revenue": 0
+        },
+        {
+          "category": "Bags",
+          "total_revenue": 0
+        },
+        {
+          "category": "Clothing",
+          "total_revenue": 0
+        },
+        {
+          "category": "Jewelry",
+          "total_revenue": 0
+        },
+        {
+          "category": "Shoes",
+          "total_revenue": 0
+        }
+      ]
+    },
+    "facebook": {
+      "top_categories": [
+        {
+          "category": "Accessories",
+          "session_count": 1749
+        },
+        {
+          "category": "Clothing",
+          "session_count": 1611
+        },
+        {
+          "category": "Shoes",
+          "session_count": 1481
+        },
+        {
+          "category": "Jewelry",
+          "session_count": 1475
+        },
+        {
+          "category": "Bags",
+          "session_count": 1432
+        }
+      ],
+      "top_revenue_categories": [
+        {
+          "category": "Accessories",
+          "total_revenue": 0
+        },
+        {
+          "category": "Bags",
+          "total_revenue": 0
+        },
+        {
+          "category": "Clothing",
+          "total_revenue": 0
+        },
+        {
+          "category": "Jewelry",
+          "total_revenue": 0
+        },
+        {
+          "category": "Shoes",
+          "total_revenue": 0
+        }
+      ]
+    },
+    "google": {
+      "top_categories": [
+        {
+          "category": "Accessories",
+          "session_count": 1670
+        },
+        {
+          "category": "Bags",
+          "session_count": 1611
+        },
+        {
+          "category": "Shoes",
+          "session_count": 1603
+        },
+        {
+          "category": "Clothing",
+          "session_count": 1596
+        },
+        {
+          "category": "Jewelry",
+          "session_count": 1575
+        }
+      ],
+      "top_revenue_categories": [
+        {
+          "category": "Accessories",
+          "total_revenue": 0
+        },
+        {
+          "category": "Bags",
+          "total_revenue": 0
+        },
+        {
+          "category": "Clothing",
+          "total_revenue": 0
+        },
+        {
+          "category": "Jewelry",
+          "total_revenue": 0
+        },
+        {
+          "category": "Shoes",
+          "total_revenue": 0
+        }
+      ]
+    },
+    "instagram": {
+      "top_categories": [
+        {
+          "category": "Jewelry",
+          "session_count": 1721
+        },
+        {
+          "category": "Clothing",
+          "session_count": 1668
+        },
+        {
+          "category": "Bags",
+          "session_count": 1636
+        },
+        {
+          "category": "Accessories",
+          "session_count": 1633
+        },
+        {
+          "category": "Shoes",
+          "session_count": 1586
+        }
+      ],
+      "top_revenue_categories": [
+        {
+          "category": "Accessories",
+          "total_revenue": 0
+        },
+        {
+          "category": "Bags",
+          "total_revenue": 0
+        },
+        {
+          "category": "Clothing",
+          "total_revenue": 0
+        },
+        {
+          "category": "Jewelry",
+          "total_revenue": 0
+        },
+        {
+          "category": "Shoes",
+          "total_revenue": 0
+        }
+      ]
+    }
+  }
+}

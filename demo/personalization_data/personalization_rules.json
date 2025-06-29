@@ -1,0 +1,119 @@
+[
+  {
+    "rule_id": "hero_new_user",
+    "content_type": "hero_banner",
+    "conditions": {
+      "session_count": {
+        "max": 1
+      },
+      "user_stage": "discover"
+    },
+    "priority": 2,
+    "content_data": {
+      "banner_type": "welcome",
+      "title": "Welcome to Our Store",
+      "subtitle": "Discover amazing products tailored to your style",
+      "cta_text": "Start Exploring",
+      "cta_link": "/categories"
+    }
+  },
+  {
+    "rule_id": "products_trending",
+    "content_type": "product_module",
+    "conditions": {
+      "engagement_score": {
+        "max": 50
+      },
+      "user_stage": "discover"
+    },
+    "priority": 2,
+    "content_data": {
+      "module_type": "trending",
+      "title": "Trending Now",
+      "product_count": 6,
+      "sort_by": "popularity"
+    }
+  },
+  {
+    "rule_id": "hero_high_engagement",
+    "content_type": "hero_banner",
+    "conditions": {
+      "engagement_score": {
+        "min": 70,
+        "max": 100
+      },
+      "user_stage": [
+        "explore",
+        "consider",
+        "buy"
+      ]
+    },
+    "priority": 1,
+    "content_data": {
+      "banner_type": "featured_products",
+      "title": "Discover Your Perfect Style",
+      "subtitle": "Curated just for you",
+      "cta_text": "Shop Now",
+      "cta_link": "/personalized-collection"
+    }
+  },
+  {
+    "rule_id": "products_by_category",
+    "content_type": "product_module",
+    "conditions": {
+      "inferred_interests": {
+        "required": true
+      },
+      "category_preferences": {
+        "min_count": 1
+      }
+    },
+    "priority": 1,
+    "content_data": {
+      "module_type": "category_based",
+      "title": "Recommended for You",
+      "product_count": 8,
+      "sort_by": "relevance"
+    }
+  },
+  {
+    "rule_id": "cta_discover",
+    "content_type": "cta_module",
+    "conditions": {
+      "user_stage": "discover",
+      "session_count": {
+        "max": 3
+      }
+    },
+    "priority": 1,
+    "content_data": {
+      "cta_type": "explore",
+      "title": "Find Your Style",
+      "description": "Browse our curated collections",
+      "button_text": "Explore Categories",
+      "button_link": "/categories",
+      "secondary_text": "Take our style quiz",
+      "secondary_link": "/style-quiz"
+    }
+  },
+  {
+    "rule_id": "cta_buy",
+    "content_type": "cta_module",
+    "conditions": {
+      "user_stage": "buy",
+      "engagement_score": {
+        "min": 60
+      }
+    },
+    "priority": 1,
+    "content_data": {
+      "cta_type": "purchase",
+      "title": "Ready to Shop?",
+      "description": "Complete your purchase with exclusive offers",
+      "button_text": "Shop Now",
+      "button_link": "/checkout",
+      "secondary_text": "View cart",
+      "secondary_link": "/cart"
+    }
+  }
+]

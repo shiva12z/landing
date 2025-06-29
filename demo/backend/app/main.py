@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.routes import data
+from app.routes import personalization
 from app.models.session_db import Base
 from app.db import engine
 
@@ -11,6 +12,7 @@ app = FastAPI(title="Hyper-Personalized Landing Page Backend")
 Base.metadata.create_all(bind=engine)
 
 app.include_router(data.router)
+app.include_router(personalization.router)
 
 app.add_middleware(
     CORSMiddleware,
