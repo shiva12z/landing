@@ -34,7 +34,7 @@ Before you begin, ensure you have the following installed:
 
 ```bash
 # Clone the repository
-git clone <your-repository-url>
+git clone https://github.com/shiva12z/landing.git
 cd landing/demo
 
 # Verify the project structure
@@ -344,7 +344,12 @@ This project uses several datasets for personalization, recommendations, and ana
 
 Some datasets and large files are not included in the repository due to their size. Please download them from the following link:
 
-**[Download All Datasets & Large Files (Google Drive)](YOUR_DRIVE_LINK_HERE)**
+**[Download All Datasets & Large Files (Google Drive)](https://drive.google.com/drive/folders/1RdviGJtOGbMggK83kBcf5NKch1ryJkLd?usp=drive_link)**
+
+This Google Drive link contains:
+- **All necessary datasets** for the project
+- **PowerPoint presentation** with detailed guidance and instructions
+- **Additional resources** and documentation
 
 After downloading, place the files in their respective directories as described below.
 
