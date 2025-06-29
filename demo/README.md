@@ -370,42 +370,119 @@ The following files and directories are ignored (not tracked by git):
 demo/
 ├── backend/                          # FastAPI Backend
 │   ├── app/
+│   │   ├── __init__.py               # Python package initialization
 │   │   ├── main.py                   # FastAPI application entry point
 │   │   ├── db.py                     # Database configuration
 │   │   ├── routes/                   # API route definitions
+│   │   │   ├── __init__.py           # Routes package initialization
 │   │   │   ├── data.py              # Data and authentication routes
 │   │   │   └── personalization.py   # Personalization routes
 │   │   ├── models/                   # Database models
+│   │   │   ├── __init__.py           # Models package initialization
 │   │   │   ├── session.py           # Session data models
 │   │   │   ├── session_db.py        # Database session models
 │   │   │   └── user.py              # User models
 │   │   └── services/                 # Business logic
+│   │       ├── __init__.py           # Services package initialization
 │   │       └── ml.py                # ML and recommendation services
+│   ├── config/                       # Configuration files
+│   │   └── __init__.py               # Config package initialization
+│   ├── tests/                        # Test files
+│   │   ├── __init__.py               # Tests package initialization
+│   │   └── test_api.py              # API test cases
 │   ├── personalization_logic.py      # Personalization engine
 │   ├── cold_start_strategy.py        # Cold start algorithms
 │   ├── user_segmentation.py          # User segmentation logic
+│   ├── data_preprocessing.py         # Data preprocessing utilities
+│   ├── demo_preprocessing.py         # Demo preprocessing script
+│   ├── accuracy_evaluation.py        # ML model accuracy evaluation
+│   ├── evaluate_recommendations.py   # Recommendation evaluation
+│   ├── quick_accuracy_test.py        # Quick accuracy testing
+│   ├── simple_cold_start_demo.py     # Cold start demonstration
 │   ├── requirements.txt              # Python dependencies
-│   ├── dataset1_final.csv            # [IGNORED] Large dataset
-│   ├── dataset2_final.csv            # [IGNORED] Large dataset
-│   ├── processed_data/               # [IGNORED] Preprocessed data
+│   ├── sessions.db                   # SQLite database file
+│   ├── dataset1_final.csv            # [IGNORED] Large dataset (1.2GB)
+│   ├── dataset2_final.csv            # [IGNORED] Large dataset (2.4MB)
+│   ├── accuracy_results.json         # Accuracy evaluation results
+│   ├── quick_rating_results.json     # Quick rating results
+│   ├── Untitled.ipynb                # Jupyter notebook
+│   ├── README.md                     # Backend documentation
+│   ├── COLD_START_STRATEGY_README.md # Cold start strategy documentation
+│   ├── DATA_PREPROCESSING_README.md  # Data preprocessing documentation
+│   ├── sample_data/                  # Sample datasets for development
+│   │   ├── merged_activity_transactions.csv
+│   │   ├── user_sessions.csv
+│   │   └── user_segments.csv
+│   ├── processed_data/               # [IGNORED] Preprocessed large datasets
+│   │   ├── user_sessions.csv (1.0GB)
+│   │   └── merged_activity_transactions.csv (1.6GB)
+│   ├── cold_start_data/              # Cold start data and models
+│   │   ├── default_trends.json
+│   │   ├── knn_model.pkl
+│   │   ├── scaler.pkl
+│   │   └── user_clusters.csv
+│   ├── user_segments/                # User segmentation data
+│   │   └── segment_insights.json
 │   ├── .venv/                        # [IGNORED] Python virtual environment
 │   ├── __pycache__/                  # [IGNORED] Python cache
-│   └── README.md                     # Backend documentation
+│   ├── .ipynb_checkpoints/           # [IGNORED] Jupyter checkpoints
+│   └── .pytest_cache/                # [IGNORED] Test cache
 ├── frontend/                         # React Frontend
 │   ├── src/
 │   │   ├── App.jsx                   # Main React component
 │   │   ├── App.css                   # Main styles
-│   │   └── index.css                 # Global styles
-│   ├── public/                       # Static assets
+│   │   ├── index.css                 # Global styles
+│   │   ├── main.jsx                  # React entry point
+│   │   ├── personalizationApi.js     # Personalization API client
+│   │   └── assets/                   # Static assets
+│   │       └── react.svg
+│   ├── public/                       # Public assets
+│   │   └── vite.svg
+│   ├── js/                           # JavaScript utilities
+│   │   ├── cart.js                   # Shopping cart functionality
+│   │   └── sneakers.js               # Sneakers-specific functionality
+│   ├── images/                       # Product images
+│   │   ├── bag/                      # Bag product images
+│   │   └── [various product images]  # Product image files
+│   ├── Accessories/                  # Accessories product images
+│   ├── Bags/                         # Bags product images
+│   ├── Clothing/                     # Clothing product images
+│   ├── Jewelry/                      # Jewelry product images
+│   ├── Mens/                         # Men's product images
+│   ├── Shoes/                        # Shoes product images
+│   ├── Watches/                      # Watches product images
+│   ├── Woman/                        # Women's product images
+│   ├── index.html                    # Main landing page
+│   ├── login.html                    # Login page
+│   ├── shop.html                     # Shop page
+│   ├── categories.html               # Categories page
+│   ├── men.html                      # Men's page
+│   ├── women.html                    # Women's page
+│   ├── clothing.html                 # Clothing page
+│   ├── shoes.html                    # Shoes page
+│   ├── bags.html                     # Bags page
+│   ├── jewelry.html                  # Jewelry page
+│   ├── accessories.html              # Accessories page
+│   ├── watches.html                  # Watches page
+│   ├── sale.html                     # Sale page
+│   ├── account-settings.html         # Account settings page
+│   ├── personalized_recommendations.js # Personalization logic
 │   ├── package.json                  # Node.js dependencies
 │   ├── vite.config.js                # Vite configuration
+│   ├── eslint.config.js              # ESLint configuration
+│   ├── .gitignore                    # Git ignore rules
+│   ├── README.md                     # Frontend documentation
 │   ├── node_modules/                 # [IGNORED] Node.js dependencies
 │   ├── dist/                         # [IGNORED] Build output
-│   ├── .vscode/                      # [IGNORED] Editor settings
-│   └── README.md                     # Frontend documentation
+│   └── .vscode/                      # [IGNORED] Editor settings
 ├── personalization_data/             # Personalization data files
 │   ├── personalization_rules.json    # Personalization rules
 │   └── personalization_trends.json   # Trend data
+├── .venv/                            # [IGNORED] Root virtual environment
+├── .vscode/                          # [IGNORED] Editor settings
+├── accuracy_results.json             # Global accuracy results
+├── quick_rating_results.json         # Global rating results
+├── Drive Doc - Hyper-Personalized Landing Page Generator Agent.pdf # Project documentation
 └── README.md                         # This file
 ```
 
