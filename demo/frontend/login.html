@@ -42,42 +42,6 @@
                   <span class="truncate">Login</span>
                 </button>
               </div>
-              <div class="flex justify-center w-full py-1">
-                <span style="font-family: 'Plus Jakarta Sans', 'Noto Sans', sans-serif; color: #5c748a; font-size: 16px; font-weight: 500;">or</span>
-              </div>
-              <!-- Google Sign-In Button -->
-              <script src="https://accounts.google.com/gsi/client" async defer></script>
-              <div id="g_id_onload"
-                   data-client_id="YOUR_GOOGLE_CLIENT_ID"
-                   data-login_uri="https://yourdomain.com/auth/google/callback"
-                   data-auto_prompt="false">
-              </div>
-              <div class="g_id_signin"
-                   data-type="standard"
-                   data-shape="rectangular"
-                   data-theme="outline"
-                   data-text="sign_in_with"
-                   data-logo_alignment="left">
-              </div>
-              <!-- Apple Sign-In Button -->
-              <script src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
-              <div class="flex justify-center px-4 py-3 w-full">
-                <div id="appleid-signin"
-                     data-color="black"
-                     data-border="true"
-                     data-type="sign in"
-                     data-width="192"
-                     style="height:40px;">
-                </div>
-              </div>
-              <script>
-                AppleID.auth.init({
-                  clientId: "com.yourapp.web", // Replace with your actual client ID
-                  scope: "name email",
-                  redirectURI: "https://yourdomain.com/auth/apple/callback", // Replace with your actual redirect URI
-                  usePopup: true
-                });
-              </script>
             </form>
             <!-- Register Form (hidden by default) -->
             <form id="register-form" class="flex flex-col w-full items-center" style="display:none;">
@@ -405,6 +369,11 @@
           alert('Error connecting to server.');
         }
       };
+      // Prevent any action on the Google Sign-In button
+      document.addEventListener('DOMContentLoaded', function() {
+        const googleBtn = document.querySelector('.g_id_signin');
+        if (googleBtn) googleBtn.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); });
+      });
     </script>
   </body>
 </html>
