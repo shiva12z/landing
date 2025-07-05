@@ -361,7 +361,7 @@
       document.getElementById('login-form').onsubmit = async function(e) {
         e.preventDefault();
         const form = e.target;
-        const email = form.username.value;
+        const email = form.username.value; // username field contains email
         const password = form.password.value;
         console.log('Login request:', {
           url: 'http://127.0.0.1:8000/data/login',
@@ -379,7 +379,7 @@
             window.location.href = 'index.html'; // Redirect to index.html
           } else {
             const data = await res.json();
-            alert(data.message || 'Login failed.');
+            alert(data.detail || data.message || 'Login failed.');
           }
         } catch (err) {
           alert('Error connecting to server.');
