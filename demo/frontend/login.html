@@ -426,6 +426,7 @@
       function handleGoogleSignIn(response) {
         console.log("Google ID Token: ", response.credential);
         // Send token to backend for verification
+        window.location.href = 'index.html';
       }
 
       // Apple Sign-In config
