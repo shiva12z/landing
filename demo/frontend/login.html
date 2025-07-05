@@ -441,6 +441,11 @@
         });
       });
  
+      // Prevent any action on the Google Sign-In button
+      document.addEventListener('DOMContentLoaded', function() {
+        const googleBtn = document.querySelector('.g_id_signin');
+        if (googleBtn) googleBtn.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); });
+      });
     </script>
   </body>
 </html>
