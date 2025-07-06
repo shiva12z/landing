@@ -104,6 +104,7 @@
                     </h2>
                   </div>
                   <button
+                    id="shop-now-btn"
                     class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#0c7ff2] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
                   >
                     <span class="truncate">Shop Now</span>
@@ -478,6 +479,9 @@
       document.getElementById('modal-add-to-cart-btn').onclick = function() {
         var name = document.getElementById('modal-product-name').textContent;
         alert(name + ' added to cart!');
+      };
+      document.getElementById('shop-now-btn').onclick = function() {
+        window.location.href = 'shop.html';
       };
     </script>
       <!-- Sign up dropdown functionality -->

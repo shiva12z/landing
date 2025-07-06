@@ -1,0 +1,16 @@
+INFO:     Will watch for changes in these directories: ['C:\\Users\\Admin\\Desktop\\landing\\demo\\backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [12804] using StatReload
+INFO:     Started server process [18716]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:53599 - "OPTIONS /data/login HTTP/1.1" 200 OK
+WARNING:passlib.handlers.bcrypt:(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\Admin\Desktop\landing\demo\backend\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+[LOGIN DEBUG] Path: /data/login, Method: POST, Body: email='shivak12z@gmail.com' password='Shiva@1234'
+[LOGIN DEBUG] Login successful
+INFO:     127.0.0.1:53599 - "POST /data/login HTTP/1.1" 200 OK

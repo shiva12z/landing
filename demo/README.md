@@ -655,6 +655,90 @@ If you encounter any issues:
 - Vite dev server logs in terminal
 - Network tab for API calls
 
+## 🛠️ Troubleshooting: Manual Startup
+
+If the `run.sh` script does not work or you encounter issues, you can manually start the backend and frontend with the following commands:
+
+### 1. Backend (FastAPI)
+```bash
+cd demo/backend
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+pip install --upgrade pip
+pip install -r requirements.txt
+python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+### 2. Frontend (Vite/React)
+Open a new terminal window/tab:
+```bash
+cd demo/frontend
+npm install
+npm run dev
+```
+
+- Backend will be available at: http://localhost:8000/docs
+- Frontend will be available at: http://localhost:5173/
+
+If you encounter errors, check the logs or terminal output for more details. For further help, see the Troubleshooting section above or open an issue.
+
+## 🛠️ If Manual Setup Fails: Using run.sh (Bash Script Guide)
+
+If the manual setup for backend and frontend does not work, you can use the provided `run.sh` script to automate the process. This script will:
+- Set up a Python virtual environment for the backend
+- Install backend dependencies
+- Start the backend server
+- Install frontend dependencies
+- Start the frontend server
+
+### How to Use run.sh
+
+#### 1. Open a Terminal
+- **Windows:**
+  - Use Git Bash (recommended), Windows Terminal, or WSL (Windows Subsystem for Linux)
+  - *Do not use Command Prompt or PowerShell for bash scripts unless you have a compatible environment*
+- **macOS:**
+  - Use Terminal (found in Applications > Utilities)
+- **Linux:**
+  - Use your preferred terminal emulator
+
+#### 2. Navigate to the Project Directory
+```bash
+cd /path/to/your/project/root
+# Example:
+cd ~/Desktop/landing
+```
+
+#### 3. Make the Script Executable (if needed)
+If you get a permission denied error, run:
+```bash
+chmod +x run.sh
+```
+
+#### 4. Run the Script
+```bash
+bash run.sh
+```
+
+#### 5. Access the Application
+- Backend API: http://localhost:8000/docs
+- Frontend: http://localhost:5173/
+
+#### 6. Stopping the Servers
+The script will print the process IDs (PIDs) for the backend and frontend. To stop them:
+```bash
+kill <backend_pid> <frontend_pid>
+```
+
+### Common Issues
+- **Permission Denied:** Use `chmod +x run.sh` to make the script executable.
+- **Python Not Found:** Ensure `python3` is installed and in your PATH.
+- **npm Not Found:** Ensure Node.js and npm are installed.
+- **Port Already in Use:** Stop any process using ports 8000 or 5173, or change the ports in the script.
+- **Windows Users:** If you encounter issues, use Git Bash or WSL for best compatibility with bash scripts.
+
+If you continue to have issues, check the logs (`backend.log`, `frontend.log`) or open an issue for help.
+
 ---
 
 **Happy Coding! 🎉**
