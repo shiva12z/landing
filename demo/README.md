@@ -682,7 +682,7 @@ npm run dev
 
 If you encounter errors, check the logs or terminal output for more details. For further help, see the Troubleshooting section above or open an issue.
 
-## 🛠️ If Manual Setup Fails: Using run.sh (Bash Script Guide)
+## 🛠️ If Manual Setup Fails: Use run.sh (Bash Script Guide)
 
 If the manual setup for backend and frontend does not work, you can use the provided `run.sh` script to automate the process. This script will:
 - Set up a Python virtual environment for the backend
