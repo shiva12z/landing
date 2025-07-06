@@ -38,7 +38,7 @@
             <h2 class="text-[#0d141c] text-lg font-bold leading-tight tracking-[-0.015em]">StyleZone</h2>
           </div>
           <div class="flex gap-2">
-            <a href="index.html" class="text-[#0d141c] text-sm font-medium leading-normal">Back to Home</a>
+            <a href="index1.html" class="text-[#0d141c] text-sm font-medium leading-normal">Back to Home</a>
           </div>
         </header>
 
@@ -68,7 +68,7 @@
                   <input type="password" id="confirmPassword" name="confirmPassword" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 <div class="flex justify-end space-x-4">
-                  <button type="button" onclick="window.location.href='index.html'" class="px-4 py-2 text-gray-600 hover:text-gray-800">Cancel</button>
+                  <button type="button" onclick="window.location.href='index1.html'" class="px-4 py-2 text-gray-600 hover:text-gray-800">Cancel</button>
                   <button type="submit" class="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Save Changes</button>
                 </div>
               </form>
@@ -113,7 +113,7 @@
         
         if (response.ok) {
           alert('Profile updated successfully!');
-          window.location.href = 'index.html';
+          window.location.href = 'index1.html';
         } else {
           const error = await response.json();
           alert(error.message || 'Failed to update profile');

@@ -36,8 +36,8 @@
             </div>
             <h2 class="text-[#0d141c] text-lg font-bold leading-tight tracking-[-0.015em]">StyleZone</h2>
             <div class="flex items-center gap-9 ml-8">
-              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="index.html">Home</a>
-              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#" id="shop-link">Shop</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="index1.html">Home</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="shop.html">Shop</a>
               <a class="text-[#0d141c] text-sm font-medium leading-normal" href="categories.html">Categories</a>
               <a class="text-[#0d141c] text-sm font-medium leading-normal" href="sale.html">Sale</a>
             </div>
@@ -80,7 +80,7 @@
               </button>
               <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
                 <a href="account-settings.html" class="block px-4 py-2 text-[#0d141c] hover:bg-[#e7edf4] text-sm">Account Settings</a>
-                <a href="login.html" class="block px-4 py-2 text-[#0d141c] hover:bg-[#e7edf4] text-sm">Logout</a>
+                <a href="index.html" class="block px-4 py-2 text-[#0d141c] hover:bg-[#e7edf4] text-sm">Logout</a>
               </div>
             </div>
           </div>
@@ -355,9 +355,15 @@
           alert(name + ' added to cart!');
         };
 
-        // Navigation: Categories and Sale
+        // Navigation: Home, Categories and Sale
         var navLinks = document.querySelectorAll('header a');
         navLinks.forEach(function(link) {
+          if (link.textContent.trim() === 'Home') {
+            link.addEventListener('click', function(e) {
+              e.preventDefault();
+              window.location.href = 'index1.html';
+            });
+          }
           if (link.textContent.trim() === 'Categories') {
             link.addEventListener('click', function(e) {
               e.preventDefault();
