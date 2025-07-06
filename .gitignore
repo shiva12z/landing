@@ -32,5 +32,9 @@ Thumbs.db
 # Ignore node_modules
 node_modules/
 
+# Ignore data folders
+data/
+*/data/
+
 # Ignore virtual environment
 .venv/
