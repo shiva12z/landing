@@ -321,16 +321,24 @@ python -X dev -m uvicorn app.main:app --reload
 - `GET /data/segments` - Get user segments
 - `POST /data/coldstart` - Cold start recommendations
 
-## 📂 Datasets
+## 📂 Datasets & Data Management
 
 This project uses several datasets for personalization, recommendations, and analytics:
 
+### Core Data Folders
+- **data/** — Main data storage directory (ignored by git)
+    - Contains large datasets, processed files, and temporary data
+    - Automatically ignored to keep repository lightweight
 - **backend/dataset1_final.csv** (1.2GB) — Main user activity dataset (ignored by git)
 - **backend/dataset2_final.csv** (2.4MB) — Supplementary user data (ignored by git)
+
+### Development & Testing Data
 - **backend/sample_data/** — Sample CSVs for development and testing
     - `merged_activity_transactions.csv`, `user_sessions.csv`, `user_segments.csv`
 - **backend/processed_data/** — Preprocessed large datasets for fast access (ignored by git)
     - `user_sessions.csv` (1.0GB), `merged_activity_transactions.csv` (1.6GB)
+
+### ML & Personalization Data
 - **backend/cold_start_data/** — Data and models for cold start recommendations
     - `default_trends.json`, `knn_model.pkl`, `scaler.pkl`, `user_clusters.csv`
 - **backend/personalization_data/** — Personalization rules and trend data
@@ -338,7 +346,17 @@ This project uses several datasets for personalization, recommendations, and ana
 - **backend/user_segments/** — User segmentation insights
     - `segment_insights.json`
 
-> **Note:** Large datasets and processed files are ignored by git to keep the repository lightweight.
+### Data Folder Structure
+```
+data/
+├── raw/                    # Raw datasets and CSV files
+├── processed/              # Preprocessed and cleaned data
+├── models/                 # Trained ML models
+├── temp/                   # Temporary files and cache
+└── exports/                # Exported data and reports
+```
+
+> **Note:** Large datasets and processed files are ignored by git to keep the repository lightweight. The `data/` folder and its contents are automatically excluded from version control.
 
 ## 📥 Download Datasets & Large Files
 
@@ -357,13 +375,19 @@ After downloading, place the files in their respective directories as described 
 
 The following files and directories are ignored (not tracked by git):
 
+### Data & Large Files
+- **data/** — Main data storage directory
 - **backend/.venv/** — Python virtual environment
 - **backend/__pycache__/**, **.pytest_cache/** — Python cache and test cache
 - **backend/dataset1_final.csv**, **backend/dataset2_final.csv** — Large raw datasets
 - **backend/processed_data/** — Preprocessed large data files
+
+### Dependencies & Build Files
 - **frontend/node_modules/** — Node.js dependencies
 - **frontend/dist/** — Frontend build output
 - **frontend/.vscode/**, **.idea/** — Editor settings
+
+### System & Log Files
 - ***.log**, **logs/** — Log files
 - **.DS_Store**, ***.suo**, etc. — OS/editor-specific files
 
@@ -373,6 +397,12 @@ The following files and directories are ignored (not tracked by git):
 
 ```
 demo/
+├── data/                             # [IGNORED] Main data storage directory
+│   ├── raw/                          # Raw datasets and CSV files
+│   ├── processed/                    # Preprocessed and cleaned data
+│   ├── models/                       # Trained ML models
+│   ├── temp/                         # Temporary files and cache
+│   └── exports/                      # Exported data and reports
 ├── backend/                          # FastAPI Backend
 │   ├── app/
 │   │   ├── __init__.py               # Python package initialization
