@@ -12,6 +12,10 @@ A modern, AI-powered fashion e-commerce platform featuring hyper-personalized la
 - **Secure Authentication**: User registration and login with password hashing
 - **Session Analytics**: Comprehensive user session tracking and analysis
 
+## 🎥 Demo Video
+
+Watch the project demo here: [Demo Video on Google Drive](https://drive.google.com/file/d/1klMw6IImbtj6CqmNU6EKgZpxOf3isFse/view?usp=drive_link)
+
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
@@ -744,3 +748,14 @@ If you continue to have issues, check the logs (`backend.log`, `frontend.log`) o
 **Happy Coding! 🎉**
 
 For more detailed information about specific components, check the individual README files in the `backend/` and `frontend/` directories.
+
+## ⚠️ Google Sign-In Note
+
+> **Important:** Google Sign-In will only work if your local server is running on one of the following URLs:
+
+> - http://127.0.0.1:5503
+> - http://localhost:3000
+> - http://127.0.0.1:3000
+> - http://localhost:5503
+
+> Make sure to use one of these URLs when testing or developing Google authentication locally. Otherwise, Google authentication may fail due to redirect URI mismatch.
