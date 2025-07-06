@@ -1,21 +1,18 @@
 <html>
   <head>
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
-    <link
-      rel="stylesheet"
-      as="style"
-      onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
-    />
+
+
 
     <title>Style Zone</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
   </head>
   <body>
-    <div class="relative flex size-full min-h-screen flex-col bg-slate-50 group/design-root overflow-x-hidden" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
-      <div class="layout-container flex h-full grow flex-col">
+    <div class="relative flex flex-col min-h-screen bg-gray-50 group/design-root overflow-x-hidden" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+      <div class="layout-container flex flex-col h-full grow">
         <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf4] px-10 py-3">
           <div class="flex items-center gap-4 text-[#0d141c]">
             <div class="size-4">
@@ -35,553 +32,420 @@
               </svg>
             </div>
             <h2 class="text-[#0d141c] text-lg font-bold leading-tight tracking-[-0.015em]">StyleZone</h2>
-            <div class="flex items-center gap-9 ml-8">
-              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#">Home</a>
-              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#" id="shop-link">Shop</a>
-              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#" id="categories-link">Categories</a>
-              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#" id="sale-link">Sale</a>
-            </div>
-          </div>
-          <div class="flex gap-2">
-            <button
-              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
-            >
-              <div class="text-[#0d141c]" data-icon="MagnifyingGlass" data-size="20px" data-weight="regular">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                  <path
-                    d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
-                  ></path>
-                </svg>
-              </div>
-            </button>
-            <button
-              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
-            >
-              <div class="text-[#0d141c]" data-icon="ShoppingCart" data-size="20px" data-weight="regular">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                  <path
-                    d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"
-                  ></path>
-                </svg>
-              </div>
-            </button>
-            <div class="flex gap-2 relative">
-              <button
-                class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
-                aria-label="Account"
-                id="profile-btn"
-                type="button"
-              >
-                <div class="text-[#0d141c]" data-icon="User" data-size="20px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                    <path d="M128,128a48,48,0,1,0-48-48A48,48,0,0,0,128,128Zm0,16c-39.7,0-72,32.3-72,72a8,8,0,0,0,8,8H192a8,8,0,0,0,8-8C200,176.3,167.7,144,128,144Z"></path>
-                  </svg>
-                </div>
-              </button>
-              <div id="profile-dropdown" class="hidden absolute right-0 top-12 z-50 w-44 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
-                <a href="#" id="account-settings-link" class="block px-4 py-2 text-sm text-[#0d141c] hover:bg-gray-100">Account Settings</a>
-                <a href="#" id="logout-link" class="block px-4 py-2 text-sm text-[#0d141c] hover:bg-gray-100">Logout</a>
-              </div>
-            </div>
           </div>
         </header>
-        <div class="px-40 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <div class="@container">
-              <div class="@[480px]:p-4">
-                <div
-                  class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-lg items-start justify-end px-4 pb-10 @[480px]:px-10"
-                  style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("images/CottonandlinenhalfEnglishribchinécardiga.png");'
-                >
-                  <div class="flex flex-col gap-2 text-left">
-                    <h1
-                      class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
-                    >
-                      Discover Your Style
-                    </h1>
-                    <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
-                      Explore curated collections tailored to your unique taste. Find the perfect pieces to express yourself.
-                    </h2>
+        <div class="flex flex-1 w-full justify-center items-center">
+          <div class="layout-content-container flex flex-col w-[512px] max-w-[512px] py-5 max-w-[960px] flex-1 items-center">
+            <h2 id="form-title" class="text-[#101518] tracking-light text-[28px] font-bold leading-tight px-4 text-center pb-3 pt-5">Welcome back</h2>
+            <!-- Login Form -->
+            <form id="login-form" class="flex flex-col w-full items-center">
+              <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3 w-full">
+                <label class="flex flex-col min-w-40 flex-1">
+                  <p class="text-[#101518] text-base font-medium leading-normal pb-2">Email or Username</p>
+                  <input name="username" placeholder="Enter your email or username" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#101518] focus:outline-0 focus:ring-0 border border-[#d4dce2] bg-gray-50 focus:border-[#d4dce2] h-14 placeholder:text-[#5c748a] p-[15px] text-base font-normal leading-normal" value="" />
+                </label>
+              </div>
+              <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3 w-full">
+                <label class="flex flex-col min-w-40 flex-1">
+                  <p class="text-[#101518] text-base font-medium leading-normal pb-2">Password</p>
+                  <input name="password" type="password" placeholder="Enter your password" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#101518] focus:outline-0 focus:ring-0 border border-[#d4dce2] bg-gray-50 focus:border-[#d4dce2] h-14 placeholder:text-[#5c748a] p-[15px] text-base font-normal leading-normal" value="" />
+                  <div class="flex w-full justify-between pt-2">
+                    <button id="show-register" class="text-[#101518] text-sm font-bold leading-normal underline hover:text-[#5c748a] focus:outline-none" type="button">Don't have an account?</button>
+                    <button class="text-[#5c748a] text-sm font-normal leading-normal underline hover:text-[#101518] focus:outline-none" type="button">Forgot Password?</button>
                   </div>
-                  <button
-                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#0c7ff2] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
-                  >
-                    <span class="truncate">Shop Now</span>
-                  </button>
+                </label>
+              </div>
+              <div class="flex justify-center px-4 py-3 w-full">
+                <button type="submit" class="flex w-48 max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#dce8f3] text-[#101518] text-sm font-bold leading-normal tracking-[0.015em]">
+                  <span class="truncate">Login</span>
+                </button>
+              </div>
+              <div class="flex justify-center px-4 py-3 w-full">
+                <div class="flex items-center w-48">
+                  <div class="flex-1 h-px bg-gray-300"></div>
+                  <span class="px-3 text-sm text-gray-500">or</span>
+                  <div class="flex-1 h-px bg-gray-300"></div>
                 </div>
               </div>
-            </div>
-            <h2 class="text-[#0d141c] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Trending Now</h2>
-            <div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              <div class="flex items-stretch p-4 gap-3">
-                <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
-                  <div
-                    id="chinodress-img"
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col cursor-pointer product-card relative group"
-                    data-product='{"name":"Chinodress","price":"$79.99","img":"https://u-mercari-images.mercdn.net/photos/m54242634325_2.jpg","desc":"This elegant Chinodress features a timeless silhouette with modern details, perfect for special occasions or making a statement. Crafted from premium materials for comfort and style."}'
-                    style='background-image: url("https://u-mercari-images.mercdn.net/photos/m54242634325_2.jpg");'
-                  >
-                    <!-- Removed hover overlay with description and Add to Cart button -->
-                  </div>
-                  <div>
-                    <p class="text-[#0d141c] text-base font-medium leading-normal">Chinodress</p>
-                    <p class="text-[#49739c] text-sm font-normal leading-normal">$79.99</p>
-                  </div>
+              <div class="flex justify-center px-4 py-3 w-full">
+                <div id="g_id_onload"
+                     data-client_id="1081932662369-bh6a32rfjdvi9hpb0mea5fn47cv0107k.apps.googleusercontent.com"
+                     data-callback="handleGoogleSignIn"
+                     data-auto_prompt="false"
+                     data-cancel_on_tap_outside="false">
                 </div>
-                <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col cursor-pointer product-card relative group"
-                    data-product='{"name":"Casual Wear","price":"$49.99","img":"images/casual.png","desc":"Effortless style for everyday comfort. Soft, breathable fabric and a relaxed fit make this casual wear a wardrobe staple."}'
-                    style='background-image: url("images/casual.png");'
-                  >
-                    <!-- Removed hover overlay with description and Add to Cart button -->
-                  </div>
-                  <div>
-                    <p class="text-[#0d141c] text-base font-medium leading-normal">Casual Wear</p>
-                    <p class="text-[#49739c] text-sm font-normal leading-normal">$49.99</p>
-                  </div>
-                </div>
-                <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col cursor-pointer product-card relative group"
-                    data-product='{"name":"Chic Accessories","price":"$29.99","img":"images/bag/Avenue.png","desc":"Complete your look with these chic accessories. Modern, versatile, and perfect for any outfit."}'
-                    style='background-image: url("images/bag/Avenue.png");'
-                  >
-                    <!-- Removed hover overlay with description and Add to Cart button -->
-                  </div>
-                  <div>
-                    <p class="text-[#0d141c] text-base font-medium leading-normal">Chic Accessories</p>
-                    <p class="text-[#49739c] text-sm font-normal leading-normal">$29.99</p>
-                  </div>
-                </div>
-                <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col cursor-pointer product-card relative group"
-                    data-product='{"name":"Street Style","price":"$59.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuC2tWpSj_WC_AwktIKE_wnQmK_Pfjm_RqsEbJlZCuKXPBrWrCGc8pX2E85SX20ai0ZOJhaJ8SQXSobRc1KBQGHUCYLTdebHwT3vYLt9L0xSCOfSm1TA6ZH2RZH_61ef6hNsXVsQtoLyMv05Q_TS4QwN9S_A2dDoCBmeMG2AuhqGa83Bqk7JphMR-NqCA6Lc8l4QveEnfmltJvSGZ7LckPdjZ9sJLRug-Y7PRKvqhFJl0_I7FQFW5fzW9V3mggwBZV0405-1oIZk2tnB","desc":"Urban-inspired street style for a bold, confident look. Stand out wherever you go."}'
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2tWpSj_WC_AwktIKE_wnQmK_Pfjm_RqsEbJlZCuKXPBrWrCGc8pX2E85SX20ai0ZOJhaJ8SQXSobRc1KBQGHUCYLTdebHwT3vYLt9L0xSCOfSm1TA6ZH2RZH_61ef6hNsXVsQtoLyMv05Q_TS4QwN9S_A2dDoCBmeMG2AuhqGa83Bqk7JphMR-NqCA6Lc8l4QveEnfmltJvSGZ7LckPdjZ9sJLRug-Y7PRKvqhFJl0_I7FQFW5fzW9V3mggwBZV0405-1oIZk2tnB");'
-                  >
-                    <!-- Removed hover overlay with description and Add to Cart button -->
-                  </div>
-                  <div>
-                    <p class="text-[#0d141c] text-base font-medium leading-normal">Street Style</p>
-                    <p class="text-[#49739c] text-sm font-normal leading-normal">$59.99</p>
-                  </div>
-                </div>
-                <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col cursor-pointer product-card relative group"
-                    data-product='{"name":"Denim Soul Wide Fit Milk Punch Trousers","price":"$129.99","img":"images/Denim Soul Wide Fit Milk Punch Trousers.png","desc":"Modern wide-fit trousers with a milk punch finish. Perfect for a casual yet stylish look."}'
-                    style='background-image: url("images/Denim Soul Wide Fit Milk Punch Trousers.png");'
-                  >
-                    <!-- Removed hover overlay with description and Add to Cart button -->
-                  </div>
-                  <div>
-                    <p class="text-[#0d141c] text-base font-medium leading-normal">Denim Soul Wide Fit Milk Punch Trousers</p>
-                    <p class="text-[#49739c] text-sm font-normal leading-normal">$129.99</p>
-                  </div>
+                <div class="g_id_signin"
+                     data-type="standard"
+                     data-size="large"
+                     data-theme="outline"
+                     data-text="sign_in_with"
+                     data-shape="rectangular"
+                     data-logo_alignment="left">
                 </div>
               </div>
-            </div>
-            <h2 class="text-[#0d141c] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Recommended for You</h2>
-            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
-              <div class="flex flex-col gap-3 pb-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
-                  data-product='{"name":"Summer Dress","price":"$69.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuBnWKUg8IBvbDdgS3g0Lt_ADiZuyaFVs4Z4iNbaGFEoOJCnYaF5MPnvqPmlmRxug1e-A0_P8ETIxhuXknxnAhgTruR5ILAGe9Jd1Hp4R7Lb_zPKoTAeu7Ku2XrHBEAfuDzpm4m3o5ecyB76ew5Ye_IQq0JS45qkg7gXwjVGzSSNXpfOS3leqhU3ntF5y91hGWpDP9XDBpCXexpJ7XeA0bSJM70OmUwP9giHrZJhPHCT_dao3R32wLfVj2EkQ7F8kv1hRR3GrVnn869b","desc":"Light and breezy summer dress, perfect for warm days and casual outings."}'
-                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBnWKUg8IBvbDdgS3g0Lt_ADiZuyaFVs4Z4iNbaGFEoOJCnYaF5MPnvqPmlmRxug1e-A0_P8ETIxhuXknxnAhgTruR5ILAGe9Jd1Hp4R7Lb_zPKoTAeu7Ku2XrHBEAfuDzpm4m3o5ecyB76ew5Ye_IQq0JS45qkg7gXwjVGzSSNXpfOS3leqhU3ntF5y91hGWpDP9XDBpCXexpJ7XeA0bSJM70OmUwP9giHrZJhPHCT_dao3R32wLfVj2EkQ7F8kv1hRR3GrVnn869b");'
-                ></div>
-                <div>
-                  <p class="text-[#0d141c] text-base font-medium leading-normal">Summer Dress</p>
-                  <p class="text-[#49739c] text-sm font-normal leading-normal">$69.99</p>
+              <div class="flex justify-center px-4 py-3 w-full">
+                <div id="appleid-signin"
+                     data-mode="center-align"
+                     data-type="sign in"
+                     data-color="black"
+                     data-border="true"
+                     data-border-radius="8"
+                     data-width="192"
+                     data-height="40">
                 </div>
               </div>
-              <div class="flex flex-col gap-3 pb-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
-                  data-product='{"name":"Leather Handbag","price":"$129.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuCPq2ZffkcXgr9lgFiCqplxTnjXZ5Z1F51_hSAYreEzFbRjcFWkaA-vw7WpcSzoZyhOdi06JcxuNgNfvjenLTWTqh6Nq3CeT6g4ovuV9N-182_EcQxoAPr21jWXPJi7UI4aqyN30rTN6drW02gXN71WJenZNnVnEQbqE7qv7pHMPRG-1or8xwWcnHPrattIq6pOPWRZ4wHN0KmZYm-nPOzWqu8GeRa2HqxqfOwp2G63GwOAbp9zUT89pKmiZgvbwGrTG84WIHItcCC-","desc":"Premium leather handbag with modern design and spacious interior."}'
-                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPq2ZffkcXgr9lgFiCqplxTnjXZ5Z1F51_hSAYreEzFbRjcFWkaA-vw7WpcSzoZyhOdi06JcxuNgNfvjenLTWTqh6Nq3CeT6g4ovuV9N-182_EcQxoAPr21jWXPJi7UI4aqyN30rTN6drW02gXN71WJenZNnVnEQbqE7qv7pHMPRG-1or8xwWcnHPrattIq6pOPWRZ4wHN0KmZYm-nPOzWqu8GeRa2HqxqfOwp2G63GwOAbp9zUT89pKmiZgvbwGrTG84WIHItcCC-");'
-                ></div>
-                <div>
-                  <p class="text-[#0d141c] text-base font-medium leading-normal">Leather Handbag</p>
-                  <p class="text-[#49739c] text-sm font-normal leading-normal">$129.99</p>
-                </div>
+            </form>
+            <!-- Register Form (hidden by default) -->
+            <form id="register-form" class="flex flex-col w-full items-center" style="display:none;">
+              <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3 w-full">
+                <label class="flex flex-col min-w-40 flex-1">
+                  <p class="text-[#101518] text-base font-medium leading-normal pb-2">First Name</p>
+                  <input name="first_name" type="text" placeholder="Enter your first name" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#101518] focus:outline-0 focus:ring-0 border border-[#d4dce2] bg-gray-50 focus:border-[#d4dce2] h-14 placeholder:text-[#5c748a] p-[15px] text-base font-normal leading-normal" required />
+                </label>
               </div>
-              <div class="flex flex-col gap-3 pb-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
-                  data-product='{"name":"Running Shoes","price":"$89.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuBtXpaZgWS2dq_ohAtJzI_ed4g9hzgqihrJgqnlThDYnI1BHGN3beI4ruiEyv1ej9jjzOjtiKmHMAA_0I0lIVGnzNK9XzwxTEBaG2vT1rQZx2lWGNWMcuzji3_3xvIJNNKt0tbDqV736Ep2n74Dv2vHLaTC6X-If5QfYG93c1YNQ-R7shg9A-EDs96HYZe5JCkWHTzszGha5PrmOC_kE4Pf9eLe1lie_6_RWMZ2LEsDmMOWuLFKYpDbHJ7UfifLRhti3voaLQm7nhch","desc":"High-performance running shoes for comfort and durability."}'
-                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBtXpaZgWS2dq_ohAtJzI_ed4g9hzgqihrJgqnlThDYnI1BHGN3beI4ruiEyv1ej9jjzOjtiKmHMAA_0I0lIVGnzNK9XzwxTEBaG2vT1rQZx2lWGNWMcuzji3_3xvIJNNKt0tbDqV736Ep2n74Dv2vHLaTC6X-If5QfYG93c1YNQ-R7shg9A-EDs96HYZe5JCkWHTzszGha5PrmOC_kE4Pf9eLe1lie_6_RWMZ2LEsDmMOWuLFKYpDbHJ7UfifLRhti3voaLQm7nhch");'
-                ></div>
-                <div>
-                  <p class="text-[#0d141c] text-base font-medium leading-normal">Running Shoes</p>
-                  <p class="text-[#49739c] text-sm font-normal leading-normal">$89.99</p>
-                </div>
+              <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3 w-full">
+                <label class="flex flex-col min-w-40 flex-1">
+                  <p class="text-[#101518] text-base font-medium leading-normal pb-2">Last Name</p>
+                  <input name="last_name" type="text" placeholder="Enter your last name" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#101518] focus:outline-0 focus:ring-0 border border-[#d4dce2] bg-gray-50 focus:border-[#d4dce2] h-14 placeholder:text-[#5c748a] p-[15px] text-base font-normal leading-normal" required />
+                </label>
               </div>
-              <div class="flex flex-col gap-3 pb-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
-                  data-product='{"name":"Stylish Watch","price":"$149.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuBvX9C4HEGJ2sYzqeMaer2OZkVgc7Nhk2dYY6Eb718OsrCAD7RHz8A5kbYT7WmP0pQ-ftkt3cHF79jTJUdCrCsPkHHeBCtHtlk89myp8xDO06wKZ3R3MMyN1p7gPotEaiL5gz-HRQyVpZacOJwTPL3IRbcz-TIKqIl_K9B2smP-71nmWAi-BIzFdKydnTJL0uCiabbzAbI1eyhi3bM1JFjvZ7q568vqIOVAqnSja27hTvblu8J55cfxMRWthVP3BIYO7psQP4L08qb5","desc":"Elegant and modern watch to complement any outfit."}'
-                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBvX9C4HEGJ2sYzqeMaer2OZkVgc7Nhk2dYY6Eb718OsrCAD7RHz8A5kbYT7WmP0pQ-ftkt3cHF79jTJUdCrCsPkHHeBCtHtlk89myp8xDO06wKZ3R3MMyN1p7gPotEaiL5gz-HRQyVpZacOJwTPL3IRbcz-TIKqIl_K9B2smP-71nmWAi-BIzFdKydnTJL0uCiabbzAbI1eyhi3bM1JFjvZ7q568vqIOVAqnSja27hTvblu8J55cfxMRWthVP3BIYO7psQP4L08qb5");'
-                ></div>
-                <div>
-                  <p class="text-[#0d141c] text-base font-medium leading-normal">Stylish Watch</p>
-                  <p class="text-[#49739c] text-sm font-normal leading-normal">$149.99</p>
-                </div>
+              <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3 w-full">
+                <label class="flex flex-col min-w-40 flex-1">
+                  <p class="text-[#101518] text-base font-medium leading-normal pb-2">Country</p>
+                  <select name="region" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#101518] focus:outline-0 focus:ring-0 border border-[#d4dce2] bg-gray-50 focus:border-[#d4dce2] h-14 p-[15px] text-base font-normal leading-normal" required>
+                    <option value="">Select your country</option>
+                    <option value="Afghanistan">Afghanistan</option>
+                    <option value="Albania">Albania</option>
+                    <option value="Algeria">Algeria</option>
+                    <option value="Andorra">Andorra</option>
+                    <option value="Angola">Angola</option>
+                    <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Armenia">Armenia</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Austria">Austria</option>
+                    <option value="Azerbaijan">Azerbaijan</option>
+                    <option value="Bahamas">Bahamas</option>
+                    <option value="Bahrain">Bahrain</option>
+                    <option value="Bangladesh">Bangladesh</option>
+                    <option value="Barbados">Barbados</option>
+                    <option value="Belarus">Belarus</option>
+                    <option value="Belgium">Belgium</option>
+                    <option value="Belize">Belize</option>
+                    <option value="Benin">Benin</option>
+                    <option value="Bhutan">Bhutan</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                    <option value="Botswana">Botswana</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="Brunei">Brunei</option>
+                    <option value="Bulgaria">Bulgaria</option>
+                    <option value="Burkina Faso">Burkina Faso</option>
+                    <option value="Burundi">Burundi</option>
+                    <option value="Cabo Verde">Cabo Verde</option>
+                    <option value="Cambodia">Cambodia</option>
+                    <option value="Cameroon">Cameroon</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Central African Republic">Central African Republic</option>
+                    <option value="Chad">Chad</option>
+                    <option value="Chile">Chile</option>
+                    <option value="China">China</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Comoros">Comoros</option>
+                    <option value="Congo, Democratic Republic of the">Congo, Democratic Republic of the</option>
+                    <option value="Congo, Republic of the">Congo, Republic of the</option>
+                    <option value="Costa Rica">Costa Rica</option>
+                    <option value="Cote d'Ivoire">Cote d'Ivoire</option>
+                    <option value="Croatia">Croatia</option>
+                    <option value="Cuba">Cuba</option>
+                    <option value="Cyprus">Cyprus</option>
+                    <option value="Czech Republic">Czech Republic</option>
+                    <option value="Denmark">Denmark</option>
+                    <option value="Djibouti">Djibouti</option>
+                    <option value="Dominica">Dominica</option>
+                    <option value="Dominican Republic">Dominican Republic</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="El Salvador">El Salvador</option>
+                    <option value="Equatorial Guinea">Equatorial Guinea</option>
+                    <option value="Eritrea">Eritrea</option>
+                    <option value="Estonia">Estonia</option>
+                    <option value="Eswatini">Eswatini</option>
+                    <option value="Ethiopia">Ethiopia</option>
+                    <option value="Fiji">Fiji</option>
+                    <option value="Finland">Finland</option>
+                    <option value="France">France</option>
+                    <option value="Gabon">Gabon</option>
+                    <option value="Gambia">Gambia</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Ghana">Ghana</option>
+                    <option value="Greece">Greece</option>
+                    <option value="Grenada">Grenada</option>
+                    <option value="Guatemala">Guatemala</option>
+                    <option value="Guinea">Guinea</option>
+                    <option value="Guinea-Bissau">Guinea-Bissau</option>
+                    <option value="Guyana">Guyana</option>
+                    <option value="Haiti">Haiti</option>
+                    <option value="Honduras">Honduras</option>
+                    <option value="Hungary">Hungary</option>
+                    <option value="Iceland">Iceland</option>
+                    <option value="India">India</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="Iran">Iran</option>
+                    <option value="Iraq">Iraq</option>
+                    <option value="Ireland">Ireland</option>
+                    <option value="Israel">Israel</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Jamaica">Jamaica</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Jordan">Jordan</option>
+                    <option value="Kazakhstan">Kazakhstan</option>
+                    <option value="Kenya">Kenya</option>
+                    <option value="Kiribati">Kiribati</option>
+                    <option value="Korea, North">Korea, North</option>
+                    <option value="Korea, South">Korea, South</option>
+                    <option value="Kosovo">Kosovo</option>
+                    <option value="Kuwait">Kuwait</option>
+                    <option value="Kyrgyzstan">Kyrgyzstan</option>
+                    <option value="Laos">Laos</option>
+                    <option value="Latvia">Latvia</option>
+                    <option value="Lebanon">Lebanon</option>
+                    <option value="Lesotho">Lesotho</option>
+                    <option value="Liberia">Liberia</option>
+                    <option value="Libya">Libya</option>
+                    <option value="Liechtenstein">Liechtenstein</option>
+                    <option value="Lithuania">Lithuania</option>
+                    <option value="Luxembourg">Luxembourg</option>
+                    <option value="Madagascar">Madagascar</option>
+                    <option value="Malawi">Malawi</option>
+                    <option value="Malaysia">Malaysia</option>
+                    <option value="Maldives">Maldives</option>
+                    <option value="Mali">Mali</option>
+                    <option value="Malta">Malta</option>
+                    <option value="Marshall Islands">Marshall Islands</option>
+                    <option value="Mauritania">Mauritania</option>
+                    <option value="Mauritius">Mauritius</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="Micronesia">Micronesia</option>
+                    <option value="Moldova">Moldova</option>
+                    <option value="Monaco">Monaco</option>
+                    <option value="Mongolia">Mongolia</option>
+                    <option value="Montenegro">Montenegro</option>
+                    <option value="Morocco">Morocco</option>
+                    <option value="Mozambique">Mozambique</option>
+                    <option value="Myanmar">Myanmar</option>
+                    <option value="Namibia">Namibia</option>
+                    <option value="Nauru">Nauru</option>
+                    <option value="Nepal">Nepal</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="Nicaragua">Nicaragua</option>
+                    <option value="Niger">Niger</option>
+                    <option value="Nigeria">Nigeria</option>
+                    <option value="North Macedonia">North Macedonia</option>
+                    <option value="Norway">Norway</option>
+                    <option value="Oman">Oman</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Palau">Palau</option>
+                    <option value="Palestine">Palestine</option>
+                    <option value="Panama">Panama</option>
+                    <option value="Papua New Guinea">Papua New Guinea</option>
+                    <option value="Paraguay">Paraguay</option>
+                    <option value="Peru">Peru</option>
+                    <option value="Philippines">Philippines</option>
+                    <option value="Poland">Poland</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Qatar">Qatar</option>
+                    <option value="Romania">Romania</option>
+                    <option value="Russia">Russia</option>
+                    <option value="Rwanda">Rwanda</option>
+                    <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                    <option value="Saint Lucia">Saint Lucia</option>
+                    <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                    <option value="Samoa">Samoa</option>
+                    <option value="San Marino">San Marino</option>
+                    <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                    <option value="Saudi Arabia">Saudi Arabia</option>
+                    <option value="Senegal">Senegal</option>
+                    <option value="Serbia">Serbia</option>
+                    <option value="Seychelles">Seychelles</option>
+                    <option value="Sierra Leone">Sierra Leone</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="Slovakia">Slovakia</option>
+                    <option value="Slovenia">Slovenia</option>
+                    <option value="Solomon Islands">Solomon Islands</option>
+                    <option value="Somalia">Somalia</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="South Sudan">South Sudan</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Sri Lanka">Sri Lanka</option>
+                    <option value="Sudan">Sudan</option>
+                    <option value="Suriname">Suriname</option>
+                    <option value="Sweden">Sweden</option>
+                    <option value="Switzerland">Switzerland</option>
+                    <option value="Syria">Syria</option>
+                    <option value="Taiwan">Taiwan</option>
+                    <option value="Tajikistan">Tajikistan</option>
+                    <option value="Tanzania">Tanzania</option>
+                    <option value="Thailand">Thailand</option>
+                    <option value="Timor-Leste">Timor-Leste</option>
+                    <option value="Togo">Togo</option>
+                    <option value="Tonga">Tonga</option>
+                    <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                    <option value="Tunisia">Tunisia</option>
+                    <option value="Turkey">Turkey</option>
+                    <option value="Turkmenistan">Turkmenistan</option>
+                    <option value="Tuvalu">Tuvalu</option>
+                    <option value="Uganda">Uganda</option>
+                    <option value="Ukraine">Ukraine</option>
+                    <option value="United Arab Emirates">United Arab Emirates</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="United States">United States</option>
+                    <option value="Uruguay">Uruguay</option>
+                    <option value="Uzbekistan">Uzbekistan</option>
+                    <option value="Vanuatu">Vanuatu</option>
+                    <option value="Vatican City">Vatican City</option>
+                    <option value="Venezuela">Venezuela</option>
+                    <option value="Vietnam">Vietnam</option>
+                    <option value="Yemen">Yemen</option>
+                    <option value="Zambia">Zambia</option>
+                    <option value="Zimbabwe">Zimbabwe</option>
+                  </select>
+                </label>
               </div>
-              <div class="flex flex-col gap-3 pb-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
-                  data-product='{"name":"Denim Jacket","price":"$79.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuA77M_UBQlCGsG9R8jTqTMPribotMgqpjOFeL-uIeSm9BKd3XROMtesKnNj6rhgKsI34gjlUcdJtZWwcGVpubkbrqZh80vgOnn5oBS5qa9QKVRlIbkKiKt_LKEt1CtC8PdjAmhx4OhxHvyHFy8F7Gi63eAd71GxKOzbpYHO3iQkpKnU_ieAfV-Ix8mfC6iLR--7BQwArRtg1gU7HNnvbQIjXs8uw3CzRAvxU1AOpHHBF-OVmm5Xb7bH__RE5pFf4qAtuwailLeCi4SX","desc":"Classic denim jacket with a modern fit and durable fabric."}'
-                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA77M_UBQlCGsG9R8jTqTMPribotMgqpjOFeL-uIeSm9BKd3XROMtesKnNj6rhgKsI34gjlUcdJtZWwcGVpubkbrqZh80vgOnn5oBS5qa9QKVRlIbkKiKt_LKEt1CtC8PdjAmhx4OhxHvyHFy8F7Gi63eAd71GxKOzbpYHO3iQkpKnU_ieAfV-Ix8mfC6iLR--7BQwArRtg1gU7HNnvbQIjXs8uw3CzRAvxU1AOpHHBF-OVmm5Xb7bH__RE5pFf4qAtuwailLeCi4SX");'
-                ></div>
-                <div>
-                  <p class="text-[#0d141c] text-base font-medium leading-normal">Denim Jacket</p>
-                  <p class="text-[#49739c] text-sm font-normal leading-normal">$79.99</p>
-                </div>
+              <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3 w-full">
+                <label class="flex flex-col min-w-40 flex-1">
+                  <p class="text-[#101518] text-base font-medium leading-normal pb-2">Email</p>
+                  <input name="email" type="email" placeholder="Enter your email" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#101518] focus:outline-0 focus:ring-0 border border-[#d4dce2] bg-gray-50 focus:border-[#d4dce2] h-14 placeholder:text-[#5c748a] p-[15px] text-base font-normal leading-normal" required />
+                </label>
               </div>
-              <div class="flex flex-col gap-3 pb-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg cursor-pointer product-card"
-                  data-product='{"name":"Sunglasses","price":"$39.99","img":"https://lh3.googleusercontent.com/aida-public/AB6AXuCSZkis3306tdfwQ8vv6aNhUyzb5KcHGVZPkjN0aPmD5ZVjZCbQso_tlohx-riT0ZSeJl9hgyoGPXkhb25Lo-C4CHTc1ymEk3djOlQTxUvcxYA9yzV-uSS62HjigJl14cUuhrBiw7T35xA2uU6opBorb74Dc8_emX3dTcc7dcoNYruN8Skx79GYJWdiEp6w4T_VYdNaDfbxgFORsw0uZBkFCCy0F9CRuxeBodS359vmEYVOJb-QT6BcIS3PtyuQs5D8vMHVLdIP8w08","desc":"Trendy sunglasses with UV protection for sunny days."}'
-                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCSZkis3306tdfwQ8vv6aNhUyzb5KcHGVZPkjN0aPmD5ZVjZCbQso_tlohx-riT0ZSeJl9hgyoGPXkhb25Lo-C4CHTc1ymEk3djOlQTxUvcxYA9yzV-uSS62HjigJl14cUuhrBiw7T35xA2uU6opBorb74Dc8_emX3dTcc7dcoNYruN8Skx79GYJWdiEp6w4T_VYdNaDfbxgFORsw0uZBkFCCy0F9CRuxeBodS359vmEYVOJb-QT6BcIS3PtyuQs5D8vMHVLdIP8w08");'
-                ></div>
-                <div>
-                  <p class="text-[#0d141c] text-base font-medium leading-normal">Sunglasses</p>
-                  <p class="text-[#49739c] text-sm font-normal leading-normal">$39.99</p>
-                </div>
+              <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3 w-full">
+                <label class="flex flex-col min-w-40 flex-1">
+                  <p class="text-[#101518] text-base font-medium leading-normal pb-2">Password</p>
+                  <input name="password" type="password" placeholder="Enter your password" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#101518] focus:outline-0 focus:ring-0 border border-[#d4dce2] bg-gray-50 focus:border-[#d4dce2] h-14 placeholder:text-[#5c748a] p-[15px] text-base font-normal leading-normal" required />
+                </label>
               </div>
-            </div>
-            <div class="@container">
-              <div class="flex flex-col justify-end gap-6 px-4 py-10 @[480px]:gap-8 @[480px]:px-10 @[480px]:py-20 items-center text-center">
-                <div class="flex flex-col gap-2 text-center items-center">
-                  <h1
-                    class="text-[#0d141c] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
-                  >
-                    Join StyleZone Today
-                  </h1>
-                  <p class="text-[#0d141c] text-base font-normal leading-normal max-w-[720px]">Sign up for exclusive offers and personalized recommendations.</p>
-                </div>
-                <div class="flex flex-1 justify-center">
-                  <div class="flex justify-center">
-                    <button
-                      id="signup-btn"
-                      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#0c7ff2] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] grow"
-                    >
-                      <span class="truncate">Sign Up</span>
-                    </button>
-                    <div id="signup-dropdown" class="hidden mt-2 bg-white p-4 rounded-lg shadow-lg">
-                      <form class="flex flex-col space-y-4">
-                        <div>
-                          <label class="text-sm font-medium text-gray-700">Email address</label>
-                          <input type="email" name="email" placeholder="Enter your email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required>
-                        </div>
-                        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                          Subscribe
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+              <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3 w-full">
+                <label class="flex flex-col min-w-40 flex-1">
+                  <p class="text-[#101518] text-base font-medium leading-normal pb-2">Confirm Password</p>
+                  <input name="confirm_password" type="password" placeholder="Confirm your password" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#101518] focus:outline-0 focus:ring-0 border border-[#d4dce2] bg-gray-50 focus:border-[#d4dce2] h-14 placeholder:text-[#5c748a] p-[15px] text-base font-normal leading-normal" required />
+                </label>
               </div>
-            </div>
+              <div class="flex justify-center px-4 py-3 w-full">
+                <button type="submit" class="flex w-48 max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#dce8f3] text-[#101518] text-sm font-bold leading-normal tracking-[0.015em]">
+                  <span class="truncate">Register</span>
+                </button>
+              </div>
+              <div class="flex justify-center px-4 py-3 w-full">
+                <button id="show-login" type="button" class="text-[#101518] text-sm font-bold leading-normal underline hover:text-[#5c748a] focus:outline-none">Already have an account?</button>
+              </div>
+            </form>
           </div>
-        </div>
-        <div id="account-settings-section" class="hidden px-40 py-5">
-          <button id="back-to-main" class="mb-4 px-4 py-2 bg-[#0c7ff2] text-white rounded hover:bg-blue-700">&larr; Back</button>
-          <div id="account-settings-content"></div>
-        </div>
-        <div id="chinodress-details-section" class="hidden px-40 py-5">
-          <button id="back-to-main-chinodress" class="mb-4 px-4 py-2 bg-[#0c7ff2] text-white rounded hover:bg-blue-700">&larr; Back</button>
-          <div class="flex flex-col items-center">
-            <div class="w-48 h-48 bg-center bg-cover rounded-lg mb-4" style="background-image: url('https://u-mercari-images.mercdn.net/photos/m54242634325_2.jpg');"></div>
-            <h2 class="text-xl font-bold mb-2">Chinodress</h2>
-            <p class="text-[#49739c] text-base font-semibold mb-2">$79.99</p>
-            <p class="text-gray-700 text-center mb-4">This elegant Chinodress features a timeless silhouette with modern details, perfect for special occasions or making a statement. Crafted from premium materials for comfort and style.</p>
-            <button id="add-to-cart-btn-section" class="px-6 py-2 bg-[#0c7ff2] text-white rounded hover:bg-blue-700 font-semibold">Add to Cart</button>
-          </div>
-        </div>
-        <div id="main-content">
-          <footer class="flex justify-center">
-            <div class="flex max-w-[960px] flex-1 flex-col">
-              <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
-                <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
-                  <a class="text-[#49739c] text-base font-normal leading-normal min-w-40" href="#">About Us</a>
-                  <a class="text-[#49739c] text-base font-normal leading-normal min-w-40" href="#">Contact</a>
-                  <a class="text-[#49739c] text-base font-normal leading-normal min-w-40" href="#">Privacy Policy</a>
-                  <a class="text-[#49739c] text-base font-normal leading-normal min-w-40" href="#">Terms of Service</a>
-                </div>
-                <div class="flex flex-wrap justify-center gap-4">
-                  <a href="#">
-                    <div class="text-[#49739c]" data-icon="TwitterLogo" data-size="24px" data-weight="regular">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                        <path
-                          d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"
-                        ></path>
-                      </svg>
-                    </div>
-                  </a>
-                  <a href="#">
-                    <div class="text-[#49739c]" data-icon="InstagramLogo" data-size="24px" data-weight="regular">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                        <path
-                          d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80a40,40,0,0,1,40-40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"
-                        ></path>
-                      </svg>
-                    </div>
-                  </a>
-                  <a href="#">
-                    <div class="text-[#49739c]" data-icon="FacebookLogo" data-size="24px" data-weight="regular">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                        <path
-                          d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"
-                        ></path>
-                      </svg>
-                    </div>
-                  </a>
-                </div>
-                <p class="text-[#49739c] text-base font-normal leading-normal">@2025 StyleZone. All rights reserved.</p>
-              </footer>
-            </div>
-          </footer>
-        </div>
-    </div>
-    <div id="account-settings-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden">
-      <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full relative">
-        <button id="close-account-settings" class="absolute top-2 right-2 text-gray-400 hover:text-gray-700 text-2xl">&times;</button>
-        <div id="account-settings-content" class="p-6"></div>
-      </div>
-    </div>
-    <!-- Product Modal (single instance, outside main content) -->
-    <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden">
-      <div class="bg-white rounded-lg shadow-lg max-w-md w-full relative p-6">
-        <button id="close-product-modal" class="absolute top-2 right-2 text-gray-400 hover:text-gray-700 text-2xl">&times;</button>
-        <div class="flex flex-col items-center">
-          <div id="modal-product-img" class="w-48 h-48 bg-center bg-cover rounded-lg mb-4"></div>
-          <h2 id="modal-product-name" class="text-xl font-bold mb-2"></h2>
-          <p id="modal-product-price" class="text-[#49739c] text-base font-semibold mb-2"></p>
-          <p id="modal-product-desc" class="text-gray-700 text-center mb-4"></p>
-          <button id="modal-add-to-cart-btn" class="px-6 py-2 bg-[#0c7ff2] text-white rounded hover:bg-blue-700 font-semibold">Add to Cart</button>
         </div>
       </div>
     </div>
     <script>
-      document.getElementById('shop-link').onclick = function(e) {
+      // Toggle forms
+      document.getElementById('show-register').onclick = function() {
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('register-form').style.display = 'flex';
+        document.getElementById('form-title').innerText = 'Create your account';
+      };
+      document.getElementById('show-login').onclick = function() {
+        document.getElementById('register-form').style.display = 'none';
+        document.getElementById('login-form').style.display = 'flex';
+        document.getElementById('form-title').innerText = 'Welcome back';
+      };
+      // Login form submit
+      document.getElementById('login-form').onsubmit = async function(e) {
         e.preventDefault();
-        window.location.href = 'shop.html';
-      };
-      document.getElementById('categories-link').onclick = function(e) {
-        e.preventDefault();
-        window.location.href = 'categories.html';
-      };
-      const profileBtn = document.getElementById('profile-btn');
-      const profileDropdown = document.getElementById('profile-dropdown');
-      let dropdownOpen = false;
-      profileBtn.onclick = function(e) {
-        e.stopPropagation();
-        dropdownOpen = !dropdownOpen;
-        profileDropdown.classList.toggle('hidden', !dropdownOpen);
-      };
-      document.addEventListener('click', function(e) {
-        if (dropdownOpen && !profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
-          profileDropdown.classList.add('hidden');
-          dropdownOpen = false;
-        }
-      });
-      // Ensure there is a main-content div to hide/show
-      if (!document.getElementById('main-content')) {
-        const layout = document.querySelector('.layout-content-container');
-        if (layout) {
-          layout.setAttribute('id', 'main-content');
-        }
-      }
-      document.getElementById('account-settings-link').onclick = function(e) {
-        e.preventDefault();
-        window.location.href = 'account-settings.html';
-      };
-      document.getElementById('back-to-main').onclick = function() {
-        document.getElementById('account-settings-section').classList.add('hidden');
-        document.getElementById('main-content').classList.remove('hidden');
-        document.getElementById('account-settings-content').innerHTML = '';
-      };
-      document.getElementById('close-account-settings').onclick = function() {
-        document.getElementById('account-settings-modal').classList.add('hidden');
-        document.getElementById('account-settings-content').innerHTML = '';
-      };
-      document.getElementById('logout-link').onclick = function(e) {
-        e.preventDefault();
-        // Clear user session (customize as needed)
-        localStorage.clear();
-        sessionStorage.clear();
-        window.location.href = 'index.html';
-      };
-      // Sale link redirection
-      document.getElementById('sale-link').addEventListener('click', function(e) {
-        e.preventDefault();
-        window.location.href = 'sale.html';
-      });
-      // Chinodress image from localStorage logic
-      (function() {
-        // Try to get the image from localStorage (assume key is 'chinodressImage')
-        var chinodressImg = localStorage.getItem('chinodressImage');
-        if (chinodressImg) {
-          // If it's a base64 string, set as data URL
-          var el = document.getElementById('chinodress-img');
-          if (el) {
-            el.style.backgroundImage = 'url("' + chinodressImg + '")';
-          }
-        }
-      })();
-      // Dynamic Chinodress image loading from localStorage
-      document.addEventListener('DOMContentLoaded', function() {
-        // Use the id for direct targeting
-        const chinodressCard = document.getElementById('chinodress-img');
-        if (chinodressCard) {
-          const chinodressImage = localStorage.getItem('chinodressImage');
-          if (chinodressImage) {
-            chinodressCard.style.backgroundImage = `url('${chinodressImage}')`;
+        const form = e.target;
+        const email = form.username.value; // username field contains email
+        const password = form.password.value;
+        console.log('Login request:', {
+          url: 'http://127.0.0.1:8000/data/login',
+          method: 'POST',
+          body: { email, password }
+        });
+        try {
+          const res = await fetch('http://127.0.0.1:8000/data/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+          });
+          if (res.ok) {
+            alert('Login successful!');
+            window.location.href = 'index1.html'; // Redirect to index1.html
           } else {
-            chinodressCard.style.backgroundImage = 'url("https://u-mercari-images.mercdn.net/photos/m54242634325_2.jpg")';
+            const data = await res.json();
+            alert(data.detail || data.message || 'Login failed.');
           }
+        } catch (err) {
+          alert('Error connecting to server.');
         }
-      });
-      // Chinodress SPA-style details logic
-      document.getElementById('chinodress-img').onclick = function() {
-        window.location.href = 'chinodress.html?img=' + encodeURIComponent(document.getElementById('chinodress-img').style.backgroundImage.replace(/^url\(["']?|["']?\)$/g, '').replace('url(', '').replace(')', '').replace(/"/g, ''));
       };
-      document.getElementById('back-to-main-chinodress').onclick = function() {
-        document.getElementById('chinodress-details-section').classList.add('hidden');
-        document.getElementById('main-content').classList.remove('hidden');
-      };
-      document.getElementById('add-to-cart-btn-section').onclick = function() {
-        alert('Chinodress added to cart!');
-      };
-      // Product modal logic for all product cards
-      document.querySelectorAll('.product-card').forEach(function(card) {
-        card.onclick = function(e) {
-          e.stopPropagation();
-          var data = JSON.parse(this.getAttribute('data-product'));
-          // Chinodress dynamic image
-          if (data.name === 'Chinodress') {
-            var chinodressImg = localStorage.getItem('chinodressImage');
-            if (chinodressImg) data.img = chinodressImg;
-          }
-          document.getElementById('modal-product-img').style.backgroundImage = 'url("' + data.img + '")';
-          document.getElementById('modal-product-name').textContent = data.name;
-          document.getElementById('modal-product-price').textContent = data.price;
-          document.getElementById('modal-product-desc').textContent = data.desc;
-          document.getElementById('product-modal').classList.remove('hidden');
-        };
-      });
-      document.getElementById('close-product-modal').onclick = function() {
-        document.getElementById('product-modal').classList.add('hidden');
-      };
-      document.getElementById('modal-add-to-cart-btn').onclick = function() {
-        var name = document.getElementById('modal-product-name').textContent;
-        alert(name + ' added to cart!');
-      };
-    </script>
-      <!-- Sign up dropdown functionality -->
-      <script>
-        const signupBtn = document.getElementById('signup-btn');
-        const signupDropdown = document.getElementById('signup-dropdown');
-        let signupDropdownOpen = false;
-
-        signupBtn.onclick = function(e) {
-          e.preventDefault();
-          signupDropdownOpen = !signupDropdownOpen;
-          signupDropdown.classList.toggle('hidden');
-        };
-
-        document.addEventListener('click', function(e) {
-          if (signupDropdownOpen && !signupBtn.contains(e.target) && !signupDropdown.contains(e.target)) {
-            signupDropdown.classList.add('hidden');
-            signupDropdownOpen = false;
-          }
+      // Register form submit
+      document.getElementById('register-form').onsubmit = async function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const first_name = form.first_name.value;
+        const last_name = form.last_name.value;
+        const region = form.region.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirm = form.confirm_password.value;
+        if (password !== confirm) {
+          alert('Passwords do not match!');
+          return;
+        }
+        console.log('Register request:', {
+          url: 'http://127.0.0.1:8000/data/register',
+          method: 'POST',
+          body: { first_name, last_name, region, email, password }
         });
+        try {
+          const res = await fetch('http://127.0.0.1:8000/data/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ first_name, last_name, region, email, password })
+          });
+          if (res.ok) {
+            alert('Registration successful! Please login.');
+            document.getElementById('show-login').click();
+          } else {
+            const data = await res.json();
+            alert(data.message || 'Registration failed.');
+          }
+        } catch (err) {
+          alert('Error connecting to server.');
+                }
+      };
+      
+      // Google Sign-In callback
+      function handleGoogleSignIn(response) {
+        console.log("Google ID Token: ", response.credential);
+        // Send token to backend for verification
+        // For now, redirect to index1.html after successful Google sign-in
+        alert('Google Sign-In successful!');
+        window.location.href = 'index1.html';
+      }
 
-        // Handle form submission
-        signupDropdown.querySelector('form').addEventListener('submit', function(e) {
-          e.preventDefault();
-          const email = this.querySelector('input[type="email"]').value;
-          alert('Thank you for subscribing!');
-          signupDropdown.classList.add('hidden');
-          signupDropdownOpen = false;
+      // Apple Sign-In config
+      document.addEventListener('DOMContentLoaded', function() {
+        AppleID.auth.init({
+          clientId: "YOUR_APPLE_CLIENT_ID",
+          scope: "name email",
+          redirectURI: "https://your-redirect-uri.com/callback",
+          usePopup: true,
         });
-      </script>
-      <!-- Sneakers Modal -->
-    <div id="sneakersModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
-        <div class="fixed inset-0 flex items-center justify-center p-4">
-            <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl">
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-2xl font-bold text-[#0d141c]">Sneakers Collection</h2>
-                        <button onclick="closeSneakersModal()" class="text-gray-500 hover:text-gray-700">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    
-                    <!-- Products Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <!-- Product 1 -->
-                        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-                            <img src="images/Louise Junior Spikes Sneakers - Gaagal coated canvas - Leche - Women.png" alt="Louise Junior Spikes Sneakers" class="w-full h-48 object-cover">
-                            <div class="p-4">
-                                <h3 class="text-lg font-semibold text-[#0d141c] mb-2">Louise Junior Spikes Sneakers</h3>
-                                <p class="text-gray-600 mb-2">Gaagal coated canvas - Leche</p>
-                                <p class="text-[#0c7ff2] font-bold mb-4">$199.99</p>
-                                <button onclick="addToCart('Louise Junior Spikes Sneakers')" class="w-full bg-[#0c7ff2] text-white py-2 px-4 rounded hover:bg-[#0056b3] transition-colors">
-                                    Add to Cart
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Product 2 -->
-                        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-                            <img src="images/Retero Sneakers - Grained calf leather - Cuoio - Men.png" alt="Retero Sneakers Cuoio" class="w-full h-48 object-cover">
-                            <div class="p-4">
-                                <h3 class="text-lg font-semibold text-[#0d141c] mb-2">Retero Sneakers</h3>
-                                <p class="text-gray-600 mb-2">Grained calf leather - Cuoio</p>
-                                <p class="text-[#0c7ff2] font-bold mb-4">$249.99</p>
-                                <button onclick="addToCart('Retero Sneakers - Cuoio')" class="w-full bg-[#0c7ff2] text-white py-2 px-4 rounded hover:bg-[#0056b3] transition-colors">
-                                    Add to Cart
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Product 3 -->
-                        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-                            <img src="images/Retero Sneakers - Grained calf leather - Marine - Men.png" alt="Retero Sneakers Marine" class="w-full h-48 object-cover">
-                            <div class="p-4">
-                                <h3 class="text-lg font-semibold text-[#0d141c] mb-2">Retero Sneakers</h3>
-                                <p class="text-gray-600 mb-2">Grained calf leather - Marine</p>
-                                <p class="text-[#0c7ff2] font-bold mb-4">$249.99</p>
-                                <button onclick="addToCart('Retero Sneakers - Marine')" class="w-full bg-[#0c7ff2] text-white py-2 px-4 rounded hover:bg-[#0056b3] transition-colors">
-                                    Add to Cart
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add JavaScript for modal functionality -->
-    <script>
-        function showSneakersModal() {
-            document.getElementById('sneakersModal').classList.remove('hidden');
-        }
-
-        function closeSneakersModal() {
-            document.getElementById('sneakersModal').classList.add('hidden');
-        }
-
-        function addToCart(productName) {
-            alert(`${productName} has been added to your cart!`);
-            // You can add more cart functionality here
-        }
+      });
+ 
+      // Prevent any action on the Google Sign-In button
+      document.addEventListener('DOMContentLoaded', function() {
+        const googleBtn = document.querySelector('.g_id_signin');
+        if (googleBtn) googleBtn.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); });
+      });
     </script>
-</body>
+  </body>
 </html>
