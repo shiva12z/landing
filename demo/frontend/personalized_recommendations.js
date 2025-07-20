@@ -2,25 +2,41 @@
 // This script dynamically loads personalized recommendations into the homepage.
 // Integrate with backend API or static CSV as needed.
 
-// Example: Fetch recommendations for the current user (mocked for now)
+// Example: Fetch recommendations for the current user (now calls backend API)
 async function fetchRecommendations() {
-  // TODO: Replace with actual API call, e.g., /api/recommendations?user_id=...
-  // For now, return a static array
-  return [
-    {
-      name: "Summer Dress",
-      price: "$69.99",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBnWKUg8IBvbDdgS3g0Lt_ADiZuyaFVs4Z4iNbaGFEoOJCnYaF5MPnvqPmlmRxug1e-A0_P8ETIxhuXknxnAhgTruR5ILAGe9Jd1Hp4R7Lb_zPKoTAeu7Ku2XrHBEAfuDzpm4m3o5ecyB76ew5Ye_IQq0JS45qkg7gXwjVGzSSNXpfOS3leqhU3ntF5y91hGWpDP9XDBpCXexpJ7XeA0bSJM70OmUwP9giHrZJhPHCT_dao3R32wLfVj2EkQ7F8kv1hRR3GrVnn869b",
-      desc: "Light and breezy summer dress, perfect for warm days and casual outings."
-    },
-    {
-      name: "Leather Handbag",
-      price: "$129.99",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCPq2ZffkcXgr9lgFiCqplxTnjXZ5Z1F51_hSAYreEzFbRjcFWkaA-vw7WpcSzoZyhOdi06JcxuNgNfvjenLTWTqh6Nq3CeT6g4ovuV9N-182_EcQxoAPr21jWXPJi7UI4aqyN30rTN6drW02gXN71WJenZNnVnEQbqE7qv7pHMPRG-1or8xwWcnHPrattIq6pOPWRZ4wHN0KmZYm-nPOzWqu8GeRa2HqxqfOwp2G63GwOAbp9zUT89pKmiZgvbwGrTG84WIHItcCC-",
-      desc: "Premium leather handbag with modern design and spacious interior."
-    },
-    // ...add more as needed
-  ];
+  // For demo: use a hardcoded user_pseudo_id, or get from localStorage/cookie if available
+  let user_pseudo_id = localStorage.getItem('user_pseudo_id') || 'demo_user_123';
+  try {
+    const response = await fetch(`http://localhost:8000/data/recommendation/${user_pseudo_id}`);
+    if (!response.ok) throw new Error('API error');
+    const data = await response.json();
+    // Assume backend returns { user_pseudo_id, recommended_engagement_type }
+    // Map the engagement type to a product card for demo
+    return [
+      {
+        name: data.recommended_engagement_type || 'Recommended Item',
+        price: '',
+        img: 'https://via.placeholder.com/300x300?text=Recommendation',
+        desc: `Top recommendation for you: ${data.recommended_engagement_type}`
+      }
+    ];
+  } catch (e) {
+    // Fallback to static mock data if API fails
+    return [
+      {
+        name: "Summer Dress",
+        price: "$69.99",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBnWKUg8IBvbDdgS3g0Lt_ADiZuyaFVs4Z4iNbaGFEoOJCnYaF5MPnvqPmlmRxug1e-A0_P8ETIxhuXknxnAhgTruR5ILAGe9Jd1Hp4R7Lb_zPKoTAeu7Ku2XrHBEAfuDzpm4m3o5ecyB76ew5Ye_IQq0JS45qkg7gXwjVGzSSNXpfOS3leqhU3ntF5y91hGWpDP9XDBpCXexpJ7XeA0bSJM70OmUwP9giHrZJhPHCT_dao3R32wLfVj2EkQ7F8kv1hRR3GrVnn869b",
+        desc: "Light and breezy summer dress, perfect for warm days and casual outings."
+      },
+      {
+        name: "Leather Handbag",
+        price: "$129.99",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCPq2ZffkcXgr9lgFiCqplxTnjXZ5Z1F51_hSAYreEzFbRjcFWkaA-vw7WpcSzoZyhOdi06JcxuNgNfvjenLTWTqh6Nq3CeT6g4ovuV9N-182_EcQxoAPr21jWXPJi7UI4aqyN30rTN6drW02gXN71WJenZNnVnEQbqE7qv7pHMPRG-1or8xwWcnHPrattIq6pOPWRZ4wHN0KmZYm-nPOzWqu8GeRa2HqxqfOwp2G63GwOAbp9zUT89pKmiZgvbwGrTG84WIHItcCC-",
+        desc: "Premium leather handbag with modern design and spacious interior."
+      }
+    ];
+  }
 }
 
 // Render recommendations into the grid

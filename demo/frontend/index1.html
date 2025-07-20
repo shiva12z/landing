@@ -252,6 +252,182 @@
                 </div>
               </div>
             </div>
+            <h2 class="text-[#0d141c] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Smart Real-Time Dashboard</h2>
+            <div id="smart-dashboard" class="w-full bg-white rounded-lg shadow p-6 mb-8 flex flex-col gap-4">
+              <div class="flex flex-col md:flex-row md:items-center gap-4 mb-4">
+                <label for="dashboard-type" class="font-semibold text-[#0d141c]">Select Data Type:</label>
+                <select id="dashboard-type" class="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                  <option value="crypto">Cryptocurrency</option>
+                  <option value="weather">Weather</option>
+                  <option value="news">News</option>
+                </select>
+              </div>
+              <div id="dashboard-content" class="min-h-[200px] flex flex-col items-center justify-center"></div>
+            </div>
+            <style>
+              /* Dashboard Animations */
+              .dashboard-fade-in {
+                animation: fadeIn 0.7s ease;
+              }
+              @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+              }
+              .price-up { color: #16a34a; transition: color 0.5s; }
+              .price-down { color: #dc2626; transition: color 0.5s; }
+              .dashboard-chart-bar {
+                transition: height 0.7s cubic-bezier(.4,2,.6,1), background 0.5s;
+                background: linear-gradient(90deg, #0c7ff2 60%, #38bdf8 100%);
+                border-radius: 6px 6px 0 0;
+              }
+              .dashboard-card {
+                transition: box-shadow 0.3s, transform 0.3s;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+                border-radius: 10px;
+                background: #f8fafc;
+                padding: 1rem;
+                margin: 0.5rem;
+              }
+              .dashboard-card:hover {
+                box-shadow: 0 6px 24px rgba(12,127,242,0.13);
+                transform: translateY(-4px) scale(1.03);
+              }
+              @media (max-width: 600px) {
+                #smart-dashboard { padding: 1rem; }
+                .dashboard-chart-bar { min-width: 10px; }
+              }
+            </style>
+            <script>
+              // --- Smart Dashboard Logic ---
+              const dashboardType = document.getElementById('dashboard-type');
+              const dashboardContent = document.getElementById('dashboard-content');
+              let dashboardInterval;
+              let lastCryptoPrice = null;
+              let chartData = [];
+
+              function animateNumber(el, from, to, duration = 800) {
+                const start = performance.now();
+                function animate(now) {
+                  const progress = Math.min((now - start) / duration, 1);
+                  el.textContent = (from + (to - from) * progress).toFixed(2);
+                  if (progress < 1) requestAnimationFrame(animate);
+                }
+                requestAnimationFrame(animate);
+              }
+
+              function renderCryptoDashboard() {
+                dashboardContent.innerHTML = '<div class="dashboard-fade-in w-full flex flex-col items-center">Loading crypto data...</div>';
+                fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd')
+                  .then(r => r.json())
+                  .then(data => {
+                    // Chart data: push latest BTC price
+                    if (chartData.length > 30) chartData.shift();
+                    chartData.push(data.bitcoin.usd);
+                    // Main price cards
+                    dashboardContent.innerHTML = `
+                      <div class="flex flex-wrap justify-center gap-4 mb-6">
+                        <div class="dashboard-card text-center">
+                          <div class="text-lg font-bold">Bitcoin (BTC)</div>
+                          <div id="btc-price" class="text-2xl font-mono font-bold">$${data.bitcoin.usd.toFixed(2)}</div>
+                        </div>
+                        <div class="dashboard-card text-center">
+                          <div class="text-lg font-bold">Ethereum (ETH)</div>
+                          <div id="eth-price" class="text-2xl font-mono font-bold">$${data.ethereum.usd.toFixed(2)}</div>
+                        </div>
+                        <div class="dashboard-card text-center">
+                          <div class="text-lg font-bold">Solana (SOL)</div>
+                          <div id="sol-price" class="text-2xl font-mono font-bold">$${data.solana.usd.toFixed(2)}</div>
+                        </div>
+                      </div>
+                      <div class="w-full max-w-xl mx-auto">
+                        <div class="text-sm text-gray-500 mb-2">BTC Price (last 30 updates)</div>
+                        <div class="flex items-end h-32 w-full bg-slate-100 rounded-lg overflow-x-auto" style="gap:2px;">
+                          ${chartData.map((v, i, arr) => {
+                            const max = Math.max(...arr);
+                            const min = Math.min(...arr);
+                            const pct = (v - min) / (max - min + 1e-6);
+                            return `<div class='dashboard-chart-bar' style='height:${30 + pct*80}px; width:12px;'></div>`;
+                          }).join('')}
+                        </div>
+                      </div>
+                    `;
+                    // Animate price changes
+                    ['btc','eth','sol'].forEach(coin => {
+                      const el = document.getElementById(`${coin}-price`);
+                      if (el) {
+                        let prev = el.dataset.prev ? parseFloat(el.dataset.prev) : parseFloat(el.textContent.replace('$',''));
+                        let curr = data[coin === 'btc' ? 'bitcoin' : coin === 'eth' ? 'ethereum' : 'solana'].usd;
+                        el.dataset.prev = curr;
+                        el.classList.remove('price-up','price-down');
+                        if (curr > prev) el.classList.add('price-up');
+                        else if (curr < prev) el.classList.add('price-down');
+                        animateNumber(el, prev, curr);
+                      }
+                    });
+                  });
+              }
+
+              function renderWeatherDashboard() {
+                dashboardContent.innerHTML = '<div class="dashboard-fade-in w-full flex flex-col items-center">Loading weather data...</div>';
+                // Use Open-Meteo API (no key, e.g., for London)
+                fetch('https://api.open-meteo.com/v1/forecast?latitude=51.5072&longitude=-0.1276&current_weather=true')
+                  .then(r => r.json())
+                  .then(data => {
+                    const w = data.current_weather;
+                    dashboardContent.innerHTML = `
+                      <div class="dashboard-card flex flex-col items-center dashboard-fade-in">
+                        <div class="text-lg font-bold mb-2">London Weather</div>
+                        <div class="text-5xl font-mono font-bold mb-2">${w.temperature}&deg;C</div>
+                        <div class="text-base mb-2">${w.weathercode === 0 ? 'Clear' : w.weathercode === 1 ? 'Mainly Clear' : 'Cloudy'}</div>
+                        <div class="flex gap-4 mt-2">
+                          <div class="text-sm">Wind: <span class="font-semibold">${w.windspeed} km/h</span></div>
+                          <div class="text-sm">Direction: <span class="font-semibold">${w.winddirection}&deg;</span></div>
+                        </div>
+                      </div>
+                    `;
+                  });
+              }
+
+              function renderNewsDashboard() {
+                dashboardContent.innerHTML = '<div class="dashboard-fade-in w-full flex flex-col items-center">Loading news...</div>';
+                // Use GNews public demo endpoint (no key, limited results)
+                fetch('https://gnews.io/api/v4/top-headlines?lang=en&country=us&max=5&token=demo')
+                  .then(r => r.json())
+                  .then(data => {
+                    dashboardContent.innerHTML = `
+                      <div class="flex flex-wrap justify-center gap-4 dashboard-fade-in">
+                        ${data.articles.map(article => `
+                          <div class="dashboard-card w-64 flex flex-col items-start">
+                            <div class="font-bold mb-1">${article.title}</div>
+                            <div class="text-xs text-gray-500 mb-2">${article.publishedAt.slice(0,10)}</div>
+                            <div class="mb-2">${article.description || ''}</div>
+                            <a href="${article.url}" target="_blank" class="text-blue-600 hover:underline mt-auto">Read more</a>
+                          </div>
+                        `).join('')}
+                      </div>
+                    `;
+                  });
+              }
+
+              function updateDashboard() {
+                clearInterval(dashboardInterval);
+                dashboardContent.innerHTML = '';
+                if (dashboardType.value === 'crypto') {
+                  renderCryptoDashboard();
+                  dashboardInterval = setInterval(renderCryptoDashboard, 5000);
+                } else if (dashboardType.value === 'weather') {
+                  renderWeatherDashboard();
+                  dashboardInterval = setInterval(renderWeatherDashboard, 60000);
+                } else if (dashboardType.value === 'news') {
+                  renderNewsDashboard();
+                  dashboardInterval = setInterval(renderNewsDashboard, 120000);
+                }
+              }
+
+              dashboardType.addEventListener('change', updateDashboard);
+              // Initial load
+              updateDashboard();
+            </script>
             <div class="@container">
               <div class="flex flex-col justify-end gap-6 px-4 py-10 @[480px]:gap-8 @[480px]:px-10 @[480px]:py-20 items-center text-center">
                 <div class="flex flex-col gap-2 text-center items-center">
